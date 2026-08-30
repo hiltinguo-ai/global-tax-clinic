@@ -1,0 +1,20 @@
+id: us.fed.family_credits
+name: EITC / CTC eligibility screen
+applies_to: [individual]
+trigger:
+  all:
+    - profile.dependents >= 1
+    - has_income("w2")
+severity: low
+status_if_true: check
+deadline: { date: "04-15", auto_extension_to: "10-15" }
+evidence_needed:
+  - child's age, residency, and relationship
+  - earned income and AGI
+forms: ["Schedule EIC", "Schedule 8812"]
+numbers: []
+citations:
+  - { src: "IRS EITC", url: "https://www.irs.gov/credits-deductions/individuals/earned-income-tax-credit-eitc", passage_id: "eitc" }
+  - { src: "IRS child tax credit", url: "https://www.irs.gov/credits-deductions/individuals/child-tax-credit", passage_id: "ctc" }
+explain_hints:
+  - "A dependent is a clue, not a conclusion. EITC and CTC have income phaseouts, age tests, and residency tests this clinic does not compute."

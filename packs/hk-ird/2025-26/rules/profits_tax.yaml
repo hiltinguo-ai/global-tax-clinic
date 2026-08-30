@@ -1,0 +1,19 @@
+id: hk.ird.profits
+name: Hong Kong profits tax
+applies_to: [llc, c_corp, individual]
+trigger:
+  any:
+    - any(profile.ownerships[*].country == "HK")
+    - any(profile.income_streams[*].country == "HK")
+severity: medium
+status_if_true: check
+deadline: { date: "BIR51/BIR52", note: "issued after accounting year-end" }
+evidence_needed:
+  - source of profits analysis
+  - audited accounts if a HK company
+forms: ["BIR51"]
+numbers: []
+citations:
+  - { src: "IRD profits tax", url: "https://www.ird.gov.hk/eng/tax/bus_pft.htm", passage_id: "hk-profits" }
+explain_hints:
+  - "HK profits tax follows source, not residence. An offshore claim is a facts-and-documents exercise, not a checkbox."

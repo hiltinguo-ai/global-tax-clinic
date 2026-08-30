@@ -1,0 +1,21 @@
+id: ma.dor.sales
+name: Massachusetts sales tax registration
+applies_to: [llc, c_corp]
+trigger:
+  all:
+    - '"MA" in profile.states'
+    - any:
+        - profile.has_restaurant == true
+        - has_income("sales")
+severity: medium
+status_if_true: required
+deadline: { date: "on-nexus", note: "register before taxable sales" }
+evidence_needed:
+  - taxable vs exempt sales map
+  - DOR registration / WebFile for Business
+forms: ["ST-9"]
+numbers: ["6.25"]
+citations:
+  - { src: "MA sales tax", url: "https://www.mass.gov/sales-and-use-tax", passage_id: "ma-sales" }
+explain_hints:
+  - "Meals tax and sales tax are siblings, not substitutes. Retail items (merch, bottled drinks sold unopened) often sit on the sales-tax side."

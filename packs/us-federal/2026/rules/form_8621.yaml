@@ -1,0 +1,21 @@
+id: us.fed.8621
+name: Form 8621 PFIC (foreign fund)
+applies_to: [individual, llc, c_corp, family_trust]
+trigger:
+  all:
+    - profile.us_person == true
+    - any(profile.foreign_accounts[*].kind == "fund")
+severity: high
+status_if_true: likely
+deadline: { date: "04-15", auto_extension_to: "10-15" }
+evidence_needed:
+  - fund name, ISIN, and annual PFIC statement if available
+  - acquisition dates and distributions
+forms: ["8621"]
+numbers: []
+citations:
+  - { src: "26 USC 1291–1298", url: "https://www.law.cornell.edu/uscode/text/26/1297", passage_id: "irc-1297" }
+  - { src: "IRS Form 8621 instructions", url: "https://www.irs.gov/forms-pubs/about-form-8621", passage_id: "f8621-instr" }
+explain_hints:
+  - "Most non-US mutual funds and many HK retail funds are PFICs for US persons."
+  - "Default excess-distribution rules are punitive. A QEF or mark-to-market election is a CPA conversation, not a DIY default."

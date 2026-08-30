@@ -1,0 +1,20 @@
+id: us.fed.schedule_c
+name: Schedule C business income
+applies_to: [individual]
+trigger:
+  any:
+    - has_income("1099_nec")
+    - has_income("gig")
+    - profile.entity_type == "llc"
+severity: medium
+status_if_true: required
+deadline: { date: "04-15", auto_extension_to: "10-15" }
+evidence_needed:
+  - 1099-NEC and payment-app summaries
+  - ordinary and necessary expense records
+forms: ["Schedule C"]
+numbers: []
+citations:
+  - { src: "IRS Schedule C instructions", url: "https://www.irs.gov/forms-pubs/about-schedule-c-form-1040", passage_id: "sch-c" }
+explain_hints:
+  - "Side-gigs reported on 1099-NEC are generally Schedule C, not other income, when you are in business for yourself."

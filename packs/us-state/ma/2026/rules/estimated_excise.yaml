@@ -1,0 +1,19 @@
+id: ma.dor.355es
+name: Massachusetts estimated corporate excise (Form 355-ES)
+applies_to: [c_corp]
+trigger:
+  all:
+    - profile.entity_type == "c_corp"
+    - '"MA" in profile.states'
+severity: medium
+status_if_true: check
+deadline: { date: "quarterly", note: "Apr 15 / Jun 15 / Sep 15 / Jan 15 if expected tax exceeds $1,000" }
+evidence_needed:
+  - prior-year Form 355
+  - current-year income estimate
+forms: ["355-ES"]
+numbers: ["1000", "456"]
+citations:
+  - { src: "MA estimated corporate excise", url: "https://www.mass.gov/corporate-excise-tax", passage_id: "ma-excise" }
+explain_hints:
+  - "Estimates are required if corporate excise is expected to exceed $1,000. The $456 minimum alone does not force estimates."

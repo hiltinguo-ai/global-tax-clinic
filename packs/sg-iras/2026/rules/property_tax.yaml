@@ -1,0 +1,19 @@
+id: sg.iras.property
+name: Singapore property tax
+applies_to: [individual, llc, c_corp, family_trust]
+trigger:
+  all:
+    - profile.has_property("SG")
+severity: high
+status_if_true: required
+deadline: { date: "01-31", note: "IRAS property tax is usually payable in January, or by GIRO instalments" }
+evidence_needed:
+  - IRAS annual value
+  - owner-occupied vs non-owner-occupied
+  - whether the property is let
+forms: ["IRAS property tax"]
+numbers: []
+citations:
+  - { src: "IRAS — property tax", url: "https://www.iras.gov.sg/taxes/property-tax", passage_id: "sg-property" }
+explain_hints:
+  - "Singapore property tax is an IRAS tax on annual value. Owner-occupied residential property uses a progressive owner-occupier schedule; other residential and commercial property uses a different schedule. The clinic will not compute a bill without the IRAS annual value."

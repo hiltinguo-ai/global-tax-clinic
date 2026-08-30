@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>body{margin:0}</style>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Global Tax Clinic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --paper:#F5F7F8; --paper-2:#EBEFF1; --ink:#1B2430; --ink-2:#4A5563; --ink-3:#7B8794;
+    --line:#D3DAE0; --accent:#0F6C78; --accent-soft:#DDEFF1; --flag:#B4531C; --flag-soft:#F6E5DA;
+    --ok:#2F7D4A; --ok-soft:#E1F0E5; --code-bg:#EEF2F4;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0F151C; --paper-2:#161E27; --ink:#E4E9ED; --ink-2:#AEB8C2; --ink-3:#7C8792;
+      --line:#2A3542; --accent:#5EC2CF; --accent-soft:#12303A; --flag:#E58A55; --flag-soft:#3A2416;
+      --ok:#6FCB8B; --ok-soft:#15301E; --code-bg:#161E27;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0F151C; --paper-2:#161E27; --ink:#E4E9ED; --ink-2:#AEB8C2; --ink-3:#7C8792;
+    --line:#2A3542; --accent:#5EC2CF; --accent-soft:#12303A; --flag:#E58A55; --flag-soft:#3A2416;
+    --ok:#6FCB8B; --ok-soft:#15301E; --code-bg:#161E27;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent)}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .wrap{display:grid;grid-template-columns:1fr;max-width:1180px;margin:0 auto;padding:0 20px 96px}
+  @media(min-width:1000px){.wrap{grid-template-columns:200px minmax(0,1fr);column-gap:56px}}
+  nav.toc{display:none}
+  @media(min-width:1000px){
+    nav.toc{display:block;position:sticky;top:32px;align-self:start;padding-top:96px;font-size:13px}
+    nav.toc ol{list-style:none;margin:0;padding:0;border-left:1px solid var(--line)}
+    nav.toc li a{display:block;padding:5px 0 5px 14px;color:var(--ink-3);text-decoration:none;margin-left:-1px;border-left:1px solid transparent}
+    nav.toc li a:hover{color:var(--ink);border-left-color:var(--accent)}
+  }
+  main{max-width:74ch;min-width:0}
+  header{padding:80px 0 40px;border-bottom:1px solid var(--line);margin-bottom:48px}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 16px}
+  h1{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:clamp(36px,5vw,52px);line-height:1.05;margin:0 0 20px;letter-spacing:-.01em;text-wrap:balance}
+  .lede{font-size:19px;color:var(--ink-2);margin:0;max-width:60ch}
+  .meta{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:24px;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--ink-3)}
+  h2{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:30px;line-height:1.15;margin:64px 0 16px;letter-spacing:-.005em;text-wrap:balance}
+  h3{font-size:17px;font-weight:600;margin:32px 0 10px}
+  p{margin:0 0 16px}
+  ul,ol{margin:0 0 16px;padding-left:22px}
+  li{margin-bottom:6px}
+  .thesis{background:var(--accent-soft);border-left:3px solid var(--accent);padding:18px 22px;border-radius:0 6px 6px 0;margin:24px 0 8px}
+  .thesis strong{font-family:"Fraunces",Georgia,serif;font-size:22px;font-weight:600;display:block;margin-bottom:6px}
+  .callout{border:1px solid var(--line);border-radius:6px;padding:16px 20px;margin:20px 0;background:var(--paper-2)}
+  .callout.flag{border-color:var(--flag);background:var(--flag-soft)}
+  .callout .lbl{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--flag);display:block;margin-bottom:6px}
+  .callout.ok .lbl{color:var(--ok)}
+  .callout.ok{border-color:var(--ok);background:var(--ok-soft)}
+  /* pipeline */
+  .pipe{display:grid;gap:10px;margin:24px 0}
+  .stage{display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start;border:1px solid var(--line);border-radius:6px;padding:14px 16px;background:var(--paper-2)}
+  .stage .who{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:3px 6px;border-radius:3px;text-align:center;line-height:1.3;margin-top:3px}
+  .who.slm{background:var(--accent-soft);color:var(--accent)}
+  .who.code{background:var(--ok-soft);color:var(--ok)}
+  .who.ui{background:var(--paper);color:var(--ink-3);border:1px solid var(--line)}
+  .stage b{display:block;font-weight:600;margin-bottom:2px}
+  .stage span{color:var(--ink-2);font-size:15px}
+  /* tables */
+  .tscroll{overflow-x:auto;margin:16px 0 24px;border:1px solid var(--line);border-radius:6px}
+  table{border-collapse:collapse;width:100%;font-size:14px;min-width:640px}
+  th,td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--line)}
+  th{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);font-weight:500;background:var(--paper-2)}
+  tr:last-child td{border-bottom:0}
+  td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+  .pick{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11px;padding:2px 6px;border-radius:3px;background:var(--accent-soft);color:var(--accent);letter-spacing:.04em}
+  pre{background:var(--code-bg);border:1px solid var(--line);border-radius:6px;padding:16px 18px;overflow-x:auto;font-family:"IBM Plex Mono",monospace;font-size:13px;line-height:1.5;margin:12px 0 20px}
+  code{font-family:"IBM Plex Mono",monospace;font-size:.92em;background:var(--code-bg);padding:1px 5px;border-radius:3px}
+  pre code{background:none;padding:0}
+  .personas{display:grid;gap:12px;grid-template-columns:1fr;margin:20px 0}
+  @media(min-width:700px){.personas{grid-template-columns:repeat(3,1fr)}}
+  .persona{border:1px solid var(--line);border-radius:6px;padding:16px;background:var(--paper-2);font-size:14px}
+  .persona b{display:block;font-family:"Fraunces",Georgia,serif;font-size:18px;font-weight:600;margin-bottom:6px}
+  .persona .tag{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-3);text-transform:uppercase;letter-spacing:.06em}
+  .sched{display:grid;grid-template-columns:90px 1fr;gap:8px 16px;font-size:15px;margin:16px 0 24px}
+  .sched .t{font-family:"IBM Plex Mono",monospace;color:var(--ink-3);font-size:13px;padding-top:3px}
+  .sources{font-size:14px;color:var(--ink-2)}
+  .sources li{margin-bottom:4px}
+  footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-3)}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<nav class="toc" aria-label="Contents">
+  <ol>
+    <li><a href="#thesis">Thesis</a></li>
+    <li><a href="#users">Who it serves</a></li>
+    <li><a href="#arch">Architecture</a></li>
+    <li><a href="#packs">Jurisdiction packs</a></li>
+    <li><a href="#models">Model picks</a></li>
+    <li><a href="#guardrails">Guardrails</a></li>
+    <li><a href="#eval">Evaluation</a></li>
+    <li><a href="#hack">Hackathon slice</a></li>
+    <li><a href="#cursor">Cursor build plan</a></li>
+    <li><a href="#risks">Open questions</a></li>
+    <li><a href="#sources">Sources</a></li>
+  </ol>
+</nav>
+
+<main>
+<header>
+  <p class="eyebrow">Design brief · Sundai · 30 Aug 2026</p>
+  <h1>A global tax compliance clinic that runs on your own machine</h1>
+  <p class="lede">A privacy-first check-up assistant for individuals, LLCs and C-corps, built on small open-weight language models and a deterministic rules layer, with country packs starting from US federal/state and US–China/HK cross-border.</p>
+  <div class="meta"><span>Stage: hackathon demo → MVP</span><span>Runtime: on-device</span><span>Build tool: Cursor</span></div>
+</header>
+
+<h2 id="thesis">Thesis</h2>
+<div class="thesis">
+  <strong>Models talk. Code counts.</strong>
+  Small models are excellent at understanding a messy situation, extracting a structured profile, retrieving the right rule, and explaining a finding in plain language. They are unreliable at tax arithmetic and threshold logic. So the clinic never lets a model compute a number or decide an obligation; those live in versioned, testable jurisdiction packs, and the model narrates what the packs decided.
+</div>
+<p>This split is what makes small models viable at all. TaxCalcBench (Column Tax, 51 federal 1040 cases) shows even frontier models at roughly 53–63% fully correct returns and small hosted models under 15%. A 4–9B on-device model would do worse. But the same benchmark's failure modes (eligibility rules, run-to-run inconsistency, stale knowledge) are exactly the things a rules layer removes. SteuerLLM, a 28B German tax model, gives the complementary lesson: domain data beats scale for legal reasoning, which is the fine-tuning path once the demo works.</p>
+<p>The product framing is a <em>clinic</em>, not a preparer: it tells you which obligations you have, which ones look at risk, what evidence you need, and what to ask a professional. It does not file. That keeps the scope buildable, keeps liability sane, and matches the "second opinion" moment where HNW individuals and founders actually feel pain.</p>
+
+<h2 id="users">Who it serves and what a visit looks like</h2>
+<div class="personas">
+  <div class="persona"><span class="tag">Individual · HNW</span><b>Mei, US resident with HK and mainland ties</b>Brokerage and bank accounts in HK, a Shenzhen apartment rented out, RSUs from a US employer, parents gifting cash. Wants to know: FBAR, FATCA 8938, PFIC exposure on HK funds, 3520 for gifts, treaty and foreign tax credit positions.</div>
+  <div class="persona"><span class="tag">Individual · Working class</span><b>Luis, W-2 server with DoorDash on the side</b>Tips, a 1099-NEC, moved from MA to NH mid-year, one child. Wants to know: Schedule C, self-employment tax, estimated payments, part-year state returns, EITC/CTC eligibility, tip reporting.</div>
+  <div class="persona"><span class="tag">Entity</span><b>Sichuan Garden LLC and Nori Robotics Inc.</b>A Massachusetts single-member LLC restaurant with sales tax and meals tax; a Delaware C-corp with Chinese founders and a Shanghai subsidiary. Wants to know: franchise tax, 5471/5472, transfer pricing basics, state nexus, payroll filings, 83(b) hygiene.</div>
+</div>
+<p>Every visit follows the same three steps regardless of persona: <strong>Check-up</strong> (a short adaptive interview or a pasted description, optionally documents), <strong>Findings</strong> (a ranked list of obligations and risk flags, each with the rule that triggered it and the source), and <strong>Next steps</strong> (what to gather, deadlines, when to escalate to a CPA). The output is a one-page clinic report the user can hand to an advisor.</p>
+
+<h2 id="arch">Architecture</h2>
+<p>Seven stages. The tag on each shows who does the work: a small model, deterministic code, or the UI.</p>
+<div class="pipe">
+  <div class="stage"><span class="who ui">UI</span><div><b>1 · Intake</b><span>Adaptive questionnaire plus free-text box. Optional upload of W-2/1099/bank summaries, read by a vision-capable small model on device (OCR, no cloud).</span></div></div>
+  <div class="stage"><span class="who slm">SLM</span><div><b>2 · Profile extraction</b><span>Model converts the conversation into a strict JSON <code>TaxProfile</code> (entity type, residencies, income streams, accounts by country, ownership links, life events) using schema-constrained decoding. It asks follow-ups only for fields the packs need.</span></div></div>
+  <div class="stage"><span class="who code">Code</span><div><b>3 · Obligation engine</b><span>Rules from the relevant jurisdiction packs fire against the profile: thresholds, residency tests, entity classifications, filing triggers, deadlines. Output is a list of <code>Finding</code> objects with status (required / likely / check / n.a.), severity, and citations.</span></div></div>
+  <div class="stage"><span class="who code">Code</span><div><b>4 · Cross-border resolver</b><span>Pairs findings across packs: US–HK, US–CN, US–AU. Flags double-reporting (e.g. a HK fund that is both FBAR-reportable and a likely PFIC), treaty tie-breakers, and foreign tax credit interactions. Still pure code, driven by pack metadata.</span></div></div>
+  <div class="stage"><span class="who slm">SLM</span><div><b>5 · Grounded retrieval</b><span>For each finding, an embedding model pulls the source passages (IRS instructions, IRD guidance, STA circulars) from a local vector index so the explanation can quote, not recall.</span></div></div>
+  <div class="stage"><span class="who slm">SLM</span><div><b>6 · Explainer</b><span>Model writes the plain-language report: why this applies to you, what to gather, what happens if you miss it. It may only reference numbers and forms present in the findings payload; anything else is stripped by a post-check.</span></div></div>
+  <div class="stage"><span class="who ui">UI</span><div><b>7 · Report and audit log</b><span>Rendered clinic report with expandable "why" panels, export to PDF, and a local log of profile, rule versions, and model versions so a CPA can reproduce the result.</span></div></div>
+</div>
+<p>Two models, not one, is the recommended shape even for the demo: a small fast model for extraction and classification (stages 2 and 5) and a larger reasoning model for the explainer (stage 6). On a 16 GB MacBook both fit at 4-bit quantization. A single 9B model can do both if you need to cut scope.</p>
+
+<h2 id="packs">Jurisdiction packs</h2>
+<p>A pack is a folder of declarative rules for one jurisdiction and tax year. Packs are the product's real IP and the thing your CPA background lets you write faster than anyone at the table. Keep them in YAML so a non-engineer can review a diff, and generate the Python evaluation from the schema.</p>
+<pre><code>packs/us-federal/2026/rules/fbar.yaml
+id: us.fed.fbar
+name: FinCEN Form 114 (FBAR)
+applies_to: [individual, llc, c_corp]
+trigger:
+  all:
+    - profile.us_person == true
+    - sum(profile.foreign_accounts[*].max_balance_usd) &gt; 10000
+severity: high            # penalties are disproportionate
+status_if_true: required
+deadline: { date: "04-15", auto_extension_to: "10-15" }
+evidence_needed: [account statements showing max balance, account numbers]
+citations:
+  - { src: "31 CFR 1010.350", url: "https://..." }
+  - { src: "FinCEN FBAR instructions", url: "https://..." }
+explain_hints:
+  - "Aggregate, not per-account: five $3k accounts still trigger it."
+cross_border:
+  pairs_with: [hk.ird.*, cn.sta.*]
+  note: "HK MPF and CN housing fund accounts are commonly missed."</code></pre>
+<p>The pack schema needs about six primitives to cover most compliance triggers: boolean tests on the profile, numeric thresholds with currency conversion, date arithmetic (residency day counts, deadlines), set membership (entity type, state), ownership percentage tests, and references to other rules. Resist adding an expression language beyond that; if a rule needs real computation, it belongs in a named Python function the YAML calls by name, with its own unit test.</p>
+<h3>Pack order for a global framework</h3>
+<ol>
+  <li><strong>us-federal</strong> — individual (1040 family, FBAR, 8938, 3520, 8621, 2555/1116) and entity (1120, 1065, 5471, 5472, 8832, 83(b), estimated tax).</li>
+  <li><strong>us-state</strong> — start with MA, DE, NY, CA as separate mini-packs sharing a state schema: income tax, franchise tax, sales/meals tax, nexus, part-year residency.</li>
+  <li><strong>hk-ird</strong> — profits tax, salaries tax, provisional tax, employer returns, territorial source, offshore claims.</li>
+  <li><strong>cn-sta</strong> — IIT residency (183-day and six-year rule), worldwide income reporting, CIT for subsidiaries, withholding, foreign exchange reporting.</li>
+  <li><strong>au-ato</strong> — residency tests, CGT on foreign property, super, non-resident withholding.</li>
+  <li><strong>cross-border</strong> — treaty and tie-breaker metadata, FTC ordering, reporting-overlap map.</li>
+</ol>
+<p>For the hackathon, ship us-federal (10–15 rules), us-state/MA (5 rules), hk-ird (5 rules) and a cross-border map of four overlaps. That is enough for all three personas to produce a meaningful report.</p>
+
+<h2 id="models">Model recommendations</h2>
+<p>Everything below is open-weight, runs through Ollama, llama.cpp or MLX on a Mac, and was current as of August 2026. The picks are by role, because the roles want different things: extraction wants speed and schema obedience, explanation wants reasoning and multilingual fluency, retrieval wants a multilingual embedder.</p>
+
+<h3>By role</h3>
+<div class="tscroll"><table>
+<thead><tr><th>Role</th><th>Primary pick</th><th>Why</th><th>Alternatives</th></tr></thead>
+<tbody>
+<tr><td>Profile extraction, classification, follow-up questions</td><td><span class="pick">Qwen3.5-4B</span></td><td>Apache 2.0, tool calling, strong JSON adherence, 200+ languages so Chinese-language intake works without a separate model. ~4.5 GB at 3–4-bit.</td><td>Phi-5 Mini (3–4B, notably reliable on constrained JSON and label classification); Ministral 3 3B (native function calling and structured outputs)</td></tr>
+<tr><td>Explainer / clinic report (reasoning)</td><td><span class="pick">Qwen3.5-9B</span></td><td>Hybrid thinking mode you can switch on for hard cross-border findings, 256K context for stuffing findings plus citations, bilingual quality. ~5.5–6.5 GB quantized.</td><td>Gemma 4 E4B (Apache 2.0, 128K, very fast on Apple Silicon); gpt-oss-20b if the machine has 16 GB+ free (MoE, 3.6B active, adjustable reasoning effort)</td></tr>
+<tr><td>Document reading (W-2, 1099, bank statements)</td><td><span class="pick">Gemma 4 E4B</span></td><td>Native vision and OCR in a 4.5B-effective model; keeps document images on device. Also multimodal in Qwen3.5 if you want one family.</td><td>Gemma 4 E2B for browser or phone builds; Qwen3.5-4B (vision-capable)</td></tr>
+<tr><td>Retrieval embeddings</td><td><span class="pick">bge-m3</span></td><td>Multilingual dense embeddings, so English, Traditional and Simplified Chinese guidance sit in one index. Runs on CPU.</td><td>nomic-embed-text (English-first, 137M, very fast)</td></tr>
+<tr><td>Browser-only demo (no install)</td><td><span class="pick">Gemma 4 E2B · ONNX q4f16</span></td><td>Runs in Chrome/Edge via Transformers.js on WebGPU; first load caches the weights. Strong wow factor for "nothing leaves your laptop" and zero setup for judges.</td><td>Qwen3.5-2B via WebLLM</td></tr>
+<tr><td>Heavier self-hosted tier (later, 24 GB+ GPU or M-series Max)</td><td><span class="pick">Qwen3.6-27B</span> or <span class="pick">Qwen3.6-35B-A3B</span></td><td>Best open reasoning per GB in mid-2026; 35B-A3B runs at 3B-active speed. Use for firm deployments where a CPA reviews many clients on one workstation.</td><td>Gemma 4 26B MoE (~4B active), Phi-5 14B (INT4 ~9 GB)</td></tr>
+</tbody></table></div>
+
+<h3>By hardware target</h3>
+<div class="tscroll"><table>
+<thead><tr><th>Target</th><th>Extractor</th><th>Explainer</th><th>Vision</th><th>Approx. RAM</th></tr></thead>
+<tbody>
+<tr><td>MacBook Air/Pro 16 GB (demo)</td><td>Qwen3.5-4B Q4</td><td>Qwen3.5-9B Q4</td><td>Gemma 4 E4B Q4</td><td class="num">~14 GB total, load lazily</td></tr>
+<tr><td>MacBook 16 GB, minimal</td><td colspan="2">Qwen3.5-9B Q4 for both roles</td><td>skip or E2B</td><td class="num">~7 GB</td></tr>
+<tr><td>Browser / judge's laptop</td><td colspan="3">Gemma 4 E2B ONNX q4f16 for everything, rules in JS</td><td class="num">~2 GB download, cached</td></tr>
+<tr><td>Phone (later)</td><td colspan="3">Gemma 4 E2B or Qwen3.5-2B via MLX/ExecuTorch</td><td class="num">~1.5–2.5 GB</td></tr>
+<tr><td>CPA workstation, 32–48 GB</td><td>Qwen3.5-9B</td><td>Qwen3.6-27B or gpt-oss-20b</td><td>Gemma 4 E4B</td><td class="num">~24–30 GB</td></tr>
+</tbody></table></div>
+
+<h3>Fine-tuning path (post-hackathon)</h3>
+<p>Do not fine-tune for the demo; prompt plus schema plus retrieval gets you there. When you do, copy SteuerLLM's recipe rather than inventing one: generate synthetic Q&amp;A from authentic professional material through a retrieval-controlled pipeline, then LoRA-tune the explainer. Your unusual advantage is source material you already understand deeply: AICPA REG-style scenarios, HKICPA QP tax module questions, and your own cross-border case patterns. Target Qwen3.5-9B first (Unsloth makes a 9B LoRA a single-GPU afternoon), evaluate on a held-out scenario set, and only then consider a 27B teacher-student distillation.</p>
+<div class="callout"><span class="lbl" style="color:var(--accent)">Licensing note</span>Qwen3.5/3.6 and Gemma 4 are Apache 2.0, Phi-4 family is MIT, gpt-oss is Apache 2.0, Llama 4 carries Meta's community license. For a commercial product prefer the Apache/MIT set; it removes a diligence question later.</div>
+
+<h2 id="guardrails">Guardrails and privacy</h2>
+<ul>
+  <li><strong>Schema-constrained generation everywhere.</strong> Ollama's structured outputs (pass the JSON schema in the <code>format</code> field) or Outlines / llama.cpp grammars. The extractor cannot emit free text; the explainer emits a JSON report whose <code>numbers[]</code> and <code>forms[]</code> arrays are validated against the findings payload before rendering.</li>
+  <li><strong>Number firewall.</strong> A post-processor rejects any currency amount, threshold, rate or form number in the explanation that does not appear in the findings or the cited passage. This single check removes most hallucination risk in a tax product.</li>
+  <li><strong>Rule versions are data.</strong> Each pack carries <code>tax_year</code>, <code>effective_from</code>, <code>last_reviewed_by</code>. The report footer prints them. A stale pack shows a visible warning rather than silently applying old thresholds.</li>
+  <li><strong>On-device by default, with a visible switch.</strong> No network calls during a check-up. If a user opts into a cloud model for a hard question, the profile is minimised (names, account numbers, exact amounts bucketed) before it leaves.</li>
+  <li><strong>Escalation, not advice.</strong> Findings with severity high and confidence below a threshold render as "Discuss with a CPA" with a prepared question, not as a conclusion. This is also a natural lead path to CPA firms, which fits the AiriWheels distribution model.</li>
+  <li><strong>Disclaimers that are specific.</strong> "This check-up applied 23 rules from US-federal 2026 v0.3 and HK-IRD 2025/26 v0.1; it did not evaluate state X" is more useful and more defensible than a generic banner.</li>
+</ul>
+
+<h2 id="eval">Evaluation</h2>
+<p>Build three small test sets before you build more features; they pay back immediately in Cursor because the agent can run them.</p>
+<ol>
+  <li><strong>Pack unit tests.</strong> For each rule, a handful of profiles that must and must not trigger it. Pure pytest, runs in seconds, no model involved.</li>
+  <li><strong>Extraction accuracy.</strong> 30–50 synthetic intake conversations (you can generate them with a frontier model, then hand-correct) with gold <code>TaxProfile</code> JSON. Score field-level F1 per candidate extractor model. This is how you choose between Qwen3.5-4B and Phi-5 Mini with evidence rather than vibes.</li>
+  <li><strong>End-to-end scenario cards.</strong> The three personas plus ~20 variants, each with the expected set of findings. Score recall of required obligations (the number that matters for a compliance product) and the number-firewall violation rate.</li>
+</ol>
+<p>Later, adapt TaxCalcBench's harness to your findings format and publish a "ComplianceBench" for cross-border scenarios; there is no public benchmark for this and it is a credible way to be cited.</p>
+
+<h2 id="hack">The hackathon slice</h2>
+<div class="callout ok"><span class="lbl">Build today</span>One flow, three personas, two models, ~25 rules. Intake → profile JSON → obligation list → grounded report, fully offline, with a live "airplane mode" moment in the demo.</div>
+<p>Scope decisions that keep it shippable in a day: text intake only (document OCR is a stretch goal), US-federal plus MA plus HK plus four cross-border overlaps, a fixed question list rather than a fully adaptive interview, citations from a hand-curated set of 15–20 source passages rather than a crawler, and a single-page report rendered from JSON.</p>
+<div class="sched">
+  <span class="t">0:00–0:45</span><span>Repo scaffold, Ollama pulls (<code>qwen3.5:4b</code>, <code>qwen3.5:9b</code>, <code>bge-m3</code>), <code>TaxProfile</code> and <code>Finding</code> pydantic schemas, pack loader.</span>
+  <span class="t">0:45–2:30</span><span>Write the packs. This is your job, not the engineers'. 12 US-federal rules, 5 MA, 5 HK, 4 overlaps, each with one must-trigger and one must-not-trigger test.</span>
+  <span class="t">2:30–4:00</span><span>Extractor prompt plus JSON schema, run against three persona transcripts until fields are right. Engine fires rules; print findings in the terminal.</span>
+  <span class="t">4:00–5:30</span><span>Explainer prompt, number firewall, citation stuffing from the curated passages. Report as HTML.</span>
+  <span class="t">5:30–7:00</span><span>UI: chat-style intake, findings list with severity chips, report view, model/rule version footer. Airplane-mode demo rehearsal.</span>
+  <span class="t">7:00–8:00</span><span>Pitch: the "models talk, code counts" slide, the TaxCalcBench number, the three personas, and the CPA-firm distribution angle.</span>
+</div>
+<p>Demo script: start with Mei. Ask the clinic in Chinese, get English findings. Toggle wifi off mid-conversation. Show FBAR firing because five small HK accounts aggregate past $10k, then expand the "why" panel to the FinCEN citation. Switch to Sichuan Garden LLC and show MA meals tax and Delaware-vs-MA confusion resolved. End on the report footer listing rule versions.</p>
+
+<h2 id="cursor">Cursor build plan</h2>
+<h3>Stack</h3>
+<p>Python 3.12 backend (FastAPI, pydantic v2, PyYAML, pytest), Ollama for models, LanceDB or a plain FAISS index for retrieval, and a Next.js 15 front end. For a single-developer hackathon build, a Python-only version with a Streamlit or Gradio UI is a defensible cut; move to Next.js when the report needs polish. Keep every model call behind one <code>ModelClient</code> interface so swapping Qwen for Phi is a config change and the browser build can reuse the same schemas in TypeScript.</p>
+<pre><code>tax-clinic/
+├─ packs/                    # YAML rules, one folder per jurisdiction/year
+│  ├─ us-federal/2026/
+│  ├─ us-state/ma/2026/
+│  ├─ hk-ird/2025-26/
+│  └─ cross-border/
+├─ clinic/
+│  ├─ schemas.py             # TaxProfile, Finding, Report (pydantic)
+│  ├─ packs.py               # loader + validator for YAML rules
+│  ├─ engine.py              # rule evaluation, cross-border resolver
+│  ├─ models.py              # ModelClient: ollama / llama.cpp / browser
+│  ├─ extract.py             # intake → TaxProfile (schema-constrained)
+│  ├─ retrieve.py            # bge-m3 index over sources/
+│  ├─ explain.py             # findings → report JSON, number firewall
+│  └─ api.py                 # FastAPI routes
+├─ sources/                  # curated primary-source passages (md + metadata)
+├─ tests/
+│  ├─ packs/                 # must/must-not trigger fixtures per rule
+│  ├─ extraction/            # gold TaxProfile JSON per transcript
+│  └─ scenarios/             # persona cards → expected findings
+├─ web/                      # Next.js UI (or app.py for Streamlit)
+├─ .cursor/rules/
+│  ├─ architecture.mdc       # models talk, code counts; where things live
+│  ├─ packs.mdc              # rule schema, citation format, test requirement
+│  └─ safety.mdc             # number firewall, no advice language, disclaimers
+└─ README.md</code></pre>
+<h3>Cursor rules worth writing on day one</h3>
+<p>Cursor's agent behaves much better when the project's non-negotiables live in <code>.cursor/rules</code>. Three short files cover it:</p>
+<pre><code># .cursor/rules/architecture.mdc
+---
+description: Core architecture constraints for the tax clinic
+alwaysApply: true
+---
+- Language models never compute tax amounts, thresholds or deadlines.
+  All such logic lives in packs/ (YAML) or clinic/engine.py (Python).
+- Every model call goes through clinic/models.py ModelClient and must
+  request a JSON schema. No free-text model output reaches the UI.
+- New rules require: YAML in packs/, at least one must-trigger and one
+  must-not-trigger fixture in tests/packs/, and a citation with a URL.
+- Never add network calls to the check-up path. Retrieval is local.
+- Amounts are Decimal, currencies are explicit, dates are ISO 8601.</code></pre>
+<p>A useful working rhythm in Cursor: write the pack YAML and its fixtures yourself, then ask the agent to "make the engine pass tests/packs" and separately to "make the extractor reach ≥0.9 field F1 on tests/extraction". Giving the agent a test target instead of a feature description is what keeps a hackathon codebase from drifting.</p>
+<h3>Prompts to keep in the repo</h3>
+<ul>
+  <li><strong>Extractor system prompt</strong>: role, the <code>TaxProfile</code> schema, the rule that unknown fields stay null (never guessed), and a list of the follow-up questions it may ask, keyed to pack requirements.</li>
+  <li><strong>Explainer system prompt</strong>: tone (a calm senior CPA talking to a client), the findings payload, the cited passages, and the hard constraint that any number or form must be copied from the payload verbatim.</li>
+  <li><strong>Persona transcripts</strong>: the three demo conversations, in English and Chinese, used as both demo material and regression tests.</li>
+</ul>
+
+<h2 id="risks">Open questions and risks</h2>
+<ul>
+  <li><strong>Rule currency.</strong> Packs go stale every tax year and after mid-year changes. Plan a review cadence per pack and show the last-reviewed date in every report. Later, a small "pack diff" tool that reads official change notices could be a product in itself for CPA firms.</li>
+  <li><strong>Residency and entity classification are the hard parts.</strong> Substantial presence, HK source rules, China's six-year rule, check-the-box elections. These are where users most need help and where the rules layer needs real care. Encode them as explicit multi-step tests with intermediate outputs the report can show.</li>
+  <li><strong>Where does this sit relative to AiriWheels?</strong> The entity personas overlap directly with restaurant operators and the CPA firms you already sell to; the clinic could be a wedge feature or a separate brand. Worth deciding before the MVP so the packs and data model line up with the accounting ledger.</li>
+  <li><strong>Regulatory positioning.</strong> A compliance check-up that names obligations is closer to information than to advice, but the line moves by jurisdiction. Keep the escalation language, and get a short legal read before charging money.</li>
+  <li><strong>Model churn.</strong> The small-model field is moving quarterly. The ModelClient boundary and the evaluation sets are what make that churn cheap; without them every model swap is a re-validation from scratch.</li>
+</ul>
+
+<h2 id="sources">Sources</h2>
+<ul class="sources">
+  <li><a href="https://github.com/column-tax/tax-calc-bench">TaxCalcBench (Column Tax)</a> — 51 federal 1040 cases; frontier models 53–63% strict, small hosted models under 15%.</li>
+  <li><a href="https://arxiv.org/abs/2602.11081">SteuerLLM (arXiv 2602.11081)</a> and <a href="https://huggingface.co/windprak/open_steuerllm">open_steuerllm on Hugging Face</a> — 28B German tax model, synthetic data from exam material, CC BY 4.0.</li>
+  <li><a href="https://unsloth.ai/docs/models/qwen3.5">Qwen3.5 local guide (Unsloth)</a> — 0.8B/2B/4B/9B small series, 256K context, 201 languages, thinking modes.</li>
+  <li><a href="https://unsloth.ai/docs/models/qwen3.6">Qwen3.6 local guide (Unsloth)</a> — 27B and 35B-A3B, tool calling, hybrid thinking.</li>
+  <li><a href="https://tech-insider.org/google-gemma-4-open-model-benchmarks-2026/">Gemma 4 overview</a> — E2B/E4B/26B MoE/31B, Apache 2.0, multimodal, released April 2026.</li>
+  <li><a href="https://pyimagesearch.com/2026/07/27/running-gemma-4-in-the-browser-with-transformers-js-and-webgpu/">Gemma 4 in the browser with Transformers.js</a> and <a href="https://pyimagesearch.com/2026/07/20/running-gemma-4-locally-ollama-llama-cpp-mlx-and-more/">Gemma 4 locally via Ollama, llama.cpp, MLX</a>.</li>
+  <li><a href="https://www.promptquorum.com/local-llms/top-open-source-models-ollama">Ollama model roundup, July 2026</a> — gpt-oss-20b, Qwen3.8-27B, Phi-4 Mini, structured output support.</li>
+  <li><a href="https://www.spheron.network/blog/deploy-phi-5-gpu-cloud/">Phi-5 deployment guide</a> — 14B and Mini variants, JSON/classification reliability, memory at FP8/INT4.</li>
+  <li><a href="https://www.bentoml.com/blog/the-best-open-source-small-language-models">Open-source SLMs in 2026 (BentoML)</a> — Phi-4-mini, SmolLM3, Ministral 3, Gemma 3n.</li>
+</ul>
+
+<footer>Prepared for Hiltin Guo · Sundai, 30 August 2026 · Models and figures reflect public information as of that date; verify before relying on them.</footer>
+</main>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,18 @@
+id: us.fed.tips
+name: Tip reporting
+applies_to: [individual]
+trigger:
+  all:
+    - has_income("tips")
+severity: medium
+status_if_true: required
+deadline: { date: "04-15", auto_extension_to: "10-15" }
+evidence_needed:
+  - employer tip statements
+  - contemporaneous cash-tip log
+forms: ["4070", "W-2"]
+numbers: ["20"]
+citations:
+  - { src: "IRS tip recordkeeping", url: "https://www.irs.gov/businesses/small-businesses-self-employed/tip-recordkeeping-and-reporting", passage_id: "tips" }
+explain_hints:
+  - "Cash tips of $20 or more in a month must be reported to the employer. Unreported tips are a common exam issue for restaurant workers."

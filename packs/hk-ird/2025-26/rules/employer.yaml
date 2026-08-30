@@ -1,0 +1,22 @@
+id: hk.ird.employer
+name: Hong Kong employer returns
+applies_to: [llc, c_corp]
+trigger:
+  all:
+    - profile.has_employees == true
+    - any:
+        - '"HK" in profile.states'
+        - '"HK" in profile.residencies'
+        - any(profile.ownerships[*].country == "HK")
+severity: medium
+status_if_true: likely
+deadline: { date: "early-May", note: "IR56B annual" }
+evidence_needed:
+  - list of employees and directors
+  - IR56B / IR56E / IR56F filings
+forms: ["IR56B"]
+numbers: []
+citations:
+  - { src: "IRD employer's return", url: "https://www.ird.gov.hk/eng/tax/ere.htm", passage_id: "hk-employer" }
+explain_hints:
+  - "HK employer filings are a separate clock from profits tax. Directors can be 'employees' for IR56 purposes."

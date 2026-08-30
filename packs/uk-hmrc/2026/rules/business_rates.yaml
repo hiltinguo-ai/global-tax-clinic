@@ -1,0 +1,19 @@
+id: uk.voa.rates
+name: United Kingdom business rates / council tax
+applies_to: [individual, llc, c_corp, family_trust]
+trigger:
+  all:
+    - profile.has_property("UK")
+severity: high
+status_if_true: check
+deadline: { date: "local-authority", note: "local authority billing year" }
+evidence_needed:
+  - whether the property is domestic (council tax) or non-domestic (business rates)
+  - VOA rateable value or council-tax band
+  - small-business or charitable relief claims
+forms: ["business rates bill", "council tax bill"]
+numbers: []
+citations:
+  - { src: "GOV.UK — business rates", url: "https://www.gov.uk/introduction-to-business-rates", passage_id: "uk-rates" }
+explain_hints:
+  - "The UK does not have a single national property tax. Domestic property is council tax; non-domestic property is business rates on VOA rateable value × a multiplier. The clinic will not invent a multiplier or a bill."

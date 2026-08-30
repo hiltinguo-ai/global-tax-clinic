@@ -1,0 +1,9 @@
+id: europe
+name: Europe
+jurisdiction: EU
+authority: clinic
+tax_year: 2026
+effective_from: 2026-01-01
+last_reviewed_by: Hiltin Guo
+last_reviewed_on: 2026-08-30
+version: "0.2"

@@ -1,0 +1,71 @@
+overlaps:
+  - id: xb.fbar_pfic
+    name: HK fund is both FBAR-reportable and a likely PFIC
+    pairs: [us.fed.fbar, us.fed.8621]
+    severity: high
+    note: "A Hong Kong retail fund sitting in a brokerage account is usually two US forms, not one. FBAR counts the account; 8621 asks whether the holding is a PFIC."
+    citations:
+      - { src: "FinCEN FBAR + IRC 1297", url: "https://www.fincen.gov/report-foreign-bank-and-financial-accounts", passage_id: "xb-fbar-pfic" }
+  - id: xb.cn_rental_ftc
+    name: CN rental is US worldwide income and an FTC candidate
+    pairs: [us.fed.1116, us.fed.8938]
+    severity: medium
+    note: "A Shenzhen apartment is not an 8938 financial asset, but the rental income is still on the US 1040. Foreign tax paid in China may support Form 1116. Do not bury the apartment only on the FBAR side."
+    citations:
+      - { src: "IRC 61 + 901", url: "https://www.law.cornell.edu/uscode/text/26/61", passage_id: "xb-rental" }
+  - id: xb.hidden_accounts
+    name: HK MPF and CN housing-fund accounts are commonly missed on FBAR
+    pairs: [us.fed.fbar, hk.ird.salaries]
+    severity: high
+    note: "Retirement and housing-fund accounts in HK or the mainland are still foreign financial accounts for FBAR when a US person has a financial interest."
+    citations:
+      - { src: "FinCEN FBAR FAQ", url: "https://www.fincen.gov/report-foreign-bank-and-financial-accounts", passage_id: "xb-mpf" }
+  - id: xb.us_cn_entity
+    name: US C-corp with CN founders and a Shanghai subsidiary
+    pairs: [us.fed.5471, us.fed.5472]
+    severity: high
+    note: "5472 looks up at foreign owners of the US corp. 5471 looks down at the foreign subsidiary. Transfer-pricing and treaty questions sit between them; escalate rather than compute."
+    citations:
+      - { src: "IRC 6038 / 6038A", url: "https://www.irs.gov/forms-pubs/about-form-5471", passage_id: "xb-entity" }
+  - id: xb.meals_alcohol
+    name: MA restaurant meals tax and alcoholic beverages excise
+    pairs: [ma.dor.meals, ma.dor.alcohol]
+    severity: high
+    note: "Pouring wine is not the same tax as selling a dumpling. Meals tax and alcoholic beverages excise are two DOR/ABCC maps on the same POS tape."
+    citations:
+      - { src: "MA meals tax + alcoholic beverages excise", url: "https://www.mass.gov/guides/meals-tax", passage_id: "xb-meals-alcohol" }
+  - id: xb.ttb_ma_wine
+    name: Federal TTB wine excise and MA alcoholic beverages excise
+    pairs: [us.fed.ttb_wine, ma.dor.alcohol]
+    severity: high
+    note: "A MA winery or importer is usually looking at TTB and DOR, not one 'wine tax.' Volume and license class sit on both files."
+    citations:
+      - { src: "TTB + MA DOR alcohol", url: "https://www.ttb.gov/tax-audit/tax-and-fee-rates", passage_id: "xb-wine" }
+  - id: xb.hk_property_us
+    name: HK property tax / rates and US worldwide rental
+    pairs: [hk.ird.property_tax, us.fed.1116]
+    severity: medium
+    note: "A let flat in Hong Kong is IRD property tax (and RVD rates) and still US worldwide income for a US person. FTC ordering is a 1116 question, not a property-tax computation."
+    citations:
+      - { src: "IRD property tax + IRC 901", url: "https://www.ird.gov.hk/eng/tax/pte.htm", passage_id: "xb-hk-property" }
+  - id: xb.gst_us_sales
+    name: Foreign GST/VAT and US sales-tax nexus are different taxes
+    pairs: [au.ato.gst, ma.dor.sales]
+    severity: medium
+    note: "GST in Australia and MA sales tax can both apply to the same digital or goods flow. They do not offset each other. Treat them as two registrations."
+    citations:
+      - { src: "ATO GST + MA sales tax", url: "https://www.ato.gov.au/businesses-and-organisations/gst-excise-and-indirect-taxes/gst", passage_id: "xb-gst-sales" }
+  - id: xb.au_gst_wet
+    name: Australia GST and wine equalisation tax
+    pairs: [au.ato.gst, au.ato.wet]
+    severity: high
+    note: "WET is not GST. A wine wholesaler or importer usually has both on the same BAS. Do not net one against the other."
+    citations:
+      - { src: "ATO GST + WET", url: "https://www.ato.gov.au/businesses-and-organisations/gst-excise-and-indirect-taxes/wine-equalisation-tax", passage_id: "xb-wet" }
+  - id: xb.hk_property_stack
+    name: HK property tax, rates, and stamp duty are three maps
+    pairs: [hk.ird.property_tax, hk.ird.stamp_duty]
+    severity: medium
+    note: "A let flat is IRD property tax and RVD rates every year. Stamp duty only opens if there was a conveyance. Do not treat the three as one 'HK property tax.'"
+    citations:
+      - { src: "IRD property tax + stamp duty", url: "https://www.ird.gov.hk/eng/tax/pte.htm", passage_id: "xb-hk-stamp" }

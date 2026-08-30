@@ -1,0 +1,19 @@
+id: ca.prov.property
+name: Canadian municipal / provincial property tax
+applies_to: [individual, llc, c_corp, family_trust]
+trigger:
+  all:
+    - profile.has_property("CA")
+severity: high
+status_if_true: check
+deadline: { date: "municipal", note: "city or municipality billing cycle" }
+evidence_needed:
+  - province and municipality
+  - assessed value and tax class
+  - any provincial property-tax credit or vacancy tax
+forms: ["municipal property tax bill"]
+numbers: []
+citations:
+  - { src: "Ontario — property tax (municipal example)", url: "https://www.ontario.ca/page/property-tax", passage_id: "ca-property" }
+explain_hints:
+  - "Canadian property tax is municipal (and sometimes provincial), not a CRA income-tax line. Federal law may allow a limited credit in defined cases; millage is local. Counsel stays on REVIEW until the city and assessment are on the file."

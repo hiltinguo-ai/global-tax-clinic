@@ -1,0 +1,19 @@
+id: sg.iras.gst
+name: Singapore GST
+applies_to: [individual, llc, c_corp]
+trigger:
+  all:
+    - profile.has_gst("SG")
+severity: high
+status_if_true: required
+deadline: { date: "quarterly", note: "GST F5 return, usually quarterly" }
+evidence_needed:
+  - GST registration status
+  - taxable supplies vs the S$1 million look-back / look-forward test
+  - imported services / overseas vendor registration if relevant
+forms: ["GST F5"]
+numbers: ["9", "1000000"]
+citations:
+  - { src: "IRAS — GST", url: "https://www.iras.gov.sg/taxes/goods-services-tax-(gst)", passage_id: "sg-gst" }
+explain_hints:
+  - "Singapore GST is 9% from 1 January 2024. Compulsory registration generally turns on taxable turnover of S$1 million. Overseas vendors of digital services may have a separate registration path. No GST payable is computed without supplies on the file."

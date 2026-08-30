@@ -1,0 +1,20 @@
+id: au.ato.wet
+name: Australia wine equalisation tax (WET)
+applies_to: [individual, llc, c_corp]
+trigger:
+  all:
+    - profile.has_alcohol("wine")
+    - '"AU" in profile.residencies'
+severity: high
+status_if_true: required
+deadline: { date: "BAS-cycle", note: "WET is reported on the BAS with GST" }
+evidence_needed:
+  - whether the entity is a wine producer, wholesaler, or importer
+  - wholesale value of assessable dealings
+  - producer rebate eligibility (if any)
+forms: ["BAS", "WET"]
+numbers: ["29"]
+citations:
+  - { src: "ATO — wine equalisation tax", url: "https://www.ato.gov.au/businesses-and-organisations/gst-excise-and-indirect-taxes/wine-equalisation-tax", passage_id: "au-wet" }
+explain_hints:
+  - "WET is a 29% tax on the wholesale value of wine, separate from 10% GST. It sits on producers, wholesalers and importers — not on a restaurant that only pours a bottle. The clinic will not invent a wholesale value or a WET payable."

@@ -1,0 +1,18 @@
+id: hk.rvd.rates
+name: Hong Kong rates (Rating and Valuation Department)
+applies_to: [individual, llc, c_corp, family_trust]
+trigger:
+  all:
+    - profile.has_property("HK")
+severity: high
+status_if_true: required
+deadline: { date: "quarterly", note: "RVD quarterly demand notes" }
+evidence_needed:
+  - rateable value on the RVD demand note
+  - who is liable (owner vs occupier)
+forms: ["RVD rates demand"]
+numbers: []
+citations:
+  - { src: "RVD — rates", url: "https://www.rvd.gov.hk/en/our_services/rates.html", passage_id: "hk-rates" }
+explain_hints:
+  - "Rates are a separate HK charge from IRD property tax, based on rateable value. The percentage is set in the Budget. The clinic will not compute a rates bill without the RVD demand note."

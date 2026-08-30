@@ -1,0 +1,20 @@
+id: us.state.economic_nexus_review
+name: Out-of-state economic nexus (REVIEW)
+applies_to: [llc, c_corp]
+trigger:
+  all:
+    - profile.out_of_state_revenue_count >= 1
+severity: high
+status_if_true: check
+deadline: { date: "before-next-filing", note: "Counsel must sign off before the accountant treats a state as filed-for" }
+evidence_needed:
+  - revenue and transaction counts by state
+  - employee / inventory / in-state activity
+  - that state's economic-nexus statute (sales tax and income/franchise)
+forms: []
+numbers: []
+citations:
+  - { src: "State economic nexus (counsel review)", url: "https://www.taxadmin.org/", passage_id: "nexus-review" }
+explain_hints:
+  - "Customers in a state are a clue, not nexus. Counsel marks REVIEW until physical presence, economic thresholds, and P.L. 86-272 are checked against that state's law."
+  - "TX often does not tax SaaS; CA and NY do under their own tests. Do not copy the MA answer."

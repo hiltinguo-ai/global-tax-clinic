@@ -1,0 +1,20 @@
+id: cn.sta.excise_alcohol
+name: China mainland consumption tax — alcohol (消费税)
+applies_to: [individual, llc, c_corp]
+trigger:
+  all:
+    - profile.has_alcohol()
+    - '"CN" in profile.residencies'
+severity: high
+status_if_true: check
+deadline: { date: "monthly-or-quarterly", note: "consumption tax is filed with VAT on the same cycle" }
+evidence_needed:
+  - product class (白酒, 啤酒, 黄酒, imported wine)
+  - ex-factory or import value and volume
+  - whether the taxpayer is the producer or the importer
+forms: ["消费税纳税申报表"]
+numbers: []
+citations:
+  - { src: "STA — 消费税", url: "https://www.chinatax.gov.cn/chinatax/n810341/n810825/c101434/c101436/content.html", passage_id: "cn-excise" }
+explain_hints:
+  - "Mainland consumption tax on alcohol sits on the producer or importer, on top of VAT. Rates differ by product (for example distilled spirits vs beer). A restaurant that only buys duty-paid stock is usually not the 消费税 taxpayer. Counsel stays on REVIEW until the product class and volume are on the file."

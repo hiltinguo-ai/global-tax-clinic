@@ -1,0 +1,18 @@
+id: cn.sta.iit_ties
+name: China IIT ties (short of 183 days)
+applies_to: [individual]
+trigger:
+  all:
+    - '"CN" in profile.residencies'
+severity: medium
+status_if_true: check
+deadline: { date: "with-China-source", note: "Non-residents still report China-source income" }
+evidence_needed:
+  - days in mainland China
+  - China-source rental, employment, or investment income
+forms: ["IIT"]
+numbers: ["183"]
+citations:
+  - { src: "China IIT Law — source and residence", url: "https://www.chinatax.gov.cn/", passage_id: "cn-iit-ties" }
+explain_hints:
+  - "Mainland ties without a 183-day count are a counsel check, not a residency conclusion. China-source rental (for example a Shenzhen apartment) can still be in IIT even if the person is a non-resident."

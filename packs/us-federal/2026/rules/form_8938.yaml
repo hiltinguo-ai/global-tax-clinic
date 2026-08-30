@@ -1,0 +1,21 @@
+id: us.fed.8938
+name: Form 8938 specified foreign financial assets
+applies_to: [individual]
+trigger:
+  all:
+    - profile.us_person == true
+    - count(profile.foreign_accounts) >= 1
+severity: high
+status_if_true: check
+deadline: { date: "04-15", auto_extension_to: "10-15" }
+evidence_needed:
+  - year-end and peak values of foreign financial assets
+  - statements for brokerage, funds, and bank accounts outside the US
+forms: ["8938"]
+numbers: ["50000"]
+citations:
+  - { src: "26 USC 6038D", url: "https://www.law.cornell.edu/uscode/text/26/6038D", passage_id: "irc-6038d" }
+  - { src: "IRS Form 8938 instructions", url: "https://www.irs.gov/forms-pubs/about-form-8938", passage_id: "f8938-instr" }
+explain_hints:
+  - "8938 is not a substitute for FBAR. Many people must file both."
+  - "Domestic-filer unmarried threshold used here is $50,000 on the last day; married and living-abroad thresholds are higher. Confirm filing status."

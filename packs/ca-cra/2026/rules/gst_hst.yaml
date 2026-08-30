@@ -1,0 +1,19 @@
+id: ca.cra.gst_hst
+name: Canada GST / HST
+applies_to: [individual, llc, c_corp]
+trigger:
+  all:
+    - profile.has_gst("CA")
+severity: high
+status_if_true: required
+deadline: { date: "GST34-cycle", note: "assigned filing period" }
+evidence_needed:
+  - GST/HST registration (or small-supplier test)
+  - province of supply (GST 5% vs HST 13–15%)
+  - place-of-supply for digital / cross-border supplies
+forms: ["GST34"]
+numbers: ["5", "30000"]
+citations:
+  - { src: "CRA — GST/HST for businesses", url: "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses.html", passage_id: "ca-gst" }
+explain_hints:
+  - "Federal GST is 5%. HST is a combined federal-provincial rate that depends on the province of supply. The small-supplier threshold is generally C$30,000 over four calendar quarters. The clinic may illustrate 5% GST only; it will not pick an HST province without that fact."

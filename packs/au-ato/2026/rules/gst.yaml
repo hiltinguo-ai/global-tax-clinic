@@ -1,0 +1,19 @@
+id: au.ato.gst
+name: Australia GST
+applies_to: [individual, llc, c_corp]
+trigger:
+  all:
+    - profile.has_gst("AU")
+severity: high
+status_if_true: required
+deadline: { date: "BAS-cycle", note: "monthly or quarterly Business Activity Statement" }
+evidence_needed:
+  - ABN and GST registration (or turnover vs the registration threshold)
+  - taxable supplies vs GST-free / input-taxed
+  - BAS history
+forms: ["BAS", "GST"]
+numbers: ["10", "75000"]
+citations:
+  - { src: "ATO — GST", url: "https://www.ato.gov.au/businesses-and-organisations/gst-excise-and-indirect-taxes/gst", passage_id: "au-gst" }
+explain_hints:
+  - "Australia GST is generally 10% of the GST-exclusive price. Registration is usually required once GST turnover hits A$75,000 (A$150,000 for non-profits). The accountant may illustrate 10% only on supplies already on this file; it will not invent turnover."

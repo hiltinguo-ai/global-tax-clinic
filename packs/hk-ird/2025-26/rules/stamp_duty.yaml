@@ -1,0 +1,19 @@
+id: hk.ird.stamp_duty
+name: Hong Kong stamp duty on immovable property
+applies_to: [individual, llc, c_corp, family_trust]
+trigger:
+  all:
+    - profile.has_property("HK")
+severity: high
+status_if_true: check
+deadline: { date: "on-instrument", note: "stamp duty is due on the instrument, not on the profits-tax cycle" }
+evidence_needed:
+  - whether there was a 2025-26 acquisition or disposal
+  - consideration and whether the buyer is a Hong Kong permanent resident
+  - AVD / BSD / SSD analysis on that instrument
+forms: ["IRSD 29", "stamping"]
+numbers: []
+citations:
+  - { src: "IRD — stamp duty on immovable property", url: "https://www.ird.gov.hk/eng/tax/sdu.htm", passage_id: "hk-stamp" }
+explain_hints:
+  - "Stamp duty is a transfer tax on the instrument, separate from IRD property tax and RVD rates. Ad valorem duty, and any remaining special / buyer’s stamp duty rules in force for the year, depend on the buyer and the holding period. This finding is a check: it fires because an HK property is on the file, not because a 2026 conveyance is proven."

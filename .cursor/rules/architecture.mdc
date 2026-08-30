@@ -1,0 +1,15 @@
+---
+description: Core architecture constraints for the tax clinic
+alwaysApply: true
+---
+- Language models never compute tax amounts, thresholds or deadlines.
+  All such logic lives in packs/ (YAML) or clinic/engine.py (Python).
+- Every model call goes through clinic/models.py ModelClient and must
+  request a JSON schema. No free-text model output reaches the UI.
+- New rules require: YAML in packs/, at least one must-trigger and one
+  must-not-trigger fixture in tests/packs/, and a citation with a URL.
+- Never add network calls to the check-up path. Retrieval is local.
+- Amounts are Decimal, currencies are explicit, dates are ISO 8601.
+- The product is three layers: (1) engagement counsel identifies the client
+  and jurisdictions, (2) CPA + tax attorney apply packs (SLM narrates only),
+  (3) workpapers show inputs, results, and primary-source citations.

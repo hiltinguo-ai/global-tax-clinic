@@ -1,0 +1,13 @@
+---
+description: Three-desk agency workflow from hack_Justin
+alwaysApply: true
+---
+- The clinic replicates a small agency: Counsel, Accountant, Compliance Analyst,
+  then Counsel review. See hack_Justin/Tasks and Profiles.
+- Counsel owns nexus and the legal framework. Status REVIEW means the
+  accountant must not treat that jurisdiction as confirmed.
+- Accountant may apply pack rates to amounts already in the TaxProfile
+  (clinic/agency.py). It never invents book income or a tax due.
+- Compliance builds calendars and evidence lists from counsel's confirmed
+  obligations. It does not file or submit.
+- Language models narrate memos. They do not choose nexus or compute.

@@ -1,0 +1,20 @@
+id: us.fed.5471
+name: Form 5471 foreign corporation
+applies_to: [individual, llc, c_corp, family_trust]
+trigger:
+  all:
+    - profile.us_person == true
+    - any(profile.ownerships[*].country == "CN")
+severity: high
+status_if_true: likely
+deadline: { date: "04-15", auto_extension_to: "10-15" }
+evidence_needed:
+  - ownership percentage and dates
+  - foreign corporation financials
+forms: ["5471"]
+numbers: ["10"]
+citations:
+  - { src: "26 USC 6038", url: "https://www.law.cornell.edu/uscode/text/26/6038", passage_id: "irc-6038" }
+  - { src: "IRS Form 5471", url: "https://www.irs.gov/forms-pubs/about-form-5471", passage_id: "f5471-instr" }
+explain_hints:
+  - "US persons who are officers, directors, or 10%+ shareholders of a foreign corporation often have a 5471 category. Penalties start in the five figures per year per form."

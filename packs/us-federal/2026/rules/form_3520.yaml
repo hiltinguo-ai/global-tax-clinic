@@ -1,0 +1,21 @@
+id: us.fed.3520
+name: Form 3520 foreign gift or bequest
+applies_to: [individual]
+trigger:
+  all:
+    - profile.us_person == true
+    - sum(profile.gifts[*].amount_usd) > 100000
+severity: high
+status_if_true: required
+deadline: { date: "04-15", auto_extension_to: "10-15" }
+evidence_needed:
+  - gift amount, date, and donor identity
+  - evidence the donor is a foreign person
+forms: ["3520"]
+numbers: ["100000"]
+citations:
+  - { src: "26 USC 6039F", url: "https://www.law.cornell.edu/uscode/text/26/6039F", passage_id: "irc-6039f" }
+  - { src: "IRS Form 3520 instructions", url: "https://www.irs.gov/forms-pubs/about-form-3520", passage_id: "f3520-instr" }
+explain_hints:
+  - "Gifts from foreign individuals over $100,000 in a year are reportable. The gift itself is usually not US-taxable; the penalty is for not reporting."
+  - "Discuss with a CPA whether related transfers should be aggregated."

@@ -1,0 +1,18 @@
+id: us.fed.83b
+name: Section 83(b) election hygiene
+applies_to: [individual, c_corp]
+trigger:
+  all:
+    - any(profile.life_events[*].kind == "equity_grant")
+severity: high
+status_if_true: check
+deadline: { date: "30-days-from-grant", note: "statutory 30-day window; no IRS extension" }
+evidence_needed:
+  - grant date, vesting schedule, and FMV
+  - proof of timely 83(b) filing if already made
+forms: ["83(b)"]
+numbers: ["30"]
+citations:
+  - { src: "26 USC 83(b)", url: "https://www.law.cornell.edu/uscode/text/26/83", passage_id: "irc-83b" }
+explain_hints:
+  - "The 83(b) window is 30 days from grant. Miss it and you cannot make the election later. This is a calendar problem, not a tax-return problem."

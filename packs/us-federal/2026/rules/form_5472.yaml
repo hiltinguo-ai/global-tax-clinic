@@ -1,0 +1,20 @@
+id: us.fed.5472
+name: Form 5472 25% foreign-owned US corporation
+applies_to: [c_corp]
+trigger:
+  any:
+    - profile.chinese_founders == true
+    - any(profile.ownerships[*].country == "CN")
+severity: high
+status_if_true: likely
+deadline: { date: "04-15", auto_extension_to: "10-15" }
+evidence_needed:
+  - 25% foreign-ownership analysis
+  - related-party transaction log (including capital contributions)
+forms: ["5472"]
+numbers: ["25"]
+citations:
+  - { src: "26 USC 6038A", url: "https://www.law.cornell.edu/uscode/text/26/6038A", passage_id: "irc-6038a" }
+  - { src: "IRS Form 5472", url: "https://www.irs.gov/forms-pubs/about-form-5472", passage_id: "f5472-instr" }
+explain_hints:
+  - "A US C-corp that is 25% foreign-owned and has reportable transactions with a foreign related party files 5472 with its 1120. 'Reportable' is broader than people think."

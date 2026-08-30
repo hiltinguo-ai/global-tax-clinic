@@ -1,0 +1,19 @@
+id: us.fed.ttb_wine
+name: Federal alcohol excise — wine (TTB)
+applies_to: [individual, llc, c_corp]
+trigger:
+  all:
+    - profile.alcohol_match("wine", "producer", "importer")
+severity: high
+status_if_true: required
+deadline: { date: "quarterly-or-semimonthly", note: "TTB excise return cycle depends on liability" }
+evidence_needed:
+  - TTB permit (winery, wholesaler, or importer)
+  - production / import volumes in wine gallons
+  - CBMA small-producer credit eligibility
+forms: ["TTB F 5000.24"]
+numbers: ["1.07"]
+citations:
+  - { src: "TTB tax and fee rates — wine", url: "https://www.ttb.gov/tax-audit/tax-and-fee-rates", passage_id: "ttb-wine" }
+explain_hints:
+  - "Federal wine excise is a TTB permit-and-volume tax, not an income-tax line. Still wine is generally $1.07 per wine gallon before any CBMA credit. The clinic does not compute a dollar tax due without gallons on the file."

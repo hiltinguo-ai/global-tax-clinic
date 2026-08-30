@@ -1,0 +1,19 @@
+id: ma.dor.meals
+name: Massachusetts meals tax
+applies_to: [llc, c_corp]
+trigger:
+  all:
+    - profile.has_restaurant == true
+    - '"MA" in profile.states'
+severity: high
+status_if_true: required
+deadline: { date: "monthly-or-quarterly", note: "sales/meals tax return cycle" }
+evidence_needed:
+  - POS meals vs retail split
+  - local option meals tax registration
+forms: ["ST-9", "meals tax"]
+numbers: ["6.25", "0.75"]
+citations:
+  - { src: "MA meals tax", url: "https://www.mass.gov/guides/meals-tax", passage_id: "ma-meals" }
+explain_hints:
+  - "Prepared food in MA is meals-taxable. A restaurant LLC that only thinks about income tax is already late on the larger operational tax."

@@ -1,0 +1,18 @@
+id: ma.dor.part_year
+name: Massachusetts part-year resident return
+applies_to: [individual]
+trigger:
+  all:
+    - '"MA" in profile.part_year_states'
+severity: medium
+status_if_true: required
+deadline: { date: "04-15", auto_extension_to: "10-15" }
+evidence_needed:
+  - move date and new domicile evidence
+  - MA-source vs non-MA income split
+forms: ["Form 1"]
+numbers: []
+citations:
+  - { src: "MA DOR part-year residents", url: "https://www.mass.gov/info-details/massachusetts-tax-information-for-part-year-residents", passage_id: "ma-part-year" }
+explain_hints:
+  - "Leaving MA mid-year does not erase the MA return. You file as a part-year resident and allocate income."

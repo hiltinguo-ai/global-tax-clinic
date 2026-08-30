@@ -1,0 +1,22 @@
+id: us.fed.founder_public
+name: Founder stake in a listed/public company
+applies_to: [individual, family_trust]
+trigger:
+  all:
+    - profile.has_founder_listed_stake == true
+    - profile.founder_listed_years >= 20
+severity: high
+status_if_true: check
+deadline: { date: "04-15", auto_extension_to: "10-15" }
+evidence_needed:
+  - current ownership percent and share class
+  - dividend history and sale/gift/pledge activity this year
+  - whether the stake sits in the individual's name or in a trust
+forms: ["Schedule B", "Schedule D", "8949"]
+numbers: ["20", "3.8"]
+citations:
+  - { src: "IRC 1(h) qualified dividends", url: "https://www.law.cornell.edu/uscode/text/26/1", passage_id: "qd-1h" }
+  - { src: "IRC 1411 NIIT", url: "https://www.law.cornell.edu/uscode/text/26/1411", passage_id: "irc-1411" }
+explain_hints:
+  - "A percent of a company the client built and took public ~20 years ago is usually a concentrated investment position, not a new 83(b) problem. Dividends are typically qualified; the 3.8% NIIT often applies to HNW individuals and to some trusts."
+  - "Counsel should ask: is the holding still the founder's, or did it move into the family trust? Sales, gifts, and margin loans each have a different form."

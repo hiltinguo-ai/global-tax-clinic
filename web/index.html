@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Global Tax Clinic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --paper:#F5F7F8; --paper-2:#EBEFF1; --ink:#1B2430; --ink-2:#4A5563; --ink-3:#7B8794;
+    --line:#D3DAE0; --accent:#0F6C78; --accent-soft:#DDEFF1; --flag:#B4531C; --flag-soft:#F6E5DA;
+    --ok:#2F7D4A; --ok-soft:#E1F0E5; --high:#9B2C2C; --high-soft:#F8E4E4;
+  }
+  :root[data-theme="dark"]{
+    --paper:#0F151C; --paper-2:#161E27; --ink:#E4E9ED; --ink-2:#AEB8C2; --ink-3:#7C8792;
+    --line:#2A3542; --accent:#5EC2CF; --accent-soft:#12303A; --flag:#E58A55; --flag-soft:#3A2416;
+    --ok:#6FCB8B; --ok-soft:#15301E; --high:#F0A0A0; --high-soft:#3A1C1C;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:16px;line-height:1.55}
+  button,textarea,input,select,label{font:inherit}
+  button{cursor:pointer}
+  a{color:var(--accent)}
+  .app{max-width:820px;margin:0 auto;padding:20px 20px 80px}
+  header.top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:16px}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 6px}
+  h1{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:clamp(24px,3.6vw,34px);line-height:1.15;margin:0}
+  .lede{color:var(--ink-2);margin:6px 0 0;max-width:52ch;font-size:14px}
+  .toggles{display:flex;gap:8px;flex-wrap:wrap}
+  .chip{border:1px solid var(--line);background:var(--paper-2);color:var(--ink-2);border-radius:999px;padding:6px 12px;font-size:13px}
+  .chip.on,.choice input:checked + span{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+  .chip.warn{background:var(--flag-soft);border-color:var(--flag);color:var(--flag)}
+  .chip.live{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+  .chip.live::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--ok);margin-right:7px;animation:pulse 1.6s ease-out infinite}
+  .chip.busy{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+  @keyframes pulse{70%{box-shadow:0 0 0 8px transparent}}
+  .steps{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin:0 0 18px;position:sticky;top:0;z-index:2;background:var(--paper);padding:8px 0 10px;border-bottom:1px solid var(--line)}
+  .step{border:1px solid var(--line);background:var(--paper-2);color:var(--ink-2);border-radius:6px;padding:8px 10px;text-align:left;font-size:13px}
+  .step b{display:block;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;font-weight:500;color:var(--ink-3)}
+  .step.on{border-color:var(--accent);background:var(--accent-soft);color:var(--ink)}
+  .step.on b{color:var(--accent)}
+  .step:disabled{opacity:.45;cursor:not-allowed}
+  .stage h2{font-family:"Fraunces",Georgia,serif;font-size:22px;margin:0 0 6px}
+  .stage .who{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin:0 0 4px}
+  .choices{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px}
+  .choice{display:block}
+  .choice input{position:absolute;opacity:0;pointer-events:none}
+  .choice span{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:13px;background:var(--paper-2)}
+  .samples{display:grid;gap:6px;grid-template-columns:1fr 1fr;margin:0 0 12px}
+  @media(min-width:700px){.samples{grid-template-columns:repeat(3,1fr)}}
+  .persona{text-align:left;border:1px solid var(--line);background:var(--paper-2);border-radius:6px;padding:8px 10px}
+  .persona b{display:block;font-family:"Fraunces",Georgia,serif;font-size:14px}
+  .persona .tag{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+  .persona .blurb{display:none}
+  .persona.active{border-color:var(--accent);background:var(--accent-soft)}
+  textarea,.file{width:100%;border:1px solid var(--line);border-radius:6px;background:var(--paper-2);color:var(--ink);padding:12px}
+  textarea{min-height:96px;resize:vertical}
+  .file{font-size:14px}
+  .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;align-items:center}
+  .btn{background:var(--accent);color:#fff;border:0;border-radius:6px;padding:10px 16px;font-weight:600}
+  .btn.alt{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .finding,.desk{border:1px solid var(--line);border-radius:6px;padding:12px 14px;margin:0 0 10px;background:var(--paper-2)}
+  .finding h3,.desk h3{margin:0 0 6px;font-size:16px}
+  .pill{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.05em;text-transform:uppercase;padding:2px 6px;border-radius:3px;background:var(--paper)}
+  .sev-high{background:var(--high-soft);color:var(--high)}
+  .st-required{background:var(--accent-soft);color:var(--accent)}
+  .st-check{background:var(--flag-soft);color:var(--flag)}
+  .qcard{border:1px dashed var(--flag);border-radius:6px;padding:10px 12px;margin:0 0 8px;background:var(--flag-soft)}
+  .qcard b{display:block;font-size:14px}
+  .qcard .tag{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--flag)}
+  details.why{margin-top:8px;color:var(--ink-2);font-size:14px}
+  details.intake{border:1px solid var(--line);border-radius:8px;padding:10px 14px 4px;background:var(--paper-2);margin-bottom:14px}
+  details.intake > summary{cursor:pointer;font-weight:600;padding-bottom:8px}
+  table.cal{width:100%;border-collapse:collapse;font-size:13px;margin:0 0 14px}
+  table.cal th,table.cal td{text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+  table.cal th{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+  .empty{color:var(--ink-3);font-size:14px}
+  .err{color:var(--high);font-size:14px}
+  footer.foot{margin-top:16px;padding-top:12px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-3)}
+  ul.recs{margin:8px 0 0;padding-left:18px}
+  ul.recs li{margin-bottom:4px;color:var(--ink-2)}
+  .hidden{display:none}
+  fieldset{border:0;padding:0;margin:0}
+  legend{font-size:13px;color:var(--ink-3);margin-bottom:6px}
+  .meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div>
+      <p class="eyebrow">Clinic · one desk at a time</p>
+      <h1>Global Tax Clinic</h1>
+      <p class="lede">Counsel opens the file. The CPA and tax attorney apply the packs. Workpapers hold the citations.</p>
+    </div>
+    <div class="toggles">
+      <button class="chip live" id="live" type="button">Live</button>
+      <button class="chip" id="theme" type="button">Theme</button>
+    </div>
+  </header>
+
+  <nav class="steps" id="steps" aria-label="Clinic desks">
+    <button class="step on" type="button" data-step="1" id="step1"><b>Layer 1</b>Counsel</button>
+    <button class="step" type="button" data-step="2" id="step2" disabled><b>Layer 2</b>CPA &amp; attorney</button>
+    <button class="step" type="button" data-step="3" id="step3" disabled><b>Layer 3</b>Workpapers</button>
+  </nav>
+
+  <section class="stage" id="stage1">
+    <p class="who">Layer 1 · Engagement manager / counsel</p>
+    <h2>Who is this client?</h2>
+    <div id="l1out"></div>
+    <details class="intake" id="intake-box" open>
+      <summary>Intake</summary>
+      <p class="empty">Identify who is on the file, the jurisdictions to open, and notes or a PDF / zip.</p>
+
+      <fieldset>
+        <legend>Who is on this file</legend>
+        <p class="empty">An individual and a family trust can both be on the engagement.</p>
+        <div class="choices" id="who">
+          <label class="choice"><input type="radio" name="who" value="individual:hnw"><span>Individual · HNW</span></label>
+          <label class="choice"><input type="radio" name="who" value="individual:middle"><span>Individual · middle</span></label>
+          <label class="choice"><input type="radio" name="who" value="individual:low_income"><span>Individual · lower income</span></label>
+          <label class="choice"><input type="radio" name="who" value="llc:"><span>LLC</span></label>
+          <label class="choice"><input type="radio" name="who" value="c_corp:"><span>C corporation</span></label>
+        </div>
+        <div class="choices">
+          <label class="choice"><input type="checkbox" id="family_trust" name="family_trust"><span>Family trust</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Shareholdings</legend>
+        <div class="choices">
+          <label class="choice"><input type="checkbox" id="founder" name="founder"><span>Founder of a public company, still a shareholder</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Jurisdictions to consider</legend>
+        <div class="choices" id="jurs">
+          <label class="choice"><input type="checkbox" name="jur" value="us-federal" checked><span>US federal</span></label>
+          <label class="choice"><input type="checkbox" name="jur" value="massachusetts" checked><span>Massachusetts</span></label>
+          <label class="choice"><input type="checkbox" name="jur" value="hong-kong"><span>Hong Kong</span></label>
+          <label class="choice"><input type="checkbox" name="jur" value="china-mainland"><span>China mainland</span></label>
+          <label class="choice"><input type="checkbox" name="jur" value="europe"><span>Europe</span></label>
+          <label class="choice"><input type="checkbox" name="jur" value="cross-border"><span>Cross-border</span></label>
+          <label class="choice"><input type="checkbox" name="jur" value="other-us-states"><span>Other US states</span></label>
+          <label class="choice"><input type="checkbox" name="jur" value="australia"><span>Australia</span></label>
+          <label class="choice"><input type="checkbox" name="jur" value="singapore"><span>Singapore</span></label>
+          <label class="choice"><input type="checkbox" name="jur" value="canada"><span>Canada</span></label>
+          <label class="choice"><input type="checkbox" name="jur" value="united-kingdom"><span>United Kingdom</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Indirect and local taxes on this file</legend>
+        <p class="empty">These open property, wine/alcohol excise, and GST/VAT packs. Packs decide; the model does not invent a bill.</p>
+        <div class="choices">
+          <label class="choice"><input type="checkbox" id="tax_property"><span>Real property</span></label>
+          <label class="choice"><input type="checkbox" id="tax_alcohol"><span>Wine / alcohol</span></label>
+          <label class="choice"><input type="checkbox" id="tax_gst"><span>GST / VAT supplies</span></label>
+        </div>
+      </fieldset>
+
+      <p class="empty">Sample files</p>
+      <div class="samples" id="personas"></div>
+
+      <label class="empty" for="files">Upload PDF or zip</label>
+      <input class="file" id="files" type="file" accept=".pdf,.zip,.xlsx,application/pdf,application/zip,application/x-zip-compressed" multiple>
+
+      <textarea id="intake" placeholder="Engagement notes, or leave blank if the PDF / zip is the file."></textarea>
+      <div class="row">
+        <button class="btn" id="run" type="button">Open engagement</button>
+      </div>
+    </details>
+    <p class="empty" id="source"></p>
+  </section>
+
+  <section class="stage hidden" id="stage2">
+    <p class="who">Layer 2 · CPA and tax attorney</p>
+    <h2>Apply the rulings</h2>
+    <div id="l2out"></div>
+    <div class="row">
+      <button class="btn alt" type="button" data-go="1">Back to counsel</button>
+      <button class="btn" type="button" data-go="3">Workpapers</button>
+    </div>
+  </section>
+
+  <section class="stage hidden" id="stage3">
+    <p class="who">Layer 3 · Workpapers and authorities</p>
+    <h2>How each rule was applied</h2>
+    <div id="l3out"></div>
+    <div class="row">
+      <button class="btn alt" type="button" data-go="2">Back to analysis</button>
+    </div>
+  </section>
+</div>
+<script>
+const $ = (id) => document.getElementById(id);
+let personas = [];
+let selected = null;
+let currentStep = 1;
+let engaging = false;
+
+$("theme").onclick = () => {
+  document.documentElement.dataset.theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+};
+
+function setLive(ok, label) {
+  const el = $("live");
+  el.classList.toggle("live", ok);
+  el.classList.toggle("warn", !ok);
+  el.classList.remove("busy");
+  el.textContent = label || (ok ? "Live" : "Reconnecting");
+}
+async function ping() {
+  if (engaging) return;
+  try {
+    const data = await (await fetch("/api/health")).json();
+    const m = data.models || {};
+    const bilingual = m.bilingual || m.extract;
+    const us = m.us_tax || m.analyze;
+    let label = "Live";
+    if (bilingual && us && bilingual !== us) label = `Live · ${bilingual} + ${us}`;
+    else if (us || bilingual) label = `Live · ${us || bilingual}`;
+    setLive(!!data.ok, label);
+  } catch { setLive(false, "Reconnecting"); }
+}
+ping();
+setInterval(ping, 8000);
+
+function showStep(n) {
+  currentStep = n;
+  [1, 2, 3].forEach(i => {
+    $("stage" + i).classList.toggle("hidden", i !== n);
+    const btn = $("step" + i);
+    btn.classList.toggle("on", i === n);
+  });
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+document.getElementById("steps").onclick = (e) => {
+  const btn = e.target.closest("[data-step]");
+  if (!btn || btn.disabled) return;
+  showStep(Number(btn.dataset.step));
+};
+document.querySelectorAll("[data-go]").forEach(btn => {
+  btn.onclick = () => showStep(Number(btn.dataset.go));
+});
+
+function selectedWho() {
+  const raw = document.querySelector("#who input:checked")?.value || "";
+  const [picked, income_band] = raw.split(":");
+  const trust = $("family_trust").checked;
+  const entity_type = picked || (trust ? "family_trust" : "");
+  return {
+    entity_type,
+    income_band: income_band || "",
+    has_family_trust: trust || entity_type === "family_trust",
+  };
+}
+function selectedJurs() {
+  return [...document.querySelectorAll("#jurs input:checked")].map(el => el.value);
+}
+function setWho(entity, band, trust) {
+  const value = `${entity}:${band || ""}`;
+  document.querySelectorAll("#who input").forEach(el => {
+    el.checked = entity !== "family_trust" && el.value === value;
+  });
+  $("family_trust").checked = !!(trust || entity === "family_trust");
+}
+function setJurs(list) {
+  const want = new Set(list || []);
+  document.querySelectorAll("#jurs input").forEach(el => { el.checked = want.has(el.value); });
+}
+
+async function loadPersonas() {
+  personas = await (await fetch("/api/personas")).json();
+  $("personas").innerHTML = personas.map(p => `
+    <button class="persona" type="button" data-id="${p.id}">
+      <span class="tag">${p.tag}</span>
+      <b>${p.name}</b>
+      <span class="blurb">${p.blurb}</span>
+    </button>`).join("");
+  $("personas").onclick = (e) => {
+    const btn = e.target.closest(".persona");
+    if (!btn) return;
+    selected = btn.dataset.id;
+    document.querySelectorAll(".persona").forEach(el => el.classList.toggle("active", el === btn));
+    const p = personas.find(x => x.id === selected);
+    $("intake").value = p.text_en;
+    setWho(p.entity_type, p.income_band);
+    setJurs(p.jurisdictions || []);
+    $("founder").checked = p.id === "chen" || p.entity_type === "family_trust";
+    $("family_trust").checked = p.entity_type === "family_trust" || !!p.has_family_trust;
+    $("tax_property").checked = p.id === "mei" || p.id === "sichuan";
+    $("tax_alcohol").checked = p.id === "sichuan";
+    $("tax_gst").checked = false;
+  };
+}
+loadPersonas();
+
+$("run").onclick = async () => {
+  if (engaging) return;
+  engaging = true;
+  $("run").disabled = true;
+  $("live").classList.add("busy");
+  $("live").textContent = "Live · reading file";
+  showStep(1);
+  const n = $("files").files.length;
+  $("l1out").innerHTML = n
+    ? `<p class="empty">Counsel is reading ${n} upload(s). The header stays Live while packs run…</p>`
+    : `<p class="empty">Counsel is reading the file…</p>`;
+  const who = selectedWho();
+  const body = new FormData();
+  body.append("text", $("intake").value);
+  body.append("persona_id", selected || "");
+  body.append("entity_type", who.entity_type);
+  body.append("income_band", who.income_band);
+  body.append("jurisdictions", JSON.stringify(selectedJurs()));
+  body.append("live", "true");
+  body.append("founder_listed", $("founder").checked ? "true" : "false");
+  body.append("has_family_trust", who.has_family_trust ? "true" : "false");
+  body.append("consider_property", $("tax_property").checked ? "true" : "false");
+  body.append("consider_alcohol", $("tax_alcohol").checked ? "true" : "false");
+  body.append("consider_gst", $("tax_gst").checked ? "true" : "false");
+  for (const f of $("files").files) body.append("files", f);
+  try {
+    const res = await fetch("/api/engage", { method: "POST", body });
+    if (!res.ok) throw new Error(await res.text());
+    render(await res.json());
+  } catch (err) {
+    setLive(false, "Live failed");
+    $("l1out").innerHTML = `<p class="err">${err.message || err}</p>`;
+  } finally {
+    engaging = false;
+    $("run").disabled = false;
+  }
+};
+
+function pill(text, cls) {
+  return `<span class="pill ${cls || ""}">${text}</span>`;
+}
+
+function render(data) {
+  const L = data.layers;
+  $("source").textContent = `Live visit · ${data.extraction_source} · ${data.findings.length} findings`;
+  $("step2").disabled = false;
+  $("step3").disabled = false;
+  $("intake-box").open = false;
+  if (!L) {
+    $("l1out").innerHTML = `<p class="err">Layers did not return.</p>`;
+    return;
+  }
+  $("l1out").innerHTML = `
+    <article class="desk">
+      <div class="meta">${pill(L.engagement.who)} ${ (L.engagement.jurisdictions||[]).map(j => pill(j)).join(" ") }</div>
+      <h3>Preliminary assessment</h3>
+      <p>${L.engagement.assessment}</p>
+      <h3>Recommendations</h3>
+      <ul class="recs">${(L.engagement.recommendations||[]).map(r => `<li>${r}</li>`).join("")}</ul>
+      ${(L.engagement.documents||[]).length ? `<p class="empty">${L.engagement.documents.length} file(s) read: ${L.engagement.documents.map(d => d.name).join(", ")}</p>` : ""}
+    </article>
+    ${(data.questions||[]).length ? `
+    <article class="desk">
+      <h3>Counsel still needs to know</h3>
+      <p class="empty">These answers would settle the findings marked "check". Add them to Intake and re-open.</p>
+      ${data.questions.map(q => `
+        <div class="qcard">
+          <span class="tag">${q.severity} · blocks: ${(q.rules||[]).slice(0,2).join("; ")}${(q.rules||[]).length>2 ? " +" + ((q.rules||[]).length-2) : ""}</span>
+          <b>${q.question}</b>
+        </div>`).join("")}
+    </article>` : ""}
+    <div class="row">
+      <button class="btn" type="button" data-go="2">Continue to CPA &amp; attorney</button>
+    </div>`;
+  $("l1out").querySelector("[data-go]")?.addEventListener("click", () => showStep(2));
+
+  $("l2out").innerHTML = `
+    <p>${data.report.lede}</p>
+    <p class="empty">Model: ${L.analysis.model} · ${L.analysis.model_role}</p>
+    <p class="empty">${L.analysis.upload_digest}</p>
+    <article class="desk"><h3>Tax attorney</h3><ul class="recs">${(L.analysis.legal||[]).map(i => `<li>${i}</li>`).join("")}</ul></article>
+    <article class="desk"><h3>CPA</h3><ul class="recs">${(L.analysis.accounting||[]).map(i => `<li>${i}</li>`).join("")}</ul></article>`;
+
+  const steps = (L.workpapers.steps || []).map(s => `
+    <article class="finding">
+      <div>${pill(s.result, s.result.startsWith("required") ? "st-required" : s.result.startsWith("check") ? "st-check" : "")} ${s.result.startsWith("check") ? pill("needs one more fact", "st-check") : ""} ${pill(s.rule_id)}</div>
+      <h3>${s.name}</h3>
+      <p>${(s.inputs||[]).join(" ")}</p>
+      <details class="why">
+        <summary>${s.citation_src || "Authority"}</summary>
+        <p>${s.passage || ""}</p>
+        ${s.citation_url ? `<p><a href="${s.citation_url}" target="_blank" rel="noreferrer">${s.citation_url}</a></p>` : ""}
+      </details>
+    </article>`).join("");
+  const sheet = (L.workpapers.worksheet || []).map(w =>
+    `<tr><td>${w.name}</td><td>${(w.inputs||[]).join("; ")}</td><td>${w.result}</td><td>${w.note}</td></tr>`
+  ).join("");
+  const refs = (L.workpapers.references || []).map(c =>
+    `<li><a href="${c.url}" target="_blank" rel="noreferrer">${c.src}</a></li>`
+  ).join("");
+  $("l3out").innerHTML = `
+    ${sheet ? `<table class="cal"><thead><tr><th>Calc</th><th>Inputs</th><th>Result</th><th>Note</th></tr></thead><tbody>${sheet}</tbody></table>` : ""}
+    ${steps}
+    <h3>Authorities</h3>
+    <ul class="recs">${refs}</ul>
+    <footer class="foot">${data.report.disclaimer}</footer>`;
+  setLive(true, "Live");
+  showStep(1);
+}
+</script>
+</body>
+</html>

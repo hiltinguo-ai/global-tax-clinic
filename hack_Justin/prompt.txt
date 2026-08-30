@@ -1,0 +1,7 @@
+We aim to build a global tax compliance check tool for individuals, LLC or C-corp based on their country, state and industry.
+
+The plan is to replicate the work of a real, human agency. 
+
+3 agents check the case of the client. And produce a check. 
+
+They use the ma-tax-compliance Knowledge base.

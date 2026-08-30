@@ -1,0 +1,24 @@
+id: us.fed.1116
+name: Form 1116 foreign tax credit
+applies_to: [individual]
+trigger:
+  all:
+    - profile.us_person == true
+    - any:
+        - any(profile.income_streams[*].country == "HK")
+        - any(profile.income_streams[*].country == "CN")
+        - any(profile.income_streams[*].kind == "rental")
+severity: medium
+status_if_true: likely
+deadline: { date: "04-15", auto_extension_to: "10-15" }
+evidence_needed:
+  - foreign tax paid or accrued, by country
+  - foreign-source income by basket
+forms: ["1116"]
+numbers: []
+citations:
+  - { src: "26 USC 901", url: "https://www.law.cornell.edu/uscode/text/26/901", passage_id: "irc-901" }
+  - { src: "IRS Form 1116 instructions", url: "https://www.irs.gov/forms-pubs/about-form-1116", passage_id: "f1116-instr" }
+explain_hints:
+  - "US persons are taxed on worldwide income. Foreign tax paid may be creditable, subject to basket and limitation rules."
+  - "Treaty and FTC ordering interact. Do not assume a dollar-for-dollar wipeout of US tax."

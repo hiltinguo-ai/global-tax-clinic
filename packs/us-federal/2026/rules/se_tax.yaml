@@ -1,0 +1,21 @@
+id: us.fed.se_tax
+name: Self-employment tax (Schedule SE)
+applies_to: [individual]
+trigger:
+  any:
+    - has_income("1099_nec")
+    - has_income("gig")
+    - has_income("tips")
+severity: medium
+status_if_true: likely
+deadline: { date: "04-15", auto_extension_to: "10-15" }
+evidence_needed:
+  - net profit after ordinary expenses
+  - distinction between W-2 tips already withheld and cash/gig net
+forms: ["Schedule SE"]
+numbers: ["400", "15.3", "92.35"]
+citations:
+  - { src: "26 USC 1401–1402", url: "https://www.law.cornell.edu/uscode/text/26/1402", passage_id: "irc-1402" }
+  - { src: "IRS Schedule SE", url: "https://www.irs.gov/forms-pubs/about-schedule-se-form-1040", passage_id: "sch-se" }
+explain_hints:
+  - "Net earnings from self-employment of $400 or more generally trigger SE tax. W-2 wages already face FICA; do not double-count those."

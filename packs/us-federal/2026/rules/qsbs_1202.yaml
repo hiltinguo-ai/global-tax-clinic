@@ -1,0 +1,20 @@
+id: us.fed.1202
+name: Section 1202 QSBS hygiene on original founder shares
+applies_to: [individual, family_trust]
+trigger:
+  all:
+    - profile.has_founder_listed_stake == true
+    - profile.founder_listed_years >= 5
+severity: medium
+status_if_true: check
+deadline: { date: "on-sale" }
+evidence_needed:
+  - original issuance records (stock was acquired at original issue)
+  - C-corp status and gross-asset test at issuance
+  - holding period and any disqualifying redemptions
+forms: ["1202"]
+numbers: ["5"]
+citations:
+  - { src: "IRC 1202", url: "https://www.law.cornell.edu/uscode/text/26/1202", passage_id: "irc-1202" }
+explain_hints:
+  - "Twenty years of holding can satisfy the five-year clock, but 1202 only helps if the stock was QSBS at original issuance and no later event blew the qualification. A company that is now a large listed issuer often fails the asset test for new shares; old founder shares still need a facts file before anyone promises an exclusion."

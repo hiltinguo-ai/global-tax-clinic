@@ -1,0 +1,9 @@
+id: hk-ird
+name: Hong Kong IRD
+jurisdiction: HK
+authority: IRD
+tax_year: "2025-26"
+effective_from: 2025-04-01
+last_reviewed_by: Hiltin Guo
+last_reviewed_on: 2026-08-30
+version: "0.3"

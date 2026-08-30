@@ -1,0 +1,18 @@
+id: us.fed.1041
+name: Form 1041 fiduciary income tax (family trust)
+applies_to: [family_trust]
+trigger:
+  all:
+    - profile.has_family_trust == true
+severity: high
+status_if_true: required
+deadline: { date: "04-15", auto_extension_to: "09-30" }
+evidence_needed:
+  - trust instrument (grantor vs complex / simple)
+  - K-1s to beneficiaries and the trust's own income
+forms: ["1041"]
+numbers: []
+citations:
+  - { src: "IRS Form 1041", url: "https://www.irs.gov/forms-pubs/about-form-1041", passage_id: "f1041" }
+explain_hints:
+  - "A domestic family trust files Form 1041 unless it is a wholly grantor trust reported on the settlor's 1040. Classification is the first legal call."

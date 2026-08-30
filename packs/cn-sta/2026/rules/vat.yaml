@@ -1,0 +1,19 @@
+id: cn.sta.vat
+name: China mainland VAT
+applies_to: [individual, llc, c_corp]
+trigger:
+  all:
+    - profile.has_gst("CN")
+severity: high
+status_if_true: check
+deadline: { date: "monthly-or-quarterly", note: "VAT return cycle on Golden Tax / e-invoice" }
+evidence_needed:
+  - whether the taxpayer is a general VAT taxpayer or small-scale
+  - taxable sales by rate (13% / 9% / 6%)
+  - input credits and export exemption / rebate
+forms: ["增值税纳税申报表"]
+numbers: ["13", "9", "6"]
+citations:
+  - { src: "STA — VAT (增值税)", url: "https://www.chinatax.gov.cn/chinatax/n810341/n810825/c101434/c3541490/content.html", passage_id: "cn-vat" }
+explain_hints:
+  - "Mainland VAT is not a single rate and is not IIT. General taxpayers commonly see 13%, 9% or 6% depending on the supply. The clinic will not compute a VAT payable without the sales-by-rate split."

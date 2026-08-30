@@ -1,0 +1,19 @@
+id: us.fed.property_local
+name: US real property tax is local — not a federal income-tax substitute
+applies_to: [individual, llc, c_corp, family_trust]
+trigger:
+  all:
+    - profile.has_property("US")
+severity: medium
+status_if_true: check
+deadline: { date: "local-fiscal-year", note: "municipal or county bill cycle" }
+evidence_needed:
+  - deed or trust ownership
+  - latest assessment and tax bill by locality
+  - homestead / charitable / veteran exemption applications
+forms: ["local property tax bill"]
+numbers: []
+citations:
+  - { src: "IRS — real property tax (Schedule A)", url: "https://www.irs.gov/taxtopics/tc503", passage_id: "irs-property" }
+explain_hints:
+  - "US property tax is assessed by the city or county, not the IRS. Federal law may allow an itemized deduction subject to the SALT cap. This finding opens the local bill and the federal deduction question; it does not compute millage."

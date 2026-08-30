@@ -1,0 +1,19 @@
+id: us.fed.ttb_spirits
+name: Federal alcohol excise — distilled spirits (TTB)
+applies_to: [individual, llc, c_corp]
+trigger:
+  all:
+    - profile.alcohol_match("spirits", "producer", "importer")
+severity: high
+status_if_true: required
+deadline: { date: "semimonthly-or-quarterly", note: "TTB distilled-spirits return cycle" }
+evidence_needed:
+  - DSP permit or importer permit
+  - proof gallons removed from bond
+  - CBMA reduced-rate eligibility
+forms: ["TTB F 5000.24"]
+numbers: ["13.50", "2.70"]
+citations:
+  - { src: "TTB tax and fee rates — distilled spirits", url: "https://www.ttb.gov/tax-audit/tax-and-fee-rates", passage_id: "ttb-spirits" }
+explain_hints:
+  - "Federal distilled-spirits excise is charged per proof gallon, not as an income-tax line. The ordinary rate is $13.50 per proof gallon; CBMA may reduce the first increment. Retail or restaurant pouring is not the TTB removal. No tax due is computed without proof gallons."

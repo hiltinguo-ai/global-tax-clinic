@@ -1,0 +1,19 @@
+id: ma.dor.property
+name: Massachusetts local property tax
+applies_to: [individual, llc, c_corp, family_trust]
+trigger:
+  all:
+    - profile.has_property("MA")
+severity: high
+status_if_true: required
+deadline: { date: "quarterly-or-semiannual", note: "city or town tax bill cycle" }
+evidence_needed:
+  - assessor's property record card
+  - actual tax bills (Q1–Q4 or semi-annual)
+  - classification (residential vs commercial) and any exemption
+forms: ["municipal tax bill"]
+numbers: []
+citations:
+  - { src: "Massachusetts property tax", url: "https://www.mass.gov/property-tax", passage_id: "ma-property" }
+explain_hints:
+  - "MA property tax is levied by the city or town under M.G.L. c. 59. DOR oversees classification and Proposition 2½. The rate is local — the clinic will not invent a millage or a bill."

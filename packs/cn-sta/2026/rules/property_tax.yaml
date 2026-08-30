@@ -1,0 +1,19 @@
+id: cn.sta.property
+name: China mainland real-estate / property-tax screen
+applies_to: [individual, llc, c_corp, family_trust]
+trigger:
+  all:
+    - profile.has_property("CN")
+severity: high
+status_if_true: check
+deadline: { date: "local-rule", note: "房产税 / 城镇土地使用税 are local-administration taxes" }
+evidence_needed:
+  - location of the mainland property
+  - whether it is used, vacant, or let
+  - local 房产税 pilot vs land-use tax vs deed tax on transfer
+forms: ["房产税"]
+numbers: []
+citations:
+  - { src: "STA — 房产税", url: "https://www.chinatax.gov.cn/chinatax/n810341/n810825/c101434/c101435/content.html", passage_id: "cn-property" }
+explain_hints:
+  - "Mainland property-related taxes are not one national 'property tax' like a US millage bill. 房产税, 城镇土地使用税 and deed tax sit with local tax bureaus. This is a counsel REVIEW until the city and use are on the file."

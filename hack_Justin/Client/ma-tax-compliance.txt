@@ -1,0 +1,83 @@
+================================================================
+  MA TAX COMPLIANCE — TEAM REFERENCE DOC
+  For: NimbusFlow, Inc. (MA C-corp, SaaS)
+================================================================
+
+1. CORPORATE EXCISE TAX (Form 355)
+----------------------------------------------------------------
+Who owes:           All MA-incorporated C-corps and foreign corps with MA nexus
+Rate:               8% of net income apportioned to MA, OR $2.60 per $1,000 of
+                    tangible property/net worth — pay whichever is higher
+Minimum excise:     $456
+Estimated payments: Required if tax exceeds $1,000 — paid quarterly (Form 355-ES)
+Return due:         March 15 (calendar year) or 15th day of 3rd month after fiscal year end
+Apportionment:      Single sales factor — MA revenue / total revenue (for most industries)
+
+Estimated tax schedule:
+  Q1  due Apr 15  (25% of prior year tax, or 25% of current year estimate)
+  Q2  due Jun 15  (25%)
+  Q3  due Sep 15  (25%)
+  Q4  due Jan 15  (25%)
+  Any balance due with return by Mar 15
+
+2. SALES & USE TAX ON SAAS (Form ST-9)
+----------------------------------------------------------------
+Is SaaS taxable:    YES — prewritten software delivered electronically is taxable
+                    as tangible personal property (830 CMR 64H.1.3)
+Rate:               6.25%
+Filing frequency:   Monthly if annual liability > $1,200
+                    Quarterly if $100–$1,200
+                    Annually if < $100
+Due date:           30th of month following end of filing period
+Economic nexus:     $100,000 in MA sales in prior or current calendar year (Oct 2019)
+
+3. EMPLOYER OBLIGATIONS
+----------------------------------------------------------------
+Obligation                       Form                  Due
+Income tax withholding           M-941                 Quarterly (last day of month after quarter)
+Unemployment insurance           UI Online             Quarterly (Apr 30, Jul 31, Oct 31, Jan 31)
+Workforce training fund          Part of UI filing     Same as UI
+W-2 reporting                    W-2 + M-941 recon     Jan 31
+Paid Family & Medical Leave      PFML contributions    Quarterly via MassTaxConnect
+
+4. NEXUS TRIGGERS (MA-specific)
+----------------------------------------------------------------
+Trigger                            Threshold
+Physical presence                  Office, employees, or property in MA
+Economic nexus (sales tax)         $100,000 in MA sales
+Economic nexus (corporate excise)  $500,000 in MA sales (P.L. 86-272 protections
+                                   may apply if activity is only solicitation)
+Incorporation                      Automatic nexus for corporate excise
+
+5. KEY FORMS QUICK REFERENCE
+----------------------------------------------------------------
+Form         Purpose                            Filing method
+Form 355     Corporate excise return            MassTaxConnect
+Form 355-ES  Estimated tax vouchers             MassTaxConnect
+Form ST-9    Sales/use tax return               MassTaxConnect
+Form M-941   Employer withholding return        MassTaxConnect
+Form 355S    S-corp return (not applicable)     MassTaxConnect
+
+6. PENALTIES
+----------------------------------------------------------------
+Violation                       Penalty
+Late filing                     1% per month (max 25%)
+Late payment                    1% per month (max 25%)
+Underpayment of estimated tax   Interest at federal short-term rate + 2%
+Failure to file sales tax       5% per month (max 25%)
+
+7. FILING CALENDAR — NIMBUSFLOW 2026
+----------------------------------------------------------------
+Date       Jurisdiction   Filing                              Form
+Jan 15     MA             Q4 estimated corporate excise       Form 355-ES
+Jan 31     Federal + MA   W-2 issuance to employees           W-2, M-941
+Mar 15     Federal        Corporate income tax return         Form 1120
+Mar 15     MA             Corporate excise tax return         Form 355
+Apr 15     MA             Q1 estimated corporate excise       Form 355-ES
+Apr 30     MA             Q1 sales tax return                 Form ST-9
+Jun 15     MA             Q2 estimated corporate excise       Form 355-ES
+Jul 31     MA             Q2 sales tax return                 Form ST-9
+Sep 15     MA             Q3 estimated corporate excise       Form 355-ES
+Oct 31     MA             Q3 sales tax return                 Form ST-9
+Jan 15     MA             Q4 estimated corporate excise       Form 355-ES
+Jan 31     MA             Q4 sales tax return                 Form ST-9

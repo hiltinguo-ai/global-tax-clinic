@@ -1,0 +1,14 @@
+---
+description: Jurisdiction pack schema, citations, and test requirements
+globs: packs/**/*.yaml
+alwaysApply: false
+---
+- Each rule is a YAML file with id, name, applies_to, trigger, severity,
+  status_if_true, deadline, evidence_needed, citations, explain_hints.
+- Triggers use the small expression language in clinic/packs.py only
+  (field tests, sum/any/count, comparisons). No free-form eval.
+- Every citation needs a src label and a URL to a primary source.
+- Pack metadata (pack.yaml) must include tax_year, effective_from,
+  last_reviewed_by, and version. Stale packs warn in the report footer.
+- Cross-border overlaps live in packs/cross-border/ and pair existing
+  rule ids; they do not recompute thresholds.

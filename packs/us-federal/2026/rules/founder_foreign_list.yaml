@@ -1,0 +1,18 @@
+id: us.fed.founder_foreign_list
+name: Founder stake in a foreign listed company (5471 screen)
+applies_to: [individual, llc, c_corp, family_trust]
+trigger:
+  all:
+    - profile.founder_foreign_listed_pct >= 10
+severity: high
+status_if_true: likely
+deadline: { date: "04-15", auto_extension_to: "10-15" }
+evidence_needed:
+  - ownership percent including attribution
+  - country of incorporation of the listed issuer
+forms: ["5471"]
+numbers: ["10"]
+citations:
+  - { src: "IRS Form 5471", url: "https://www.irs.gov/forms-pubs/about-form-5471", passage_id: "f5471-instr" }
+explain_hints:
+  - "A 10% or greater US-person stake in a foreign corporation, including a foreign listed company the client founded, is a 5471 category question. Listing does not remove the information return."

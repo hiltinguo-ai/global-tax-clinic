@@ -1,0 +1,23 @@
+id: hk.ird.territorial
+name: Territorial source / offshore claim
+applies_to: [individual, llc, c_corp]
+trigger:
+  all:
+    - any:
+        - '"HK" in profile.residencies'
+        - any(profile.ownerships[*].country == "HK")
+    - any:
+        - any(profile.income_streams[*].country == "US")
+        - any(profile.income_streams[*].country == "CN")
+severity: medium
+status_if_true: check
+deadline: { date: "with-return" }
+evidence_needed:
+  - contracts, negotiation location, operations location
+  - bank flows vs contract source
+forms: ["offshore claim"]
+numbers: []
+citations:
+  - { src: "IRD DIPN 21 source of profits", url: "https://www.ird.gov.hk/eng/paf/dip.htm", passage_id: "hk-dipn21" }
+explain_hints:
+  - "An offshore claim fails when the profit-producing activities happened in Hong Kong. Document the activities, not the bank account."

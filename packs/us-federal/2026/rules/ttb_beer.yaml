@@ -1,0 +1,19 @@
+id: us.fed.ttb_beer
+name: Federal alcohol excise — beer (TTB)
+applies_to: [individual, llc, c_corp]
+trigger:
+  all:
+    - profile.alcohol_match("beer", "producer", "importer")
+severity: high
+status_if_true: required
+deadline: { date: "quarterly-or-semimonthly", note: "TTB excise return cycle depends on liability" }
+evidence_needed:
+  - TTB brewer's notice or importer permit
+  - barrels produced or imported
+  - whether the CBMA reduced rate on the first 60,000 barrels applies
+forms: ["TTB F 5000.24"]
+numbers: ["18", "3.50"]
+citations:
+  - { src: "TTB tax and fee rates — beer", url: "https://www.ttb.gov/tax-audit/tax-and-fee-rates", passage_id: "ttb-beer" }
+explain_hints:
+  - "Federal beer excise is a TTB volume tax. The ordinary rate is $18 per barrel; qualifying small brewers may use $3.50 on the first 60,000 barrels. A restaurant that only pours beer is not the TTB taxpayer. The clinic does not compute a dollar tax due without barrels on the file."

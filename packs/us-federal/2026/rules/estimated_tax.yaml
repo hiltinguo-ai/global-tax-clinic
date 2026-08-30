@@ -1,0 +1,20 @@
+id: us.fed.estimated
+name: Federal estimated tax (Form 1040-ES)
+applies_to: [individual, llc, c_corp, family_trust]
+trigger:
+  any:
+    - has_income("1099_nec")
+    - has_income("rental")
+    - has_income("gig")
+severity: medium
+status_if_true: check
+deadline: { date: "04-15", note: "quarterly installments" }
+evidence_needed:
+  - prior-year safe harbor
+  - current-year withholding vs expected tax
+forms: ["1040-ES"]
+numbers: ["1000"]
+citations:
+  - { src: "IRS estimated taxes", url: "https://www.irs.gov/businesses/small-businesses-self-employed/estimated-taxes", passage_id: "est-tax" }
+explain_hints:
+  - "If withholding will not cover the bill and you expect to owe $1,000 or more, quarterly estimates are the usual next check."

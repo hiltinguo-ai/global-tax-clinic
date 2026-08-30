@@ -1,0 +1,18 @@
+id: us.fed.grantor_trust
+name: Grantor vs non-grantor trust classification
+applies_to: [family_trust]
+trigger:
+  all:
+    - profile.has_family_trust == true
+severity: high
+status_if_true: check
+deadline: { date: "with-1040-or-1041" }
+evidence_needed:
+  - who can revoke, who funds, who is the trustee, who takes distributions
+  - grantor-trust powers (IRC 671–679)
+forms: ["1041", "1040"]
+numbers: ["671"]
+citations:
+  - { src: "IRC 671–679", url: "https://www.law.cornell.edu/uscode/text/26/671", passage_id: "irc-671" }
+explain_hints:
+  - "If the settlor is treated as the owner, income stays on the 1040 and 1041 is often information-only. A completed gift to a non-grantor trust is a different filing map — and a different estate-tax story."

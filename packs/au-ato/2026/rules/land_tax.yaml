@@ -1,0 +1,19 @@
+id: au.ato.land_tax
+name: Australian state land tax — counsel review
+applies_to: [individual, llc, c_corp, family_trust]
+trigger:
+  all:
+    - profile.has_property("AU")
+severity: high
+status_if_true: check
+deadline: { date: "state-assessment", note: "state revenue office annual assessment" }
+evidence_needed:
+  - state and local government area of the land
+  - taxable unimproved / site value
+  - principal-place-of-residence and threshold claims
+forms: ["state land tax assessment"]
+numbers: []
+citations:
+  - { src: "Revenue NSW — land tax (state example)", url: "https://www.revenue.nsw.gov.au/taxes-duties-levies-royalties/land-tax", passage_id: "au-land" }
+explain_hints:
+  - "Australia does not levy a single federal property tax. Land tax is a state tax (NSW, VIC, QLD, and others) on the unimproved value above a threshold. Counsel stays on REVIEW until the state and the valuation are on the file. The clinic will not invent a rate."

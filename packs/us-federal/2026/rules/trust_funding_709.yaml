@@ -1,0 +1,18 @@
+id: us.fed.709
+name: Form 709 gift tax — funding a family trust
+applies_to: [individual, family_trust]
+trigger:
+  all:
+    - profile.has_family_trust == true
+severity: medium
+status_if_true: check
+deadline: { date: "04-15", note: "for the year of each completed gift" }
+evidence_needed:
+  - dates and FMV of property transferred into the trust
+  - whether the gift was complete and whether GST exemption was allocated
+forms: ["709"]
+numbers: []
+citations:
+  - { src: "IRS Form 709", url: "https://www.irs.gov/forms-pubs/about-form-709", passage_id: "f709" }
+explain_hints:
+  - "Moving founder shares into a family trust is often a gift. Form 709 may be required even when no tax is due because of the lifetime exemption. Basis carries over."

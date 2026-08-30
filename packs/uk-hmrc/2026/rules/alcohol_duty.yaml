@@ -1,0 +1,20 @@
+id: uk.hmrc.alcohol
+name: United Kingdom alcohol duty
+applies_to: [individual, llc, c_corp]
+trigger:
+  all:
+    - profile.has_alcohol()
+    - '"UK" in profile.residencies'
+severity: high
+status_if_true: check
+deadline: { date: "duty-point", note: "duty is usually due when goods are released for consumption" }
+evidence_needed:
+  - whether the entity produces, imports, or only retails
+  - product class and ABV
+  - hectolitres released from duty suspension
+forms: ["Alcohol Duty"]
+numbers: []
+citations:
+  - { src: "GOV.UK — Alcohol Duty", url: "https://www.gov.uk/guidance/alcohol-duty", passage_id: "uk-alcohol" }
+explain_hints:
+  - "UK Alcohol Duty was reformed onto ABV bands. It is an HMRC excise at the duty point, not VAT. A pub or restaurant that only sells duty-paid stock is usually not the duty taxpayer. Counsel stays on REVIEW until product class, ABV and volume are on the file."

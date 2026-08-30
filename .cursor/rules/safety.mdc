@@ -1,0 +1,10 @@
+---
+description: Number firewall, no-advice language, and disclaimers
+alwaysApply: true
+---
+- This product is a compliance check-up, not a preparer and not advice.
+- High-severity findings with low confidence render as "Discuss with a CPA".
+- The explainer may only use numbers and form ids present in findings
+  or cited passages. clinic/explain.py strips anything else.
+- Disclaimers must name the packs and versions that actually ran.
+- Do not add filing, payment, or e-file features.

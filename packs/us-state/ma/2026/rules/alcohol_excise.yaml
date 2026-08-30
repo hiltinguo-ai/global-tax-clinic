@@ -1,0 +1,20 @@
+id: ma.dor.alcohol
+name: Massachusetts alcoholic beverages excise
+applies_to: [llc, c_corp, individual]
+trigger:
+  all:
+    - profile.has_alcohol()
+    - '"MA" in profile.states'
+severity: high
+status_if_true: required
+deadline: { date: "monthly", note: "alcoholic beverages excise return" }
+evidence_needed:
+  - ABCC license class (pouring, retail package, wholesale, winery)
+  - wine / beer / spirits sales split
+  - whether the licensee is the excise taxpayer or a pass-through retailer
+forms: ["AB-1", "alcoholic beverages excise"]
+numbers: []
+citations:
+  - { src: "MA alcoholic beverages excise", url: "https://www.mass.gov/info-details/alcoholic-beverages-excise-tax", passage_id: "ma-alcohol" }
+explain_hints:
+  - "Massachusetts taxes alcoholic beverages as an excise on top of sales/meals tax. A restaurant that pours wine is usually looking at ABCC plus DOR excise, not meals tax alone. Volume is required before any dollar illustration."

@@ -1,0 +1,19 @@
+id: hk.ird.property_tax
+name: Hong Kong property tax
+applies_to: [individual, llc, c_corp, family_trust]
+trigger:
+  all:
+    - profile.has_property("HK")
+severity: high
+status_if_true: required
+deadline: { date: "BIR-issued", note: "IRD issues the property tax return" }
+evidence_needed:
+  - ownership of Hong Kong land or buildings
+  - whether the property was let, and the rental
+  - whether the owner is a corporation already in profits tax
+forms: ["BIR57", "BIR58"]
+numbers: ["15"]
+citations:
+  - { src: "IRD — property tax", url: "https://www.ird.gov.hk/eng/tax/pte.htm", passage_id: "hk-property" }
+explain_hints:
+  - "Hong Kong property tax is charged on the owner of land or buildings in HK. The standard rate applies to net assessable value (rent less rates and the statutory 20% allowance). A corporation whose rental is already in profits tax may be exempt — classification is a legal call, not a computation on this file."

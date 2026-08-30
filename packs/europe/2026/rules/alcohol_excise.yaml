@@ -1,0 +1,20 @@
+id: eu.excise.alcohol
+name: EU alcohol excise — member-state duty
+applies_to: [individual, llc, c_corp]
+trigger:
+  all:
+    - profile.has_alcohol()
+    - '"EU" in profile.residencies'
+severity: high
+status_if_true: check
+deadline: { date: "member-state", note: "duty point is usually release for consumption" }
+evidence_needed:
+  - member state of production or release
+  - CN code / strength / hectolitres
+  - whether the movement is under duty suspension (EMCS)
+forms: ["EU excise / EMCS"]
+numbers: []
+citations:
+  - { src: "Council Directive 2020/262 (excise)", url: "https://eur-lex.europa.eu/eli/dir/2020/262/oj", passage_id: "eu-excise" }
+explain_hints:
+  - "EU alcohol duty is a member-state excise under the common excise directive, not a single 'Europe wine tax.' Rates and bonded-warehouse rules differ by country. Counsel stays on REVIEW until the member state and volume are in the file."

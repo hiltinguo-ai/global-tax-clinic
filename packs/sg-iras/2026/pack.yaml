@@ -1,0 +1,9 @@
+id: sg-iras
+name: Singapore IRAS
+jurisdiction: SG
+authority: IRAS
+tax_year: 2026
+effective_from: 2026-01-01
+last_reviewed_by: Hiltin Guo
+last_reviewed_on: 2026-08-30
+version: "0.2"

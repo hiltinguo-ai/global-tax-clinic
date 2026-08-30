@@ -1,0 +1,18 @@
+id: cn.sta.iit_183
+name: China IIT 183-day residency
+applies_to: [individual]
+trigger:
+  all:
+    - profile.days_in_cn >= 183
+severity: high
+status_if_true: likely
+deadline: { date: "03-31", note: "IIT annual reconciliation for residents" }
+evidence_needed:
+  - day-count log (entry/exit)
+  - employment contract and China-source vs worldwide income split
+forms: ["IIT"]
+numbers: ["183"]
+citations:
+  - { src: "China IIT Law art. 1", url: "https://www.chinatax.gov.cn/", passage_id: "cn-iit-183" }
+explain_hints:
+  - "An individual who resides in China for 183 days or more in a tax year is generally a resident for IIT. Worldwide income may be in scope, subject to the six-year rule and treaty tie-breakers."

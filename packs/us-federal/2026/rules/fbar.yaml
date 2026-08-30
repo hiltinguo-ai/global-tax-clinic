@@ -1,0 +1,24 @@
+id: us.fed.fbar
+name: FinCEN Form 114 (FBAR)
+applies_to: [individual, llc, c_corp, family_trust]
+trigger:
+  all:
+    - profile.us_person == true
+    - sum(profile.foreign_accounts[*].max_balance_usd) > 10000
+severity: high
+status_if_true: required
+deadline: { date: "04-15", auto_extension_to: "10-15" }
+evidence_needed:
+  - account statements showing maximum balance during the year
+  - account numbers and foreign bank name
+forms: ["FBAR", "114"]
+numbers: ["10000"]
+citations:
+  - { src: "31 CFR 1010.350", url: "https://www.ecfr.gov/current/title-31/subtitle-B/chapter-X/part-1010/subpart-C/section-1010.350", passage_id: "fbar-cfr" }
+  - { src: "FinCEN FBAR instructions", url: "https://www.fincen.gov/report-foreign-bank-and-financial-accounts", passage_id: "fbar-instr" }
+explain_hints:
+  - "Aggregate, not per-account: five $3k accounts still trigger it."
+  - "HK MPF and mainland housing-fund accounts are commonly omitted."
+cross_border:
+  pairs_with: [hk.ird.*, cn.sta.*]
+  note: "HK MPF and CN housing fund accounts are commonly missed."

@@ -1,0 +1,20 @@
+id: ca.cra.alcohol
+name: Canada federal excise — alcohol
+applies_to: [individual, llc, c_corp]
+trigger:
+  all:
+    - profile.has_alcohol()
+    - '"CA" in profile.residencies'
+severity: high
+status_if_true: check
+deadline: { date: "excise-return", note: "Excise Act, 2001 return cycle" }
+evidence_needed:
+  - excise licence (spirits / wine / beer) or import account
+  - litres of absolute alcohol or hectolitres
+  - province of sale (provincial mark-ups sit on top)
+forms: ["excise duty return"]
+numbers: []
+citations:
+  - { src: "CRA — excise duty on alcohol", url: "https://www.canada.ca/en/revenue-agency/services/tax/technical-information/excise-duty.html", passage_id: "ca-alcohol" }
+explain_hints:
+  - "Federal excise under the Excise Act, 2001 applies to spirits, wine and beer at production or import. Provinces add mark-ups and, in some cases, a social-reference tax. A restaurant that only buys duty-paid stock is usually not the federal excise taxpayer. No duty is computed without volume."

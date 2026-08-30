@@ -1,0 +1,19 @@
+id: uk.hmrc.vat
+name: United Kingdom VAT
+applies_to: [individual, llc, c_corp]
+trigger:
+  all:
+    - profile.has_gst("UK")
+severity: high
+status_if_true: required
+deadline: { date: "VAT-return", note: "usually quarterly VAT Return" }
+evidence_needed:
+  - VAT registration (or taxable turnover vs the threshold)
+  - standard / reduced / zero-rated split
+  - whether the business is established in the UK
+forms: ["VAT Return"]
+numbers: ["20", "90000"]
+citations:
+  - { src: "GOV.UK — VAT registration", url: "https://www.gov.uk/vat-registration", passage_id: "uk-vat" }
+explain_hints:
+  - "UK standard VAT is 20%. The VAT registration threshold is set by HMRC (historically in the tens of thousands of pounds of taxable turnover). The accountant may illustrate 20% only on UK supplies already on this file."

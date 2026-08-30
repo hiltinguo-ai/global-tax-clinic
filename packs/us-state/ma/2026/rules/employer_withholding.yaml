@@ -1,0 +1,19 @@
+id: ma.dor.withholding
+name: Massachusetts employer withholding
+applies_to: [llc, c_corp]
+trigger:
+  all:
+    - profile.has_employees == true
+    - '"MA" in profile.states'
+severity: high
+status_if_true: required
+deadline: { date: "payroll-cycle" }
+evidence_needed:
+  - MA employer registration
+  - payroll filings and employee W-2 / Form M-4
+forms: ["M-941", "M-3"]
+numbers: []
+citations:
+  - { src: "MA employer withholding", url: "https://www.mass.gov/withholding-tax", passage_id: "ma-wh" }
+explain_hints:
+  - "Once you have MA employees, withholding and unemployment accounts are operational taxes, not year-end cleanup."

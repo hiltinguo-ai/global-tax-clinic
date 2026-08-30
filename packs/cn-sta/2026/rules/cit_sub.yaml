@@ -1,0 +1,18 @@
+id: cn.sta.cit
+name: China CIT on a mainland subsidiary
+applies_to: [llc, c_corp]
+trigger:
+  all:
+    - any(profile.ownerships[*].country == "CN")
+severity: high
+status_if_true: likely
+deadline: { date: "annual CIT", note: "calendar-year filing with local STA" }
+evidence_needed:
+  - mainland entity registration and related-party ledger
+  - transfer-pricing file if cross-border
+forms: ["CIT"]
+numbers: []
+citations:
+  - { src: "China EIT Law", url: "https://www.chinatax.gov.cn/", passage_id: "cn-cit" }
+explain_hints:
+  - "A Shanghai or other mainland subsidiary is a China CIT taxpayer. Transfer-pricing and 5471 sit on the US side of the same fact; this pack only names the China obligation."

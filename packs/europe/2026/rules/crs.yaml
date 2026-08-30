@@ -1,0 +1,19 @@
+id: eu.crs
+name: CRS / DAC reporting hygiene
+applies_to: [individual, llc, c_corp, family_trust]
+trigger:
+  any:
+    - '"EU" in profile.residencies'
+    - count(profile.foreign_accounts) >= 1
+severity: medium
+status_if_true: check
+deadline: { date: "institution-reported", note: "CRS is usually reported by the financial institution, not the client" }
+evidence_needed:
+  - self-certification / tax-residency forms given to banks
+  - account locations in EU/OECD CRS jurisdictions
+forms: ["CRS"]
+numbers: []
+citations:
+  - { src: "OECD Common Reporting Standard", url: "https://www.oecd.org/en/topics/financial-account-information.html", passage_id: "eu-crs" }
+explain_hints:
+  - "CRS is information exchange, not an income tax. EU (and many other) banks will report accounts when tax residency is US, CN, or HK. Confirm the self-certification matches the counsel memo."

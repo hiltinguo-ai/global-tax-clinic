@@ -1,0 +1,68 @@
+================================================================
+  NIMBUSFLOW, INC. — ONBOARDING DOCUMENTATION
+  Tax Compliance Year: 2025
+================================================================
+
+1. ENTITY PROFILE
+----------------------------------------------------------------
+Legal name               NimbusFlow, Inc.
+Entity type              C-corporation
+State of incorporation   Massachusetts
+Date of incorporation    2023-03-15
+EIN                      12-3456789
+Fiscal year end          December 31
+Industry                 SaaS (NAICS 513210)
+HQ physical address      12 Winter St, Boston, MA 02108
+
+2. EMPLOYEE ROSTER
+----------------------------------------------------------------
+Name             Role           State   Work location              W-2 wages (annual)
+Jane Kim         CEO            MA      Boston, MA (in-office)     $180,000
+Marcus Rivera    CTO            MA      Boston, MA (in-office)     $165,000
+Priya Sharma     Sr. Engineer   MA      Cambridge, MA (remote)     $145,000
+
+3. REVENUE SUMMARY (2025, by customer billing state)
+----------------------------------------------------------------
+State   Customers   Gross revenue   SaaS taxable?
+MA      14          $420,000        Yes
+NY      8           $240,000        Yes
+CA      6           $180,000        Yes
+TX      5           $120,000        No (SaaS exempt)
+IL      3           $90,000         Yes
+Other   14          $200,000        Varies
+TOTAL   50          $1,250,000      --
+
+4. EXPENSE SUMMARY (2025)
+----------------------------------------------------------------
+Category                            Amount
+Payroll (gross wages)               $490,000
+Payroll taxes (employer share)      $37,485
+Cloud hosting (AWS)                 $48,000
+SaaS tooling subscriptions          $18,000
+Office lease (Boston)               $36,000
+Professional services (legal, acct) $22,000
+Marketing & ads                     $30,000
+Travel & meals                      $8,000
+TOTAL                               $689,485
+
+5. NEXUS DETERMINATION (auto-generated from data)
+----------------------------------------------------------------
+Jurisdiction   Trigger                              Nexus?    Tax types
+MA             Physical presence (HQ + 3 employees)  YES       Corporate excise, sales tax (SaaS), employer withholding, UI
+NY             Economic nexus ($240k revenue)        REVIEW    Sales tax (SaaS), corporate income tax if nexus met
+CA             Economic nexus ($180k revenue)        REVIEW    Sales tax (SaaS), franchise tax if nexus met
+TX             Economic nexus ($120k revenue)        REVIEW    Franchise tax only if nexus met; no sales tax on SaaS
+IL             Economic nexus ($90k revenue)         REVIEW    Sales tax (SaaS) if threshold met
+
+6. FILING CALENDAR (2026, key deadlines)
+----------------------------------------------------------------
+Date       Jurisdiction   Filing                              Form
+Jan 15     MA             Q4 estimated corporate excise       Form 355-ES
+Jan 31     Federal + MA   W-2 issuance to employees           W-2, M-941
+Mar 15     Federal        Corporate income tax return         Form 1120
+Mar 15     MA             Corporate excise tax return         Form 355
+Apr 15     MA             Q1 estimated corporate excise       Form 355-ES
+Apr 30     MA             Q1 sales tax return                 Form ST-9
+May 15     TX             Franchise tax report (if nexus)     Form 05-158
+Jun 15     MA             Q2 estimated corporate excise       Form 355-ES
+Jul 31     MA             Q2 sales tax return                 Form ST-9

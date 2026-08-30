@@ -1,0 +1,22 @@
+id: ma.dor.excise
+name: Massachusetts corporate excise / LLC filing
+applies_to: [llc, c_corp]
+trigger:
+  all:
+    - '"MA" in profile.states'
+    - any:
+        - profile.entity_type == "llc"
+        - profile.entity_type == "c_corp"
+severity: medium
+status_if_true: likely
+deadline: { date: "03-15", note: "MA calendar-year C-corp Form 355; LLC classification may change the form" }
+evidence_needed:
+  - entity classification (disregarded LLC vs corp)
+  - single-sales-factor workpaper (MA receipts / everywhere)
+forms: ["Form 355", "Form 3"]
+numbers: ["8", "456", "2.60"]
+citations:
+  - { src: "MA corporate excise", url: "https://www.mass.gov/corporate-excise-tax", passage_id: "ma-excise" }
+explain_hints:
+  - "A MA C-corp generally files Form 355. Tax is the greater of 8% of MA-apportioned net income or $2.60 per $1,000 of tangible property/net worth, but not less than $456."
+  - "Incorporation in MA is automatic nexus for corporate excise. A Delaware C-corp with MA operations is not 'only Delaware.'"

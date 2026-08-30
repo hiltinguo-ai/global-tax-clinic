@@ -1,0 +1,18 @@
+id: eu.vat.oss
+name: EU VAT / OSS economic-nexus review
+applies_to: [individual, llc, c_corp, family_trust]
+trigger:
+  all:
+    - '"EU" in profile.residencies'
+severity: high
+status_if_true: check
+deadline: { date: "before-first-EU-supply", note: "VAT registration is often due before or as supplies start" }
+evidence_needed:
+  - EU customer billing by member state
+  - place-of-supply analysis (B2B vs B2C, digital services)
+forms: ["VAT OSS"]
+numbers: ["10000"]
+citations:
+  - { src: "Council Directive 2006/112/EC (VAT)", url: "https://eur-lex.europa.eu/eli/dir/2006/112/oj", passage_id: "eu-vat" }
+explain_hints:
+  - "EU VAT is a member-state and place-of-supply problem, not one 'Europe tax.' Distance-selling / OSS thresholds (including the €10,000 Union-wide B2C digital/goods threshold) are a counsel REVIEW until the supply map is in the file."

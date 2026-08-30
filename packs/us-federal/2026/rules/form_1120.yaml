@@ -1,0 +1,18 @@
+id: us.fed.1120
+name: Form 1120 U.S. corporation income tax
+applies_to: [c_corp]
+trigger:
+  all:
+    - profile.entity_type == "c_corp"
+severity: high
+status_if_true: required
+deadline: { date: "04-15", note: "15th day of the 4th month; calendar-year C-corp. Verify current IRS due date." }
+evidence_needed:
+  - trial balance and book-to-tax workpapers
+  - federal estimated payments
+forms: ["1120"]
+numbers: []
+citations:
+  - { src: "IRS Form 1120", url: "https://www.irs.gov/forms-pubs/about-form-1120", passage_id: "f1120" }
+explain_hints:
+  - "A C-corp files Form 1120. This clinic does not compute taxable income."

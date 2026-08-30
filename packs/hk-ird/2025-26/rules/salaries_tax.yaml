@@ -1,0 +1,19 @@
+id: hk.ird.salaries
+name: Hong Kong salaries tax
+applies_to: [individual]
+trigger:
+  any:
+    - '"HK" in profile.residencies'
+    - any(profile.income_streams[*].country == "HK")
+severity: medium
+status_if_true: check
+deadline: { date: "early-June", note: "BIR60 composite tax return" }
+evidence_needed:
+  - HK employment contract and IR56B
+  - days-in / days-out if claiming time apportionment
+forms: ["BIR60"]
+numbers: []
+citations:
+  - { src: "IRD salaries tax", url: "https://www.ird.gov.hk/eng/tax/ind_stt.htm", passage_id: "hk-salaries" }
+explain_hints:
+  - "HK salaries tax is territorial. A US-source wage is not automatically HK-taxable, but HK duties, a Hong Kong employer, or days in HK can change that. Flag, do not conclude."

@@ -1,0 +1,412 @@
+[
+  {
+    "id": "fbar-cfr",
+    "title": "31 CFR 1010.350",
+    "text": "A United States person that has a financial interest in, or signature authority over, a bank, securities, or other financial account in a foreign country must report that relationship if the aggregate value of the accounts exceeds $10,000 at any time during the calendar year."
+  },
+  {
+    "id": "fbar-instr",
+    "title": "FinCEN FBAR instructions",
+    "text": "File FinCEN Form 114 electronically. The $10,000 test is aggregate across all foreign financial accounts, using the maximum value during the year."
+  },
+  {
+    "id": "irc-6038d",
+    "title": "IRC 6038D",
+    "text": "Specified individuals must report specified foreign financial assets when the total value exceeds the applicable threshold. Domestic unmarried filers generally start at $50,000 on the last day of the year or $75,000 at any time."
+  },
+  {
+    "id": "f8938-instr",
+    "title": "Form 8938 instructions",
+    "text": "Form 8938 is filed with the federal income tax return. Filing 8938 does not relieve a person of FBAR filing. Real estate is not a specified foreign financial asset."
+  },
+  {
+    "id": "irc-6039f",
+    "title": "IRC 6039F",
+    "text": "A United States person who receives large gifts or bequests from foreign persons must report them. For gifts from foreign individuals, the reporting threshold is more than $100,000."
+  },
+  {
+    "id": "f3520-instr",
+    "title": "Form 3520 instructions",
+    "text": "Form 3520 reports certain foreign gifts and foreign trust transactions. The gift itself is often not taxable; failure to file can still produce large penalties."
+  },
+  {
+    "id": "irc-1297",
+    "title": "IRC 1297 PFIC",
+    "text": "A foreign corporation is a PFIC if it meets the income or asset test. Non-US mutual funds commonly meet the test. US shareholders may need Form 8621."
+  },
+  {
+    "id": "f8621-instr",
+    "title": "Form 8621 instructions",
+    "text": "Form 8621 is used by a US person that is a shareholder of a PFIC. Default excess-distribution rules can be punitive; QEF and mark-to-market elections have their own constraints."
+  },
+  {
+    "id": "irc-901",
+    "title": "IRC 901",
+    "text": "A taxpayer may claim a credit for qualified foreign income taxes paid or accrued, subject to the limitation in section 904 and basket rules."
+  },
+  {
+    "id": "f1116-instr",
+    "title": "Form 1116 instructions",
+    "text": "Form 1116 computes the foreign tax credit for individuals. Foreign-source income and foreign tax must be matched by basket. A treaty position can change the source or rate."
+  },
+  {
+    "id": "sch-c",
+    "title": "Schedule C",
+    "text": "Use Schedule C to report income or loss from a business you operated as a sole proprietor. Gig-economy 1099-NEC income is commonly Schedule C income."
+  },
+  {
+    "id": "irc-1402",
+    "title": "IRC 1402",
+    "text": "Net earnings from self-employment generally include the gross income from a trade or business less deductions. The $400 threshold is the usual trigger for Schedule SE."
+  },
+  {
+    "id": "sch-se",
+    "title": "Schedule SE",
+    "text": "Schedule SE computes Social Security and Medicare tax on self-employment income. W-2 wages already subjected to FICA are not piled on again."
+  },
+  {
+    "id": "est-tax",
+    "title": "IRS estimated taxes",
+    "text": "Individuals who expect to owe $1,000 or more after withholding generally must make estimated tax payments. Safe harbor is often 100% or 110% of last year's tax."
+  },
+  {
+    "id": "eitc",
+    "title": "EITC",
+    "text": "The earned income credit has earned-income, AGI, age, residency, and relationship tests. A dependent is a starting clue, not a determination."
+  },
+  {
+    "id": "ctc",
+    "title": "Child tax credit",
+    "text": "The child tax credit requires a qualifying child and is subject to income phaseouts. Use Schedule 8812. This clinic does not compute the credit."
+  },
+  {
+    "id": "tips",
+    "title": "Tip reporting",
+    "text": "Employees who receive cash tips of $20 or more in a calendar month must report those tips to the employer. Keep a daily tip record."
+  },
+  {
+    "id": "irc-6038",
+    "title": "IRC 6038",
+    "text": "US persons who control foreign corporations, or who are officers or 10% shareholders in specified cases, file information returns. Form 5471 carries large failure-to-file penalties."
+  },
+  {
+    "id": "f5471-instr",
+    "title": "Form 5471",
+    "text": "Form 5471 is an information return for certain US persons with respect to foreign corporations. Category of filer depends on ownership and officer or director status."
+  },
+  {
+    "id": "irc-6038a",
+    "title": "IRC 6038A",
+    "text": "A 25% foreign-owned US corporation must report certain related-party transactions. Form 5472 is the usual vehicle, filed with Form 1120."
+  },
+  {
+    "id": "f5472-instr",
+    "title": "Form 5472",
+    "text": "Reportable transactions include sales, compensation, rents, and many capital contributions or loans between the US corporation and a foreign related party."
+  },
+  {
+    "id": "irc-83b",
+    "title": "IRC 83(b)",
+    "text": "A service provider who receives property subject to a substantial risk of forfeiture may elect, within 30 days of transfer, to include the excess of FMV over amount paid in income immediately."
+  },
+  {
+    "id": "ma-part-year",
+    "title": "MA part-year residents",
+    "text": "A person who moves into or out of Massachusetts during the year files as a part-year resident and allocates income. Leaving in July does not eliminate the MA return."
+  },
+  {
+    "id": "ma-meals",
+    "title": "MA meals tax",
+    "text": "Massachusetts imposes a 6.25% meals tax on restaurant meals. Many cities add a 0.75% local option. Operators must register and file on the assigned cycle."
+  },
+  {
+    "id": "ma-sales",
+    "title": "MA sales tax",
+    "text": "The Massachusetts sales tax is 6.25% on taxable tangible personal property. A restaurant that also sells merch or unopened bottles often has a sales-tax slice beside meals tax."
+  },
+  {
+    "id": "ma-wh",
+    "title": "MA withholding",
+    "text": "Massachusetts employers must register, withhold, and file. Payroll tax is an operations clock, not a year-end project."
+  },
+  {
+    "id": "ma-excise",
+    "title": "MA corporate excise",
+    "text": "Corporations doing business in Massachusetts generally file a corporate excise return. Classification of an LLC (disregarded, partnership, or corp) changes the form, not the need to look."
+  },
+  {
+    "id": "hk-salaries",
+    "title": "IRD salaries tax",
+    "text": "Hong Kong salaries tax is territorial. Income from employment, office, or pension with a Hong Kong source is in scope. Time-apportionment is fact-specific."
+  },
+  {
+    "id": "hk-profits",
+    "title": "IRD profits tax",
+    "text": "Profits tax is charged on profits arising in or derived from Hong Kong from a trade, profession, or business. Residence of the owner is not the test."
+  },
+  {
+    "id": "hk-prov",
+    "title": "IRD provisional tax",
+    "text": "Provisional tax is generally charged based on the preceding year's assessment. A holdover can be requested when income has dropped or the person has left Hong Kong."
+  },
+  {
+    "id": "hk-employer",
+    "title": "IRD employer's return",
+    "text": "An employer in Hong Kong files an annual return of remuneration (IR56B) and notifications when staff start or leave."
+  },
+  {
+    "id": "hk-dipn21",
+    "title": "DIPN 21 source of profits",
+    "text": "The source of profits is determined by the operations that produced the profits. An offshore claim needs evidence of where those operations took place."
+  },
+  {
+    "id": "xb-fbar-pfic",
+    "title": "FBAR and PFIC overlap",
+    "text": "A foreign brokerage account holding a non-US fund is often both an FBAR account and a PFIC holding. One statement, two US reporting regimes."
+  },
+  {
+    "id": "xb-rental",
+    "title": "Foreign rental on the US return",
+    "text": "A US person includes worldwide rental income on the 1040. A foreign apartment is not itself an 8938 asset. Foreign income tax paid may support Form 1116."
+  },
+  {
+    "id": "xb-mpf",
+    "title": "MPF and housing funds on FBAR",
+    "text": "Hong Kong MPF accounts and many mainland housing-fund accounts are foreign financial accounts when the US person has a financial interest."
+  },
+  {
+    "id": "xb-entity",
+    "title": "5471 and 5472 together",
+    "text": "5472 looks up at 25% foreign owners of a US corporation. 5471 looks down at a foreign corporation the US person owns. A Delaware C-corp with Chinese founders and a Shanghai subsidiary often has both."
+  },
+  {
+    "id": "ma-saas",
+    "title": "830 CMR 64H.1.3 computer services",
+    "text": "Massachusetts treats prewritten software delivered electronically as taxable tangible personal property. A SaaS subscription billed to a Massachusetts customer is generally meals-adjacent in operations but sales-taxable, not meals-taxable."
+  },
+  {
+    "id": "ma-excise",
+    "title": "MA corporate excise (agency desk)",
+    "text": "Corporate excise is the greater of 8% of net income apportioned to Massachusetts or $2.60 per $1,000 of tangible property or net worth, with a $456 minimum. Calendar-year C-corps file Form 355. Estimates (355-ES) apply if tax is expected to exceed $1,000. Most industries use a single sales factor."
+  },
+  {
+    "id": "f1120",
+    "title": "Form 1120",
+    "text": "A domestic C-corporation files Form 1120. Due date is generally the 15th day of the fourth month after year-end. This clinic does not prepare the return."
+  },
+  {
+    "id": "nexus-review",
+    "title": "Economic nexus REVIEW",
+    "text": "Counsel marks a jurisdiction REVIEW when the file shows customers or revenue but the pack has not proven physical presence, that state's economic-nexus threshold, or a P.L. 86-272 protection. Accountant does not compute a liability for REVIEW states."
+  },
+  {
+    "id": "cn-iit-183",
+    "title": "China IIT 183-day residency",
+    "text": "An individual who resides in China for 183 days or more in a tax year is generally a resident individual for IIT. Worldwide income may be in scope, subject to the six-year rule and any treaty tie-breaker."
+  },
+  {
+    "id": "cn-iit-ties",
+    "title": "China IIT source without full residency",
+    "text": "Non-residents remain taxable on China-source income, including mainland rental. A day count below 183 is not a clean exit if China-source income exists."
+  },
+  {
+    "id": "cn-cit",
+    "title": "China enterprise income tax",
+    "text": "A mainland subsidiary is a CIT taxpayer. Related-party cross-border dealings need a transfer-pricing file. This is the China side of a US 5471 fact pattern."
+  },
+  {
+    "id": "eu-vat",
+    "title": "EU VAT Directive",
+    "text": "VAT follows place of supply and member-state registration. A Union-wide €10,000 threshold can pull B2C distance sales and digital services into OSS. One 'Europe' checkbox is the start of a REVIEW, not a single return."
+  },
+  {
+    "id": "eu-crs",
+    "title": "OECD Common Reporting Standard",
+    "text": "CRS requires financial institutions to report accounts held by tax residents of participating jurisdictions. The client usually files a self-certification; the bank files the report."
+  },
+  {
+    "id": "f1041",
+    "title": "Form 1041",
+    "text": "A domestic estate or trust files Form 1041 for income it is treated as owning. A wholly grantor trust is generally reported on the grantor's Form 1040."
+  },
+  {
+    "id": "irc-671",
+    "title": "IRC 671–679 grantor trusts",
+    "text": "If the grantor is treated as the owner of any portion of a trust, the grantor includes those items on the personal return. Classification depends on retained powers and who funded the trust."
+  },
+  {
+    "id": "f709",
+    "title": "Form 709",
+    "text": "Completed gifts, including transfers of founder stock into a family trust, are reported on Form 709. Tax may be zero after the lifetime exemption; the return still documents basis and GST allocations."
+  },
+  {
+    "id": "qd-1h",
+    "title": "Qualified dividends",
+    "text": "Dividends from a domestic listed C-corporation held more than 60 days in the 121-day window are generally qualified dividends. They remain investment income for NIIT."
+  },
+  {
+    "id": "irc-1411",
+    "title": "IRC 1411 NIIT",
+    "text": "A 3.8% net investment income tax applies to individuals over the MAGI threshold and to certain estates and trusts. Dividends and gains from a concentrated listed stake are in the NIIT base."
+  },
+  {
+    "id": "irc-1202",
+    "title": "IRC 1202 QSBS",
+    "text": "Exclusion of gain on qualified small business stock requires original issuance, C-corp status, a gross-asset test at issuance, and a five-year hold. Later listing or growth does not automatically preserve QSBS for newly issued shares."
+  },
+  {
+    "id": "irs-property",
+    "title": "IRS Topic 503 — Deductible taxes",
+    "text": "State and local real property taxes may be deductible on Schedule A, subject to the SALT cap. The tax itself is assessed by the city or county, not the IRS. The clinic does not invent a millage or a local bill."
+  },
+  {
+    "id": "ma-property",
+    "title": "Massachusetts property tax",
+    "text": "Cities and towns levy property tax under M.G.L. c. 59. DOR oversees classification and Proposition 2½. The rate is local. A clinic finding opens the assessor's card and the bill cycle; it does not compute millage."
+  },
+  {
+    "id": "ma-alcohol",
+    "title": "Massachusetts alcoholic beverages excise",
+    "text": "Massachusetts taxes alcoholic beverages as an excise in addition to sales or meals tax. License class (pouring, package, wholesale, winery) determines who files. Volume is required before any dollar illustration."
+  },
+  {
+    "id": "ttb-wine",
+    "title": "TTB wine excise",
+    "text": "Federal wine excise is a TTB permit-and-volume tax. Still wine is generally $1.07 per wine gallon before any CBMA credit. A restaurant that only pours wine is not the TTB taxpayer."
+  },
+  {
+    "id": "ttb-beer",
+    "title": "TTB beer excise",
+    "text": "Federal beer excise is generally $18 per barrel. Qualifying small brewers may use $3.50 on the first 60,000 barrels. Retail pouring is not the TTB removal."
+  },
+  {
+    "id": "ttb-spirits",
+    "title": "TTB distilled spirits",
+    "text": "Federal distilled-spirits excise is charged per proof gallon. The ordinary rate is $13.50 per proof gallon; CBMA may reduce the first increment. No tax due is computed without proof gallons."
+  },
+  {
+    "id": "hk-property",
+    "title": "IRD property tax",
+    "text": "Hong Kong property tax is charged on the owner of land or buildings. The standard rate applies to net assessable value (rent less rates and the statutory 20% allowance). A corporation whose rental is already in profits tax may be exempt."
+  },
+  {
+    "id": "hk-rates",
+    "title": "Hong Kong rates",
+    "text": "Rates are a Rating and Valuation Department charge on rateable value, separate from IRD property tax. The percentage is set in the Budget. The clinic will not compute a rates bill without the RVD demand note."
+  },
+  {
+    "id": "hk-liquor",
+    "title": "Hong Kong liquor duty",
+    "text": "Liquor duty is a Customs and Excise matter under the Dutiable Commodities Ordinance. Wine duty was reduced to 0% in 2008; other liquors remain dutiable. Product classification comes before any duty computation."
+  },
+  {
+    "id": "hk-stamp",
+    "title": "Hong Kong stamp duty on immovable property",
+    "text": "Stamp duty is a transfer tax on the instrument, separate from property tax and rates. Ad valorem duty and any special or buyer’s stamp duty depend on the buyer and the holding period."
+  },
+  {
+    "id": "cn-vat",
+    "title": "China mainland VAT",
+    "text": "Mainland VAT is not a single rate. General taxpayers commonly see 13%, 9% or 6% depending on the supply. Small-scale taxpayers use a different collection rate. The clinic will not compute a VAT payable without the sales-by-rate split."
+  },
+  {
+    "id": "cn-property",
+    "title": "China mainland 房产税",
+    "text": "Mainland property-related taxes include 房产税, 城镇土地使用税 and deed tax. They sit with local tax bureaus and are not one national millage bill. City and use must be on the file before anyone computes."
+  },
+  {
+    "id": "cn-excise",
+    "title": "China mainland 消费税 — alcohol",
+    "text": "Consumption tax on alcohol sits on the producer or importer, on top of VAT. Rates differ by product class (白酒, beer, imported wine). A restaurant that only buys duty-paid stock is usually not the taxpayer."
+  },
+  {
+    "id": "eu-excise",
+    "title": "EU alcohol excise",
+    "text": "EU alcohol duty is a member-state excise under the common excise directive. Rates and bonded-warehouse rules differ by country. The duty point is usually release for consumption."
+  },
+  {
+    "id": "au-gst",
+    "title": "Australia GST",
+    "text": "Australia GST is generally 10% of the GST-exclusive price. Registration is usually required once GST turnover hits A$75,000 (A$150,000 for non-profits). The accountant may illustrate 10% only on supplies already on the file."
+  },
+  {
+    "id": "au-wet",
+    "title": "Australia wine equalisation tax",
+    "text": "WET is a 29% tax on the wholesale value of wine, separate from GST. It sits on producers, wholesalers and importers. A restaurant that only pours a bottle is not the WET taxpayer."
+  },
+  {
+    "id": "au-land",
+    "title": "Australian state land tax",
+    "text": "Land tax is a state tax on unimproved value above a threshold. There is no single federal property tax. Counsel stays on REVIEW until the state and the valuation are on the file."
+  },
+  {
+    "id": "sg-gst",
+    "title": "Singapore GST",
+    "text": "Singapore GST is 9% from 1 January 2024. Compulsory registration generally turns on taxable turnover of S$1 million. Overseas vendors of digital services may have a separate registration path."
+  },
+  {
+    "id": "sg-property",
+    "title": "Singapore property tax",
+    "text": "IRAS charges property tax on annual value. Owner-occupied residential property uses a progressive owner-occupier schedule; other residential and commercial property uses a different schedule."
+  },
+  {
+    "id": "ca-gst",
+    "title": "Canada GST/HST",
+    "text": "Federal GST is 5%. HST is a combined federal-provincial rate that depends on the province of supply. The small-supplier threshold is generally C$30,000 over four calendar quarters."
+  },
+  {
+    "id": "ca-alcohol",
+    "title": "Canada federal excise on alcohol",
+    "text": "The Excise Act, 2001 charges duty on spirits, wine and beer at production or import. Provinces add mark-ups. A restaurant that only buys duty-paid stock is usually not the federal excise taxpayer."
+  },
+  {
+    "id": "ca-property",
+    "title": "Canadian municipal property tax",
+    "text": "Canadian property tax is municipal and sometimes provincial, not a CRA income-tax line. Millage is local. Counsel stays on REVIEW until the city and assessment are on the file."
+  },
+  {
+    "id": "uk-vat",
+    "title": "United Kingdom VAT",
+    "text": "UK standard VAT is 20%. Registration depends on taxable turnover against the HMRC threshold. Reduced and zero-rated supplies must be split before anyone illustrates a payable."
+  },
+  {
+    "id": "uk-alcohol",
+    "title": "United Kingdom Alcohol Duty",
+    "text": "UK Alcohol Duty was reformed onto ABV bands. It is an HMRC excise at the duty point, not VAT. A pub that only sells duty-paid stock is usually not the duty taxpayer."
+  },
+  {
+    "id": "uk-rates",
+    "title": "UK business rates and council tax",
+    "text": "Domestic property is council tax. Non-domestic property is business rates on VOA rateable value times a multiplier. The clinic will not invent a multiplier or a bill."
+  },
+  {
+    "id": "xb-meals-alcohol",
+    "title": "MA meals tax and alcohol excise",
+    "text": "Pouring wine is not the same tax as selling a meal. Meals tax and alcoholic beverages excise are two DOR/ABCC maps on the same POS tape."
+  },
+  {
+    "id": "xb-wine",
+    "title": "TTB and MA alcohol",
+    "text": "A Massachusetts winery or importer is usually looking at TTB and DOR, not one wine tax. Volume and license class sit on both files."
+  },
+  {
+    "id": "xb-hk-property",
+    "title": "HK property and US worldwide income",
+    "text": "A let flat in Hong Kong is IRD property tax and RVD rates, and still US worldwide income for a US person. FTC ordering is a Form 1116 question."
+  },
+  {
+    "id": "xb-gst-sales",
+    "title": "GST and US sales tax",
+    "text": "GST in Australia and Massachusetts sales tax can both apply to the same digital or goods flow. They do not offset each other. Treat them as two registrations."
+  },
+  {
+    "id": "xb-wet",
+    "title": "Australia GST and WET",
+    "text": "WET is not GST. A wine wholesaler or importer usually has both on the same BAS. Do not net one against the other."
+  },
+  {
+    "id": "xb-hk-stamp",
+    "title": "HK property tax and stamp duty",
+    "text": "A let flat is IRD property tax and RVD rates every year. Stamp duty only opens if there was a conveyance. Do not treat the three as one Hong Kong property tax."
+  }
+]

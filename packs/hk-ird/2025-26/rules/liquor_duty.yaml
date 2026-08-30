@@ -1,0 +1,20 @@
+id: hk.ced.liquor
+name: Hong Kong dutiable commodities — liquor duty
+applies_to: [individual, llc, c_corp]
+trigger:
+  all:
+    - profile.has_alcohol()
+    - '"HK" in profile.residencies'
+severity: high
+status_if_true: check
+deadline: { date: "on-import-or-manufacture", note: "Customs & Excise duty point" }
+evidence_needed:
+  - whether wine or liquor is imported or manufactured in Hong Kong
+  - licence under the Dutiable Commodities Ordinance
+  - strength and volume
+forms: ["C&ED dutiable commodities"]
+numbers: []
+citations:
+  - { src: "C&ED — dutiable commodities", url: "https://www.customs.gov.hk/en/trade_facilitation/dutiable/index.html", passage_id: "hk-liquor" }
+explain_hints:
+  - "Hong Kong liquor duty is a Customs and Excise matter, not profits tax. Wine duty was reduced to 0% in 2008, but other liquors remain dutiable. Counsel must classify the product before anyone computes a duty."
