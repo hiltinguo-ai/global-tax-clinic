@@ -1,0 +1,18 @@
+id: cn.hrss.social
+name: China social insurance + housing fund (五险一金)
+applies_to: [c_corp, llc]
+trigger:
+  all:
+    - any(profile.ownerships[*].country == "CN")
+severity: high
+status_if_true: check
+deadline: { date: "monthly", note: "employer registration and monthly remittance with local bureaus" }
+evidence_needed:
+  - whether the mainland entity has employees on a local payroll
+  - city-level contribution bases and caps (they vary by city)
+forms: ["社保申报"]
+numbers: ["5"]
+citations:
+  - { src: "MOHRSS social insurance", url: "https://www.mohrss.gov.cn/SYrlzyhshbzb/shehuibaozhang/", passage_id: "cn-social" }
+explain_hints:
+  - "If the Shanghai entity runs payroll, employer social insurance (pension, medical, unemployment, injury, maternity) plus housing fund are mandatory monthly remittances at city-set rates — often 30%+ on top of gross salary. The clinic flags the question; the city sets the numbers."

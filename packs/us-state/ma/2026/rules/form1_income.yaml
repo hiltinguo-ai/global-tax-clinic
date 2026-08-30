@@ -1,0 +1,19 @@
+id: ma.dor.form1
+name: Massachusetts personal income tax (Form 1 / 1-NR/PY)
+applies_to: [individual]
+trigger:
+  all:
+    - '"MA" in profile.states'
+    - count(profile.income_streams) >= 1
+severity: medium
+status_if_true: required
+deadline: { date: "04-15", auto_extension_to: "10-15" }
+evidence_needed:
+  - MA-source wages vs total (part-year and nonresident allocation)
+  - federal AGI carryover items
+forms: ["Form 1", "Form 1-NR/PY"]
+numbers: ["5.0", "4.0", "1000000"]
+citations:
+  - { src: "MA personal income tax", url: "https://www.mass.gov/personal-income-tax", passage_id: "ma-pit" }
+explain_hints:
+  - "MA taxes most income at a 5% flat rate, with a 4% surtax on taxable income over $1 million. Part-year residents allocate by residency period."

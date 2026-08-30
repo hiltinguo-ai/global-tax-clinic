@@ -1,0 +1,21 @@
+id: us.fed.addl_medicare
+name: Additional Medicare tax (Form 8959)
+applies_to: [individual]
+trigger:
+  all:
+    - profile.us_person == true
+    - profile.income_band == "hnw"
+    - any:
+        - has_income("w2", "rsu")
+        - has_income("1099_nec")
+severity: low
+status_if_true: check
+deadline: { date: "04-15", auto_extension_to: "10-15" }
+evidence_needed:
+  - total Medicare wages and SE income vs the $200,000 threshold
+forms: ["8959"]
+numbers: ["0.9", "200000"]
+citations:
+  - { src: "26 USC 3101(b)(2)", url: "https://www.law.cornell.edu/uscode/text/26/3101", passage_id: "irc-3101b2" }
+explain_hints:
+  - "0.9% on wages and SE income above $200,000 (single). Employers only withhold it above $200,000 per employer, so multi-source earners often owe at filing."

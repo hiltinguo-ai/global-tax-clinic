@@ -1,0 +1,20 @@
+id: us.fed.926
+name: Form 926 transfers to a foreign corporation
+applies_to: [individual, c_corp]
+trigger:
+  all:
+    - profile.us_person == true
+    - any(profile.ownerships[*].country != "US")
+severity: medium
+status_if_true: check
+deadline: { date: "04-15", auto_extension_to: "10-15" }
+evidence_needed:
+  - cash or property transferred to the foreign entity this year
+  - transfer dates and amounts ($100,000 cash threshold)
+forms: ["926"]
+numbers: ["100000", "10"]
+citations:
+  - { src: "26 USC 6038B", url: "https://www.law.cornell.edu/uscode/text/26/6038B", passage_id: "irc-6038b" }
+  - { src: "IRS Form 926", url: "https://www.irs.gov/forms-pubs/about-form-926", passage_id: "f926" }
+explain_hints:
+  - "Funding a foreign subsidiary can itself be reportable: cash over $100,000 in 12 months (or any property under §367) files Form 926. The penalty is 10% of the transfer."

@@ -1,0 +1,25 @@
+id: us.fed.niit
+name: Net investment income tax (Form 8960)
+applies_to: [individual, family_trust]
+trigger:
+  all:
+    - profile.us_person == true
+    - any:
+        - profile.income_band == "hnw"
+        - profile.entity_type == "family_trust"
+    - any:
+        - has_income("rental", "dividends", "interest")
+        - profile.has_founder_listed_stake == true
+severity: medium
+status_if_true: check
+deadline: { date: "04-15", auto_extension_to: "10-15" }
+evidence_needed:
+  - MAGI vs the $200,000/$250,000 thresholds (trusts hit NIIT at a few thousand dollars)
+  - net investment income by category
+forms: ["8960"]
+numbers: ["3.8", "200000", "250000"]
+citations:
+  - { src: "26 USC 1411", url: "https://www.law.cornell.edu/uscode/text/26/1411", passage_id: "irc-1411" }
+  - { src: "IRS Form 8960", url: "https://www.irs.gov/forms-pubs/about-form-8960", passage_id: "f8960" }
+explain_hints:
+  - "3.8% on net investment income above the MAGI threshold. Trusts reach the threshold almost immediately, which is why founder stock inside a trust nearly always meets it."

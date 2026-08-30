@@ -1,0 +1,20 @@
+id: us.fed.1040
+name: Form 1040 U.S. individual income tax return
+applies_to: [individual]
+trigger:
+  all:
+    - profile.us_person == true
+    - count(profile.income_streams) >= 1
+severity: medium
+status_if_true: required
+deadline: { date: "04-15", auto_extension_to: "10-15" }
+evidence_needed:
+  - W-2s, 1099s, and foreign income statements
+  - prior-year return
+forms: ["1040"]
+numbers: []
+citations:
+  - { src: "26 USC 6012", url: "https://www.law.cornell.edu/uscode/text/26/6012", passage_id: "irc-6012" }
+  - { src: "IRS Form 1040", url: "https://www.irs.gov/forms-pubs/about-form-1040", passage_id: "f1040" }
+explain_hints:
+  - "The annual return every other US-federal flag hangs off. Worldwide income for a US person, including the foreign items in this file."

@@ -1,0 +1,19 @@
+id: ma.dfml.pfml
+name: Massachusetts Paid Family and Medical Leave contributions
+applies_to: [llc, c_corp]
+trigger:
+  all:
+    - profile.has_employees == true
+    - '"MA" in profile.states'
+severity: medium
+status_if_true: required
+deadline: { date: "quarterly", note: "remitted with MassTaxConnect quarterly filings" }
+evidence_needed:
+  - covered-individual headcount (employer share applies at 25+)
+  - PFML rate notice for the year
+forms: ["PFML return"]
+numbers: ["25"]
+citations:
+  - { src: "MA DFML contributions", url: "https://www.mass.gov/info-details/family-and-medical-leave-contribution-rates-for-employers", passage_id: "ma-pfml" }
+explain_hints:
+  - "PFML contributions are withheld and remitted quarterly; employers with fewer than 25 covered individuals skip the employer share but still remit the employee share. The rate is set annually — read the current notice, do not assume last year's."

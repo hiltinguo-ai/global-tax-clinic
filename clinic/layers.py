@@ -31,7 +31,7 @@ JURISDICTION_PACKS = {
     "china-mainland": "cn-sta",
     "europe": "europe",
     "cross-border": "cross-border",
-    "other-us-states": "us-state-nexus",
+    "other-us-states": ["us-state-nexus", "us-state-de"],
     "australia": "au-ato",
     "singapore": "sg-iras",
     "canada": "ca-cra",
@@ -46,6 +46,7 @@ PACK_LABEL = {
     "europe": "Europe",
     "cross-border": "Cross-border",
     "us-state-nexus": "Other US states (review)",
+    "us-state-de": "Delaware (SOS)",
     "au-ato": "Australia (ATO)",
     "sg-iras": "Singapore (IRAS)",
     "ca-cra": "Canada (CRA)",
@@ -56,8 +57,13 @@ PACK_LABEL = {
 def pack_ids_for(jurisdictions: list[str]) -> list[str] | None:
     if not jurisdictions:
         return None
-    ids = [JURISDICTION_PACKS[j] for j in jurisdictions if j in JURISDICTION_PACKS]
-    return ids or None
+    ids: list[str] = []
+    for j in jurisdictions:
+        mapped = JURISDICTION_PACKS.get(j)
+        if mapped is None:
+            continue
+        ids.extend(mapped if isinstance(mapped, list) else [mapped])
+    return list(dict.fromkeys(ids)) or None
 
 
 def who_label(profile: TaxProfile) -> str:
@@ -86,7 +92,13 @@ def build_layers(
     agency = run_agency(profile, findings)
     required = [f for f in findings if f.status == FindingStatus.required]
     review = [n for n in agency.nexus if n.nexus == "REVIEW"]
-    jur_labels = [PACK_LABEL.get(JURISDICTION_PACKS.get(j, j), j) for j in jurisdictions] or [
+    def _label_of(j: str) -> str:
+        mapped = JURISDICTION_PACKS.get(j, j)
+        if isinstance(mapped, list):
+            mapped = mapped[0]
+        return PACK_LABEL.get(mapped, j)
+
+    jur_labels = [_label_of(j) for j in jurisdictions] or [
         PACK_LABEL.get(f.pack_id, f.jurisdiction) for f in findings
     ]
     jur_labels = list(dict.fromkeys(jur_labels))

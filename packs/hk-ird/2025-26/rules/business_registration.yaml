@@ -1,0 +1,18 @@
+id: hk.ird.br
+name: Hong Kong business registration
+applies_to: [llc, c_corp]
+trigger:
+  all:
+    - '"HK" in profile.residencies'
+severity: medium
+status_if_true: required
+deadline: { date: "annual", note: "renew before the certificate expiry month" }
+evidence_needed:
+  - current business registration certificate
+  - branch registrations if any
+forms: ["BR certificate"]
+numbers: ["2200"]
+citations:
+  - { src: "IRD business registration", url: "https://www.ird.gov.hk/eng/tax/bre.htm", passage_id: "hk-br" }
+explain_hints:
+  - "Every business carried on in Hong Kong needs a business registration certificate renewed annually (fee set by gazette, ~HK$2,200). It is a flat fee, not a computed tax."

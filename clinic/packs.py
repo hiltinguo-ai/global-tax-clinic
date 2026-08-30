@@ -405,6 +405,7 @@ FIELD_INFO: dict[str, tuple[str, str]] = {
         "Is there a family trust on this file (even if the primary client is the individual settlor or beneficiary)?",
     ),
     "filing_status": ("filing status", "What is your filing status (single, MFJ, ...)?"),
+    "income_band": ("income band", "Roughly which income band applies — high-net-worth, middle, or lower income?"),
 }
 
 # computed properties resolve to the source fields the intake can actually provide

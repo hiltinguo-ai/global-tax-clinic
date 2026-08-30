@@ -1,0 +1,18 @@
+id: cn.sta.surtaxes
+name: China VAT surcharges (城建税 + education levies)
+applies_to: [individual, llc, c_corp]
+trigger:
+  all:
+    - profile.has_gst("CN")
+severity: medium
+status_if_true: check
+deadline: { date: "with-VAT", note: "filed and paid on the same return cycle as VAT" }
+evidence_needed:
+  - actual VAT paid by period
+  - city tier (7% urban / 5% county / 1% other) for 城建税
+forms: ["附加税费申报"]
+numbers: ["7", "5", "1", "3", "2"]
+citations:
+  - { src: "STA — 城市维护建设税", url: "https://www.chinatax.gov.cn/chinatax/n810341/n810825/c101434/c101438/content.html", passage_id: "cn-cjs" }
+explain_hints:
+  - "Anyone paying VAT also owes the piggyback surcharges: urban maintenance & construction tax (7%/5%/1% of VAT by location) plus 3% education and 2% local education levies — roughly 12% on top of the VAT bill."

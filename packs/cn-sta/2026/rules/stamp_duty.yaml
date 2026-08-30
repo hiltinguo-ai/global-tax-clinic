@@ -1,0 +1,19 @@
+id: cn.sta.stamp_duty
+name: China stamp duty (印花税)
+applies_to: [llc, c_corp]
+trigger:
+  any:
+    - any(profile.ownerships[*].country == "CN")
+    - profile.has_gst("CN")
+severity: low
+status_if_true: check
+deadline: { date: "quarterly-or-per-instrument", note: "Stamp Duty Law effective 2022" }
+evidence_needed:
+  - taxable contracts (sales, services, leases, loans) booked by the mainland entity
+  - paid-in capital changes and any equity transfers
+forms: ["印花税申报"]
+numbers: ["0.05", "0.03", "0.025"]
+citations:
+  - { src: "Stamp Duty Law of the PRC", url: "https://www.chinatax.gov.cn/chinatax/n810341/n810825/c101434/c101441/content.html", passage_id: "cn-stamp" }
+explain_hints:
+  - "Small rates (0.025%–0.05%) on contracts, capital books, and equity transfers, but a compliance item mainland bureaus actually check. A WFOE's paid-in capital and intercompany service contracts are both in scope."

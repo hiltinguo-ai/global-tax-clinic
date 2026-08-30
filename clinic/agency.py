@@ -84,6 +84,15 @@ def _nexus_table(profile: TaxProfile, findings: list[Finding]) -> list[NexusCall
                 tax_types=types or ["review tax types"],
             )
         )
+    if profile.incorporation_state == "DE":
+        rows.append(
+            NexusCall(
+                jurisdiction="DE",
+                trigger="state of incorporation",
+                nexus="YES",
+                tax_types=["franchise tax + annual report"],
+            )
+        )
     for row in profile.revenue_by_state:
         if row.state in physical:
             continue
@@ -202,6 +211,17 @@ def _worksheet(profile: TaxProfile, findings: list[Finding]) -> list[WorksheetLi
                 result=_money(MA_EXCISE_MIN),
                 note="Greater of 8% of MA-apportioned net income or $2.60 per $1,000 of property/net worth, minimum $456. Net income is not in this file — accountant stops here.",
                 forms=["Form 355"],
+            )
+        )
+    if _has_confirmed(findings, "us.fed.941") and profile.payroll_usd:
+        fica = (profile.payroll_usd * Decimal("0.0765")).quantize(MONEY, rounding=ROUND_HALF_UP)
+        lines.append(
+            WorksheetLine(
+                name="Illustrated employer FICA on payroll in file",
+                inputs=[f"gross wages {_money(profile.payroll_usd)}", "x 7.65% (pack rate)"],
+                result=_money(fica),
+                note="Employer share only, before FUTA and state UI. Deposit schedule follows lookback rules.",
+                forms=["941"],
             )
         )
     if profile.payroll_usd:
@@ -475,6 +495,28 @@ def _calendar(profile: TaxProfile, findings: list[Finding]) -> list[CalendarItem
                     rule_id="ma.dor.sales",
                 )
             )
+    if _has(findings, "us.fed.941"):
+        for d, label in (
+            ("2026-01-31", "940 + W-2/W-3 filings"),
+            ("2026-04-30", "Q1 Form 941"),
+            ("2026-07-31", "Q2 Form 941"),
+            ("2026-10-31", "Q3 Form 941"),
+            ("2027-01-31", "Q4 Form 941"),
+        ):
+            items.append(
+                CalendarItem(
+                    date=d, jurisdiction="US", name=label, form="941/940/W-2",
+                    method="EFTPS", rule_id="us.fed.941",
+                )
+            )
+    if _has(findings, "de.sos.franchise"):
+        items.append(
+            CalendarItem(
+                date="2026-03-01", jurisdiction="DE",
+                name="Franchise tax + annual report", form="DE annual report",
+                method="corp.delaware.gov", rule_id="de.sos.franchise",
+            )
+        )
     if _has(findings, "ma.dor.withholding"):
         for d, label in (
             ("2026-01-31", "W-2 / M-941 recon"),

@@ -1,0 +1,19 @@
+id: ma.dua.ui
+name: Massachusetts unemployment insurance (DUA)
+applies_to: [llc, c_corp]
+trigger:
+  all:
+    - profile.has_employees == true
+    - '"MA" in profile.states'
+severity: high
+status_if_true: required
+deadline: { date: "quarterly", note: "wage reports and contributions via UI Online" }
+evidence_needed:
+  - DUA employer account and assigned contribution rate
+  - quarterly wage detail
+forms: ["UI quarterly report"]
+numbers: ["15000"]
+citations:
+  - { src: "MA DUA employer contributions", url: "https://www.mass.gov/unemployment-insurance-ui-for-employers", passage_id: "ma-ui" }
+explain_hints:
+  - "UI contributions are due on the first $15,000 of each employee's wages at an experience-rated percentage assigned by DUA — the rate is per-employer, so the clinic will not invent one."

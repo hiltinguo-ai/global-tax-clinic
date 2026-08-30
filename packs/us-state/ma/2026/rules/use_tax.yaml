@@ -1,0 +1,17 @@
+id: ma.dor.use_tax
+name: Massachusetts use tax on untaxed purchases
+applies_to: [individual, llc, c_corp, family_trust]
+trigger:
+  all:
+    - '"MA" in profile.states'
+severity: low
+status_if_true: check
+deadline: { date: "04-15", note: "with the income or business return" }
+evidence_needed:
+  - out-of-state or online purchases where no sales tax was collected
+forms: ["ST-11", "Form 1 line"]
+numbers: ["6.25"]
+citations:
+  - { src: "MA sales and use tax", url: "https://www.mass.gov/sales-and-use-tax", passage_id: "ma-use" }
+explain_hints:
+  - "The mirror of sales tax: 6.25% on taxable goods bought untaxed out of state and used in MA. Small for individuals, real for businesses buying equipment."

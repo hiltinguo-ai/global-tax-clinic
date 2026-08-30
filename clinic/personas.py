@@ -238,6 +238,7 @@ def profile_nori() -> TaxProfile:
         us_person=True,
         residencies=["US"],
         states=["DE", "MA"],
+        incorporation_state="DE",
         chinese_founders=True,
         has_employees=True,
         ownerships=[

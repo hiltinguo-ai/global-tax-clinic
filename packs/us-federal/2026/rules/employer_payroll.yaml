@@ -1,0 +1,19 @@
+id: us.fed.941
+name: Federal employer payroll (941, 940, W-2)
+applies_to: [llc, c_corp]
+trigger:
+  all:
+    - profile.has_employees == true
+severity: high
+status_if_true: required
+deadline: { date: "01-31", note: "quarterly 941s; 940 and W-2/W-3 by Jan 31" }
+evidence_needed:
+  - payroll register and deposit schedule (monthly vs semiweekly)
+  - EIN and prior 941 filings
+forms: ["941", "940", "W-2"]
+numbers: ["7.65", "6.0", "7000"]
+citations:
+  - { src: "IRS employment taxes", url: "https://www.irs.gov/businesses/small-businesses-self-employed/employment-taxes", passage_id: "irs-payroll" }
+  - { src: "26 USC 3111 (FICA)", url: "https://www.law.cornell.edu/uscode/text/26/3111", passage_id: "irc-3111" }
+explain_hints:
+  - "Employer FICA is 7.65% of wages; FUTA is 6.0% on the first $7,000 per employee (usually reduced by state credit). Trust-fund taxes carry personal liability — this is the obligation that hurts most when missed."

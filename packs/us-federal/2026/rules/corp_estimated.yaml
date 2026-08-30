@@ -1,0 +1,18 @@
+id: us.fed.1120es
+name: Federal corporate estimated tax
+applies_to: [c_corp]
+trigger:
+  any:
+    - count(profile.revenue_by_state) >= 1
+    - has_income("sales", "saas")
+severity: medium
+status_if_true: check
+deadline: { date: "04-15", note: "installments Apr/Jun/Sep/Dec 15" }
+evidence_needed:
+  - expected taxable income and prior-year tax
+forms: ["1120-W"]
+numbers: ["500"]
+citations:
+  - { src: "26 USC 6655", url: "https://www.law.cornell.edu/uscode/text/26/6655", passage_id: "irc-6655" }
+explain_hints:
+  - "A corporation expecting $500 or more of tax makes quarterly estimates. Whether tax is actually expected needs net income, which this clinic does not compute."

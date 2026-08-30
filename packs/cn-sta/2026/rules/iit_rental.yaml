@@ -1,0 +1,19 @@
+id: cn.sta.iit_rental
+name: China IIT on mainland rental income
+applies_to: [individual]
+trigger:
+  all:
+    - has_income("rental")
+    - any(profile.income_streams[*].country == "CN")
+severity: medium
+status_if_true: likely
+deadline: { date: "monthly-or-annual", note: "withheld or self-declared to the local bureau" }
+evidence_needed:
+  - lease agreement and monthly rent
+  - whether the tenant or platform withholds
+forms: ["IIT declaration"]
+numbers: ["10", "20"]
+citations:
+  - { src: "STA — 个人所得税 (property leasing)", url: "https://www.chinatax.gov.cn/chinatax/n810219/n810744/c101434/index.html", passage_id: "cn-iit-rental" }
+explain_hints:
+  - "Rental income from mainland property is taxable in China regardless of where the owner lives — commonly 10% for residential leases (statutory 20% class) after deductions. It also lands on the US return with a foreign tax credit — pair with Form 1116."

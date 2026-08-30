@@ -1,0 +1,19 @@
+id: cn.sta.wht
+name: China withholding on cross-border payments
+applies_to: [c_corp, llc]
+trigger:
+  all:
+    - any(profile.ownerships[*].country == "CN")
+severity: high
+status_if_true: check
+deadline: { date: "at-payment", note: "withheld by the mainland payer when the payment is made or accrued" }
+evidence_needed:
+  - dividends, royalties, interest, or service fees flowing from the mainland entity to the US parent
+  - treaty relief filings (US–China treaty 10% dividend rate)
+forms: ["扣缴申报"]
+numbers: ["10", "6"]
+citations:
+  - { src: "STA — 非居民企业所得税源泉扣缴", url: "https://www.chinatax.gov.cn/chinatax/n810341/n810770/common_list.html", passage_id: "cn-wht" }
+explain_hints:
+  - "When the Shanghai subsidiary pays dividends, royalties, or interest to its US parent, the mainland side withholds — typically 10% under the treaty (services can also pull VAT at 6%). Repatriation is a tax event, not a wire."
+  - "Pairs with US Form 1118/1116 foreign tax credit and the Form 5471 Schedule E picture."

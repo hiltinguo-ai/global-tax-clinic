@@ -1,0 +1,19 @@
+id: de.sos.franchise
+name: Delaware franchise tax and annual report
+applies_to: [c_corp]
+trigger:
+  all:
+    - profile.incorporation_state == "DE"
+severity: high
+status_if_true: required
+deadline: { date: "03-01", note: "annual report + franchise tax due together" }
+evidence_needed:
+  - authorized shares and par value (or assumed-par gross assets)
+  - Delaware SOS file number
+forms: ["DE annual report"]
+numbers: ["175", "400", "50"]
+citations:
+  - { src: "Delaware Division of Corporations — franchise tax", url: "https://corp.delaware.gov/frtaxcalc/", passage_id: "de-franchise" }
+explain_hints:
+  - "Every Delaware corporation owes franchise tax and an annual report even with zero revenue — minimum $175 (authorized-shares method) or $400 (assumed-par), plus the $50 report fee."
+  - "Startups routinely get a shock bill from the authorized-shares method; the assumed-par method usually fixes it."

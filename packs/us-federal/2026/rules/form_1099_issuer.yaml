@@ -1,0 +1,18 @@
+id: us.fed.1099_issuer
+name: Information returns for contractors (1099-NEC)
+applies_to: [llc, c_corp]
+trigger:
+  all:
+    - count(profile.income_streams) >= 1
+severity: medium
+status_if_true: check
+deadline: { date: "01-31" }
+evidence_needed:
+  - list of unincorporated vendors paid $600 or more
+  - W-9s on file
+forms: ["1099-NEC", "1096"]
+numbers: ["600"]
+citations:
+  - { src: "IRS Form 1099-NEC", url: "https://www.irs.gov/forms-pubs/about-form-1099-nec", passage_id: "f1099nec" }
+explain_hints:
+  - "A business that paid any unincorporated contractor $600 or more must issue 1099-NECs by Jan 31. The clinic cannot see the vendor list — that is the check."

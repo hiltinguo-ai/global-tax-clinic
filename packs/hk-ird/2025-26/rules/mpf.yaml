@@ -1,0 +1,19 @@
+id: hk.mpfa.mpf
+name: Hong Kong MPF employer contributions
+applies_to: [llc, c_corp]
+trigger:
+  all:
+    - profile.has_employees == true
+    - '"HK" in profile.residencies'
+severity: high
+status_if_true: required
+deadline: { date: "10th-of-month", note: "contributions due by the 10th of the following month" }
+evidence_needed:
+  - MPF scheme enrolment for each employee within 60 days
+  - contribution records (5% employer + 5% employee, capped)
+forms: ["MPF remittance statement"]
+numbers: ["5", "1500", "60"]
+citations:
+  - { src: "MPFA employer obligations", url: "https://www.mpfa.org.hk/en/mpf-system/mpf-coverage/employers", passage_id: "hk-mpf" }
+explain_hints:
+  - "Not an IRD tax, but a statutory payroll obligation: enrol employees within 60 days and remit 5% + 5% (capped at HK$1,500/month each side) by the 10th of the next month. Default is an offence."
