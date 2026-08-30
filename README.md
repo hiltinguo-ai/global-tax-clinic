@@ -19,11 +19,11 @@ Open http://127.0.0.1:8000
 
 ## Live demo
 
-The public host runs packs only (`CLINIC_NO_MODEL=1`). Personas and heuristics still open a full file; Ollama stays on your machine.
+**https://global-tax-clinic.onrender.com**
 
-One-click deploy (free Render web service):
+The public host runs packs only (`CLINIC_NO_MODEL=1`). Personas and heuristics still open a full file; Ollama stays on your machine. The first open after idle can take about 30 seconds.
 
-https://render.com/deploy?repo=https://github.com/hiltinguo-ai/global-tax-clinic
+Redeploy: https://render.com/deploy?repo=https://github.com/hiltinguo-ai/global-tax-clinic
 
 Two local SLMs sit under the clinic. Packs still compute every number; the models only extract a profile and narrate findings.
 
