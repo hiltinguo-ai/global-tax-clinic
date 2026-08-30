@@ -17,7 +17,7 @@ from clinic.visit import run_visit
 
 WEB = Path(__file__).resolve().parent.parent / "web"
 
-app = FastAPI(title="Global Tax Clinic", version="0.4.0")
+app = FastAPI(title="AiriTax - the Global Tax Clinic", version="0.4.0")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],

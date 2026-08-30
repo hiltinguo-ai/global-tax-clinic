@@ -1,4 +1,4 @@
-# Global Tax Clinic
+# AiriTax - the Global Tax Clinic
 
 A privacy-first compliance check-up for individuals, LLCs, and C-corps. Small models (optional) extract a profile; versioned jurisdiction packs decide the obligations; the model only narrates what the packs decided.
 

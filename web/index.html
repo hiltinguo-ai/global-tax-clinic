@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Global Tax Clinic</title>
+<title>AiriTax - the Global Tax Clinic</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
@@ -19,6 +19,7 @@
   }
   *{box-sizing:border-box}
   html,body{margin:0;background:var(--paper);color:var(--ink);font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:16px;line-height:1.55}
+  html[lang="zh"],html[lang="zh"] body{font-family:"PingFang SC","Hiragino Sans GB","Noto Sans SC","IBM Plex Sans",system-ui,sans-serif}
   button,textarea,input,select,label{font:inherit}
   button{cursor:pointer}
   a{color:var(--accent)}
@@ -90,109 +91,110 @@
 <div class="app">
   <header class="top">
     <div>
-      <p class="eyebrow">Clinic · one desk at a time</p>
-      <h1>Global Tax Clinic</h1>
-      <p class="lede">Counsel opens the file. The CPA and tax attorney apply the packs. Workpapers hold the citations.</p>
+      <p class="eyebrow" data-i18n="eyebrow">Clinic · one desk at a time</p>
+      <h1 data-i18n="title">AiriTax - the Global Tax Clinic</h1>
+      <p class="lede" data-i18n="lede">Counsel opens the file. The CPA and tax attorney apply the packs. Workpapers hold the citations.</p>
     </div>
     <div class="toggles">
       <button class="chip live" id="live" type="button">Live</button>
-      <button class="chip" id="theme" type="button">Theme</button>
+      <button class="chip" id="lang" type="button" aria-pressed="false">中文</button>
+      <button class="chip" id="theme" type="button" data-i18n="theme">Theme</button>
     </div>
   </header>
 
   <nav class="steps" id="steps" aria-label="Clinic desks">
-    <button class="step on" type="button" data-step="1" id="step1"><b>Layer 1</b>Counsel</button>
-    <button class="step" type="button" data-step="2" id="step2" disabled><b>Layer 2</b>CPA &amp; attorney</button>
-    <button class="step" type="button" data-step="3" id="step3" disabled><b>Layer 3</b>Workpapers</button>
+    <button class="step on" type="button" data-step="1" id="step1"><b data-i18n="layer1">Layer 1</b><span data-i18n="desk1">Counsel</span></button>
+    <button class="step" type="button" data-step="2" id="step2" disabled><b data-i18n="layer2">Layer 2</b><span data-i18n="desk2">CPA &amp; attorney</span></button>
+    <button class="step" type="button" data-step="3" id="step3" disabled><b data-i18n="layer3">Layer 3</b><span data-i18n="desk3">Workpapers</span></button>
   </nav>
 
   <section class="stage" id="stage1">
-    <p class="who">Layer 1 · Engagement manager / counsel</p>
-    <h2>Who is this client?</h2>
+    <p class="who" data-i18n="who1">Layer 1 · Engagement manager / counsel</p>
+    <h2 data-i18n="h2_who">Who is this client?</h2>
     <div id="l1out"></div>
     <details class="intake" id="intake-box" open>
-      <summary>Intake</summary>
-      <p class="empty">Identify who is on the file, the jurisdictions to open, and notes or a PDF / zip.</p>
+      <summary data-i18n="intake">Intake</summary>
+      <p class="empty" data-i18n="intake_help">Identify who is on the file, the jurisdictions to open, and notes or a PDF / zip.</p>
 
       <fieldset>
-        <legend>Who is on this file</legend>
-        <p class="empty">An individual and a family trust can both be on the engagement.</p>
+        <legend data-i18n="who_legend">Who is on this file</legend>
+        <p class="empty" data-i18n="who_help">An individual and a family trust can both be on the engagement.</p>
         <div class="choices" id="who">
-          <label class="choice"><input type="radio" name="who" value="individual:hnw"><span>Individual · HNW</span></label>
-          <label class="choice"><input type="radio" name="who" value="individual:middle"><span>Individual · middle</span></label>
-          <label class="choice"><input type="radio" name="who" value="individual:low_income"><span>Individual · lower income</span></label>
+          <label class="choice"><input type="radio" name="who" value="individual:hnw"><span data-i18n="who_hnw">Individual · HNW</span></label>
+          <label class="choice"><input type="radio" name="who" value="individual:middle"><span data-i18n="who_mid">Individual · middle</span></label>
+          <label class="choice"><input type="radio" name="who" value="individual:low_income"><span data-i18n="who_low">Individual · lower income</span></label>
           <label class="choice"><input type="radio" name="who" value="llc:"><span>LLC</span></label>
-          <label class="choice"><input type="radio" name="who" value="c_corp:"><span>C corporation</span></label>
+          <label class="choice"><input type="radio" name="who" value="c_corp:"><span data-i18n="who_corp">C corporation</span></label>
         </div>
         <div class="choices">
-          <label class="choice"><input type="checkbox" id="family_trust" name="family_trust"><span>Family trust</span></label>
+          <label class="choice"><input type="checkbox" id="family_trust" name="family_trust"><span data-i18n="who_trust">Family trust</span></label>
         </div>
       </fieldset>
 
       <fieldset>
-        <legend>Shareholdings</legend>
+        <legend data-i18n="holdings">Shareholdings</legend>
         <div class="choices">
-          <label class="choice"><input type="checkbox" id="founder" name="founder"><span>Founder of a public company, still a shareholder</span></label>
+          <label class="choice"><input type="checkbox" id="founder" name="founder"><span data-i18n="founder">Founder of a public company, still a shareholder</span></label>
         </div>
       </fieldset>
 
       <fieldset>
-        <legend>Jurisdictions to consider</legend>
+        <legend data-i18n="jurs">Jurisdictions to consider</legend>
         <div class="choices" id="jurs">
-          <label class="choice"><input type="checkbox" name="jur" value="us-federal" checked><span>US federal</span></label>
+          <label class="choice"><input type="checkbox" name="jur" value="us-federal" checked><span data-i18n="jur_us">US federal</span></label>
           <label class="choice"><input type="checkbox" name="jur" value="massachusetts" checked><span>Massachusetts</span></label>
-          <label class="choice"><input type="checkbox" name="jur" value="hong-kong"><span>Hong Kong</span></label>
-          <label class="choice"><input type="checkbox" name="jur" value="china-mainland"><span>China mainland</span></label>
-          <label class="choice"><input type="checkbox" name="jur" value="europe"><span>Europe</span></label>
-          <label class="choice"><input type="checkbox" name="jur" value="cross-border"><span>Cross-border</span></label>
-          <label class="choice"><input type="checkbox" name="jur" value="other-us-states"><span>Other US states</span></label>
-          <label class="choice"><input type="checkbox" name="jur" value="australia"><span>Australia</span></label>
-          <label class="choice"><input type="checkbox" name="jur" value="singapore"><span>Singapore</span></label>
-          <label class="choice"><input type="checkbox" name="jur" value="canada"><span>Canada</span></label>
-          <label class="choice"><input type="checkbox" name="jur" value="united-kingdom"><span>United Kingdom</span></label>
+          <label class="choice"><input type="checkbox" name="jur" value="hong-kong"><span data-i18n="jur_hk">Hong Kong</span></label>
+          <label class="choice"><input type="checkbox" name="jur" value="china-mainland"><span data-i18n="jur_cn">China mainland</span></label>
+          <label class="choice"><input type="checkbox" name="jur" value="europe"><span data-i18n="jur_eu">Europe</span></label>
+          <label class="choice"><input type="checkbox" name="jur" value="cross-border"><span data-i18n="jur_xb">Cross-border</span></label>
+          <label class="choice"><input type="checkbox" name="jur" value="other-us-states"><span data-i18n="jur_other">Other US states</span></label>
+          <label class="choice"><input type="checkbox" name="jur" value="australia"><span data-i18n="jur_au">Australia</span></label>
+          <label class="choice"><input type="checkbox" name="jur" value="singapore"><span data-i18n="jur_sg">Singapore</span></label>
+          <label class="choice"><input type="checkbox" name="jur" value="canada"><span data-i18n="jur_ca">Canada</span></label>
+          <label class="choice"><input type="checkbox" name="jur" value="united-kingdom"><span data-i18n="jur_uk">United Kingdom</span></label>
         </div>
       </fieldset>
 
       <fieldset>
-        <legend>Indirect and local taxes on this file</legend>
-        <p class="empty">These open property, wine/alcohol excise, and GST/VAT packs. Packs decide; the model does not invent a bill.</p>
+        <legend data-i18n="indirect">Indirect and local taxes on this file</legend>
+        <p class="empty" data-i18n="indirect_help">These open property, wine/alcohol excise, and GST/VAT packs. Packs decide; the model does not invent a bill.</p>
         <div class="choices">
-          <label class="choice"><input type="checkbox" id="tax_property"><span>Real property</span></label>
-          <label class="choice"><input type="checkbox" id="tax_alcohol"><span>Wine / alcohol</span></label>
-          <label class="choice"><input type="checkbox" id="tax_gst"><span>GST / VAT supplies</span></label>
+          <label class="choice"><input type="checkbox" id="tax_property"><span data-i18n="tax_property">Real property</span></label>
+          <label class="choice"><input type="checkbox" id="tax_alcohol"><span data-i18n="tax_alcohol">Wine / alcohol</span></label>
+          <label class="choice"><input type="checkbox" id="tax_gst"><span data-i18n="tax_gst">GST / VAT supplies</span></label>
         </div>
       </fieldset>
 
-      <p class="empty">Sample files</p>
+      <p class="empty" data-i18n="samples">Sample files</p>
       <div class="samples" id="personas"></div>
 
-      <label class="empty" for="files">Upload PDF or zip</label>
-      <input class="file" id="files" type="file" accept=".pdf,.zip,.xlsx,application/pdf,application/zip,application/x-zip-compressed" multiple>
+      <label class="empty" for="files" data-i18n="upload">Upload your story (CV) and financials (CSV, Excel, zip and etc)</label>
+      <input class="file" id="files" type="file" accept=".csv,.xlsx,.xlsm,.pdf,.zip,.txt,.md,text/csv,application/pdf,application/zip,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" multiple>
 
-      <textarea id="intake" placeholder="Engagement notes, or leave blank if the PDF / zip is the file."></textarea>
+      <textarea id="intake" data-i18n-placeholder="notes" placeholder="Engagement notes, or leave blank if the PDF / zip is the file."></textarea>
       <div class="row">
-        <button class="btn" id="run" type="button">Open engagement</button>
+        <button class="btn" id="run" type="button" data-i18n="run">Open engagement</button>
       </div>
     </details>
     <p class="empty" id="source"></p>
   </section>
 
   <section class="stage hidden" id="stage2">
-    <p class="who">Layer 2 · CPA and tax attorney</p>
-    <h2>Apply the rulings</h2>
+    <p class="who" data-i18n="who2">Layer 2 · CPA and tax attorney</p>
+    <h2 data-i18n="h2_apply">Apply the rulings</h2>
     <div id="l2out"></div>
     <div class="row">
-      <button class="btn alt" type="button" data-go="1">Back to counsel</button>
-      <button class="btn" type="button" data-go="3">Workpapers</button>
+      <button class="btn alt" type="button" data-go="1" data-i18n="back_counsel">Back to counsel</button>
+      <button class="btn" type="button" data-go="3" data-i18n="desk3">Workpapers</button>
     </div>
   </section>
 
   <section class="stage hidden" id="stage3">
-    <p class="who">Layer 3 · Workpapers and authorities</p>
-    <h2>How each rule was applied</h2>
+    <p class="who" data-i18n="who3">Layer 3 · Workpapers and authorities</p>
+    <h2 data-i18n="h2_how">How each rule was applied</h2>
     <div id="l3out"></div>
     <div class="row">
-      <button class="btn alt" type="button" data-go="2">Back to analysis</button>
+      <button class="btn alt" type="button" data-go="2" data-i18n="back_analysis">Back to analysis</button>
     </div>
   </section>
 </div>
@@ -202,17 +204,163 @@ let personas = [];
 let selected = null;
 let currentStep = 1;
 let engaging = false;
+let lastReport = null;
+const I18N = {
+  en: {
+    eyebrow: "Clinic · one desk at a time",
+    title: "AiriTax - the Global Tax Clinic",
+    lede: "Counsel opens the file. The CPA and tax attorney apply the packs. Workpapers hold the citations.",
+    theme: "Theme",
+    layer1: "Layer 1", layer2: "Layer 2", layer3: "Layer 3",
+    desk1: "Counsel", desk2: "CPA & attorney", desk3: "Workpapers",
+    who1: "Layer 1 · Engagement manager / counsel",
+    h2_who: "Who is this client?",
+    intake: "Intake",
+    intake_help: "Identify who is on the file, the jurisdictions to open, and notes or a PDF / zip.",
+    who_legend: "Who is on this file",
+    who_help: "An individual and a family trust can both be on the engagement.",
+    who_hnw: "Individual · HNW", who_mid: "Individual · middle", who_low: "Individual · lower income",
+    who_corp: "C corporation", who_trust: "Family trust",
+    holdings: "Shareholdings",
+    founder: "Founder of a public company, still a shareholder",
+    jurs: "Jurisdictions to consider",
+    jur_us: "US federal", jur_hk: "Hong Kong", jur_cn: "China mainland", jur_eu: "Europe",
+    jur_xb: "Cross-border", jur_other: "Other US states", jur_au: "Australia", jur_sg: "Singapore",
+    jur_ca: "Canada", jur_uk: "United Kingdom",
+    indirect: "Indirect and local taxes on this file",
+    indirect_help: "These open property, wine/alcohol excise, and GST/VAT packs. Packs decide; the model does not invent a bill.",
+    tax_property: "Real property", tax_alcohol: "Wine / alcohol", tax_gst: "GST / VAT supplies",
+    samples: "Sample files",
+    upload: "Upload your story (CV) and financials (CSV, Excel, zip and etc)",
+    notes: "Engagement notes, or leave blank if the PDF / zip is the file.",
+    run: "Open engagement",
+    who2: "Layer 2 · CPA and tax attorney",
+    h2_apply: "Apply the rulings",
+    back_counsel: "Back to counsel",
+    who3: "Layer 3 · Workpapers and authorities",
+    h2_how: "How each rule was applied",
+    back_analysis: "Back to analysis",
+    live: "Live", reconnecting: "Reconnecting", reading: "Live · reading file",
+    reading_files: "Counsel is reading {n} upload(s). The header stays Live while packs run…",
+    reading_notes: "Counsel is reading the file…",
+    visit: "Live visit · {src} · {n} findings",
+    assess: "Preliminary assessment", recs: "Recommendations",
+    files_read: "{n} file(s) read: {names}",
+    still: "Counsel still needs to know",
+    still_help: "These answers would settle the findings marked \"check\". Add them to Intake and re-open.",
+    continue: "Continue to CPA & attorney",
+    model: "Model: {m} · {role}",
+    attorney: "Tax attorney", cpa: "CPA",
+    needs_fact: "needs one more fact",
+    calc: "Calc", inputs: "Inputs", result: "Result", note: "Note",
+    authorities: "Authorities",
+    layers_err: "Layers did not return.",
+  },
+  zh: {
+    eyebrow: "诊所 · 一次只开一个席位",
+    title: "AiriTax - the Global Tax Clinic",
+    lede: "律师开卷。注册会计师与税务律师适用规则包。底稿保存引用。",
+    theme: "主题",
+    layer1: "第一层", layer2: "第二层", layer3: "第三层",
+    desk1: "律师", desk2: "注会与税法律师", desk3: "底稿",
+    who1: "第一层 · 承接律师 / 顾问",
+    h2_who: "这位客户是谁？",
+    intake: "接案",
+    intake_help: "确认卷宗上的主体、要打开的辖区，以及备注或上传的简历 / 财务报表。",
+    who_legend: "卷宗上的主体",
+    who_help: "个人与家族信托可以同时出现在同一承接里。",
+    who_hnw: "个人 · 高净值", who_mid: "个人 · 中等收入", who_low: "个人 · 较低收入",
+    who_corp: "C 类公司", who_trust: "家族信托",
+    holdings: "持股",
+    founder: "上市公司创始人，仍持有股份",
+    jurs: "拟考虑的辖区",
+    jur_us: "美国联邦", jur_hk: "香港", jur_cn: "中国内地", jur_eu: "欧洲",
+    jur_xb: "跨境", jur_other: "其他美国州", jur_au: "澳大利亚", jur_sg: "新加坡",
+    jur_ca: "加拿大", jur_uk: "英国",
+    indirect: "本卷上的间接税与地方税",
+    indirect_help: "打开房产税、酒类消费税与 GST/VAT 规则包。由规则包决定；模型不会编造税额。",
+    tax_property: "不动产", tax_alcohol: "葡萄酒 / 酒类", tax_gst: "GST / VAT 应税供应",
+    samples: "示例卷宗",
+    upload: "上传你的经历（简历）与财务资料（CSV、Excel、zip 等）",
+    notes: "承接备注；若上传即为卷宗，可留空。",
+    run: "打开承接",
+    who2: "第二层 · 注册会计师与税务律师",
+    h2_apply: "适用规则",
+    back_counsel: "返回律师",
+    who3: "第三层 · 底稿与依据",
+    h2_how: "每条规则如何适用",
+    back_analysis: "返回分析",
+    live: "在线", reconnecting: "重连中", reading: "在线 · 正在读卷",
+    reading_files: "律师正在阅读 {n} 份上传。规则包运行时页眉保持在线…",
+    reading_notes: "律师正在阅读卷宗…",
+    visit: "在线接案 · {src} · {n} 条发现",
+    assess: "初步评估", recs: "建议",
+    files_read: "已读 {n} 份文件：{names}",
+    still: "律师仍需确认",
+    still_help: "这些回答可以落定标为「核查」的发现。补进接案后重新打开。",
+    continue: "继续到注会与税法律师",
+    model: "模型：{m} · {role}",
+    attorney: "税务律师", cpa: "注册会计师",
+    needs_fact: "还需一项事实",
+    calc: "测算", inputs: "输入", result: "结果", note: "说明",
+    authorities: "依据",
+    layers_err: "三层结果未返回。",
+  },
+};
+const TAGS = {
+  "Individual · HNW": "个人 · 高净值",
+  "Individual · Working class": "个人 · 工薪",
+  "Entity · Restaurant LLC": "主体 · 餐馆 LLC",
+  "Entity · SaaS C-corp": "主体 · SaaS C 类公司",
+  "Entity · Robotics C-corp": "主体 · 机器人 C 类公司",
+  "Family trust": "家族信托",
+};
+
+function locale() {
+  return document.documentElement.lang === "zh" ? "zh" : "en";
+}
+function t(key, vars) {
+  let s = (I18N[locale()] || I18N.en)[key] || I18N.en[key] || key;
+  if (vars) Object.entries(vars).forEach(([k, v]) => { s = s.replaceAll("{" + k + "}", v); });
+  return s;
+}
+function applyLang() {
+  const lang = locale();
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    el.innerHTML = t(el.dataset.i18n);
+  });
+  document.querySelectorAll("[data-i18n-placeholder]").forEach(el => {
+    el.placeholder = t(el.dataset.i18nPlaceholder);
+  });
+  const btn = $("lang");
+  btn.classList.toggle("on", lang === "zh");
+  btn.setAttribute("aria-pressed", lang === "zh" ? "true" : "false");
+  btn.textContent = lang === "zh" ? "EN" : "中文";
+  paintPersonas();
+  if (selected) {
+    const p = personas.find(x => x.id === selected);
+    if (p) fillPersonaNotes(p);
+  }
+  if (lastReport) render(lastReport);
+}
 
 $("theme").onclick = () => {
   document.documentElement.dataset.theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
 };
+$("lang").onclick = () => {
+  document.documentElement.lang = locale() === "zh" ? "en" : "zh";
+  localStorage.setItem("airitax-lang", document.documentElement.lang);
+  applyLang();
+};
+document.documentElement.lang = localStorage.getItem("airitax-lang") === "zh" ? "zh" : "en";
 
 function setLive(ok, label) {
   const el = $("live");
   el.classList.toggle("live", ok);
   el.classList.toggle("warn", !ok);
   el.classList.remove("busy");
-  el.textContent = label || (ok ? "Live" : "Reconnecting");
+  el.textContent = label || (ok ? t("live") : t("reconnecting"));
 }
 async function ping() {
   if (engaging) return;
@@ -221,11 +369,11 @@ async function ping() {
     const m = data.models || {};
     const bilingual = m.bilingual || m.extract;
     const us = m.us_tax || m.analyze;
-    let label = "Live";
-    if (bilingual && us && bilingual !== us) label = `Live · ${bilingual} + ${us}`;
-    else if (us || bilingual) label = `Live · ${us || bilingual}`;
+    let label = t("live");
+    if (bilingual && us && bilingual !== us) label = `${t("live")} · ${bilingual} + ${us}`;
+    else if (us || bilingual) label = `${t("live")} · ${us || bilingual}`;
     setLive(!!data.ok, label);
-  } catch { setLive(false, "Reconnecting"); }
+  } catch { setLive(false, t("reconnecting")); }
 }
 ping();
 setInterval(ping, 8000);
@@ -274,21 +422,29 @@ function setJurs(list) {
   document.querySelectorAll("#jurs input").forEach(el => { el.checked = want.has(el.value); });
 }
 
-async function loadPersonas() {
-  personas = await (await fetch("/api/personas")).json();
+function paintPersonas() {
+  if (!personas.length) return;
   $("personas").innerHTML = personas.map(p => `
-    <button class="persona" type="button" data-id="${p.id}">
-      <span class="tag">${p.tag}</span>
+    <button class="persona${selected === p.id ? " active" : ""}" type="button" data-id="${p.id}">
+      <span class="tag">${locale() === "zh" ? (TAGS[p.tag] || p.tag) : p.tag}</span>
       <b>${p.name}</b>
       <span class="blurb">${p.blurb}</span>
     </button>`).join("");
+}
+function fillPersonaNotes(p) {
+  const zh = (p.text_zh || "").trim();
+  $("intake").value = locale() === "zh" && zh ? zh : p.text_en;
+}
+async function loadPersonas() {
+  personas = await (await fetch("/api/personas")).json();
+  paintPersonas();
   $("personas").onclick = (e) => {
     const btn = e.target.closest(".persona");
     if (!btn) return;
     selected = btn.dataset.id;
-    document.querySelectorAll(".persona").forEach(el => el.classList.toggle("active", el === btn));
+    paintPersonas();
     const p = personas.find(x => x.id === selected);
-    $("intake").value = p.text_en;
+    fillPersonaNotes(p);
     setWho(p.entity_type, p.income_band);
     setJurs(p.jurisdictions || []);
     $("founder").checked = p.id === "chen" || p.entity_type === "family_trust";
@@ -298,19 +454,19 @@ async function loadPersonas() {
     $("tax_gst").checked = false;
   };
 }
-loadPersonas();
+loadPersonas().then(applyLang);
 
 $("run").onclick = async () => {
   if (engaging) return;
   engaging = true;
   $("run").disabled = true;
   $("live").classList.add("busy");
-  $("live").textContent = "Live · reading file";
+  $("live").textContent = t("reading");
   showStep(1);
   const n = $("files").files.length;
   $("l1out").innerHTML = n
-    ? `<p class="empty">Counsel is reading ${n} upload(s). The header stays Live while packs run…</p>`
-    : `<p class="empty">Counsel is reading the file…</p>`;
+    ? `<p class="empty">${t("reading_files", { n })}</p>`
+    : `<p class="empty">${t("reading_notes")}</p>`;
   const who = selectedWho();
   const body = new FormData();
   body.append("text", $("intake").value);
@@ -343,28 +499,29 @@ function pill(text, cls) {
 }
 
 function render(data) {
+  lastReport = data;
   const L = data.layers;
-  $("source").textContent = `Live visit · ${data.extraction_source} · ${data.findings.length} findings`;
+  $("source").textContent = t("visit", { src: data.extraction_source, n: data.findings.length });
   $("step2").disabled = false;
   $("step3").disabled = false;
   $("intake-box").open = false;
   if (!L) {
-    $("l1out").innerHTML = `<p class="err">Layers did not return.</p>`;
+    $("l1out").innerHTML = `<p class="err">${t("layers_err")}</p>`;
     return;
   }
   $("l1out").innerHTML = `
     <article class="desk">
       <div class="meta">${pill(L.engagement.who)} ${ (L.engagement.jurisdictions||[]).map(j => pill(j)).join(" ") }</div>
-      <h3>Preliminary assessment</h3>
+      <h3>${t("assess")}</h3>
       <p>${L.engagement.assessment}</p>
-      <h3>Recommendations</h3>
+      <h3>${t("recs")}</h3>
       <ul class="recs">${(L.engagement.recommendations||[]).map(r => `<li>${r}</li>`).join("")}</ul>
-      ${(L.engagement.documents||[]).length ? `<p class="empty">${L.engagement.documents.length} file(s) read: ${L.engagement.documents.map(d => d.name).join(", ")}</p>` : ""}
+      ${(L.engagement.documents||[]).length ? `<p class="empty">${t("files_read", { n: L.engagement.documents.length, names: L.engagement.documents.map(d => d.name).join(", ") })}</p>` : ""}
     </article>
     ${(data.questions||[]).length ? `
     <article class="desk">
-      <h3>Counsel still needs to know</h3>
-      <p class="empty">These answers would settle the findings marked "check". Add them to Intake and re-open.</p>
+      <h3>${t("still")}</h3>
+      <p class="empty">${t("still_help")}</p>
       ${data.questions.map(q => `
         <div class="qcard">
           <span class="tag">${q.severity} · blocks: ${(q.rules||[]).slice(0,2).join("; ")}${(q.rules||[]).length>2 ? " +" + ((q.rules||[]).length-2) : ""}</span>
@@ -372,24 +529,24 @@ function render(data) {
         </div>`).join("")}
     </article>` : ""}
     <div class="row">
-      <button class="btn" type="button" data-go="2">Continue to CPA &amp; attorney</button>
+      <button class="btn" type="button" data-go="2">${t("continue")}</button>
     </div>`;
   $("l1out").querySelector("[data-go]")?.addEventListener("click", () => showStep(2));
 
   $("l2out").innerHTML = `
     <p>${data.report.lede}</p>
-    <p class="empty">Model: ${L.analysis.model} · ${L.analysis.model_role}</p>
+    <p class="empty">${t("model", { m: L.analysis.model, role: L.analysis.model_role })}</p>
     <p class="empty">${L.analysis.upload_digest}</p>
-    <article class="desk"><h3>Tax attorney</h3><ul class="recs">${(L.analysis.legal||[]).map(i => `<li>${i}</li>`).join("")}</ul></article>
-    <article class="desk"><h3>CPA</h3><ul class="recs">${(L.analysis.accounting||[]).map(i => `<li>${i}</li>`).join("")}</ul></article>`;
+    <article class="desk"><h3>${t("attorney")}</h3><ul class="recs">${(L.analysis.legal||[]).map(i => `<li>${i}</li>`).join("")}</ul></article>
+    <article class="desk"><h3>${t("cpa")}</h3><ul class="recs">${(L.analysis.accounting||[]).map(i => `<li>${i}</li>`).join("")}</ul></article>`;
 
   const steps = (L.workpapers.steps || []).map(s => `
     <article class="finding">
-      <div>${pill(s.result, s.result.startsWith("required") ? "st-required" : s.result.startsWith("check") ? "st-check" : "")} ${s.result.startsWith("check") ? pill("needs one more fact", "st-check") : ""} ${pill(s.rule_id)}</div>
+      <div>${pill(s.result, s.result.startsWith("required") ? "st-required" : s.result.startsWith("check") ? "st-check" : "")} ${s.result.startsWith("check") ? pill(t("needs_fact"), "st-check") : ""} ${pill(s.rule_id)}</div>
       <h3>${s.name}</h3>
       <p>${(s.inputs||[]).join(" ")}</p>
       <details class="why">
-        <summary>${s.citation_src || "Authority"}</summary>
+        <summary>${s.citation_src || t("authorities")}</summary>
         <p>${s.passage || ""}</p>
         ${s.citation_url ? `<p><a href="${s.citation_url}" target="_blank" rel="noreferrer">${s.citation_url}</a></p>` : ""}
       </details>
@@ -401,12 +558,12 @@ function render(data) {
     `<li><a href="${c.url}" target="_blank" rel="noreferrer">${c.src}</a></li>`
   ).join("");
   $("l3out").innerHTML = `
-    ${sheet ? `<table class="cal"><thead><tr><th>Calc</th><th>Inputs</th><th>Result</th><th>Note</th></tr></thead><tbody>${sheet}</tbody></table>` : ""}
+    ${sheet ? `<table class="cal"><thead><tr><th>${t("calc")}</th><th>${t("inputs")}</th><th>${t("result")}</th><th>${t("note")}</th></tr></thead><tbody>${sheet}</tbody></table>` : ""}
     ${steps}
-    <h3>Authorities</h3>
+    <h3>${t("authorities")}</h3>
     <ul class="recs">${refs}</ul>
     <footer class="foot">${data.report.disclaimer}</footer>`;
-  setLive(true, "Live");
+  setLive(true, t("live"));
   showStep(1);
 }
 </script>
