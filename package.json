@@ -1,0 +1,11 @@
+{
+  "name": "global-tax-clinic",
+  "private": true,
+  "scripts": {
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "@cloudflare/containers": "^0.0.31",
+    "wrangler": "^4.37.0"
+  }
+}

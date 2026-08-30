@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: global-tax-clinic
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn clinic.api:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: CLINIC_NO_MODEL
+        value: "1"
+      - key: PYTHONUNBUFFERED
+        value: "1"

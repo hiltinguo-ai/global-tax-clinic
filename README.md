@@ -17,6 +17,14 @@ uvicorn clinic.api:app --reload --port 8000
 
 Open http://127.0.0.1:8000
 
+## Live demo
+
+The public host runs packs only (`CLINIC_NO_MODEL=1`). Personas and heuristics still open a full file; Ollama stays on your machine.
+
+One-click deploy (free Render web service):
+
+https://render.com/deploy?repo=https://github.com/hiltinguo-ai/global-tax-clinic
+
 Two local SLMs sit under the clinic. Packs still compute every number; the models only extract a profile and narrate findings.
 
 | Desk | Model | Why |

@@ -1,0 +1,15 @@
+.git
+.venv
+.pytest_cache
+.cursor
+__pycache__
+*.pyc
+.DS_Store
+node_modules
+hack_Justin
+tests
+make_demo_pdfs.py
+make_demo_sheets.py
+make_demo_zips.py
+tax-clinic-design-brief.html
+README.md
