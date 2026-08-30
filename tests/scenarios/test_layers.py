@@ -101,6 +101,8 @@ def test_chen_family_trust_layers():
     ids = {f.rule_id for f in out.findings}
     assert "us.fed.1041" in ids
     assert "us.fed.founder_public" in ids
+    assert "us.fed.fbar" in ids
+    assert float(out.profile.foreign_account_total()) == 2_000_000
 
 
 def test_founder_checkbox_without_persona():

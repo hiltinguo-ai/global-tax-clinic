@@ -22,7 +22,7 @@ CASES = {
     "nori": ("nori_captable.xlsx", ["us-federal", "cross-border"],
              {"us.fed.1120": "required", "us.fed.5471": "likely", "us.fed.5472": "likely"}),
     "chen": ("chen_trust.xlsx", ["us-federal"],
-             {"us.fed.founder_public": "check"}),
+             {"us.fed.founder_public": "check", "us.fed.fbar": "required", "us.fed.1041": "required"}),
 }
 
 
@@ -46,6 +46,17 @@ def test_xlsx_ingest_reads_cached_formula_totals():
     text, docs = ingest_files([("mei_worksheet.xlsx", data)])
     assert docs and docs[0].kind == "spreadsheet"
     assert "15000" in text  # the =SUM aggregate, recalculated and cached
+
+
+def test_chen_sheet_cached_formula_totals():
+    data = _need("chen_trust.xlsx")
+    text, docs = ingest_files([("chen_trust.xlsx", data)])
+    assert docs and docs[0].kind == "spreadsheet"
+    assert "2000000" in text.replace(",", "")
+    assert "8640000" in text.replace(",", "")
+    out = run_visit(text="", live=True, jurisdictions=["us-federal"],
+                    files=[("chen_trust.xlsx", data)])
+    assert float(out.profile.foreign_account_total()) == 2_000_000
 
 
 def test_nimbus_sheet_revenue_attribution_is_per_row():

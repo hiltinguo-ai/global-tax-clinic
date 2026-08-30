@@ -307,19 +307,25 @@ build(
 build(
     "chen_background.pdf",
     "Chen Family Trust — Background Memorandum",
-    "US family trust · Massachusetts situs",
+    "US family trust · Massachusetts situs · settlor resident in Hong Kong",
     [
         Paragraph("The trust", H2),
         "The Chen Family Trust is a US family trust with Massachusetts situs. The trust is a US person. "
         "Trustee: Beacon Fiduciary Partners LLC, Boston, MA.",
         Paragraph("The settlor", H2),
         "David Chen founded Northline Inc., an industrial logistics software company, in 2004 and took it "
-        "public on NASDAQ about 20 years ago (IPO 2006). He funded the trust with founder shares. "
-        "Career summary: CEO of Northline Inc. 2004–2019; board member since; prior to that, engineering "
-        "lead at a Boston-area logistics firm.",
+        "public on the NYSE about 20 years ago (IPO 2006). He funded the trust with founder shares. "
+        "Mr. Chen and his family moved to Hong Kong 10 years ago (2016); he is a US person and a Hong Kong "
+        "resident. Career summary: CEO of Northline Inc. 2004-2019; board member since; prior to that, "
+        "engineering lead at a Boston-area logistics firm.",
+        Paragraph("The company", H2),
+        "Northline Inc. is listed on the NYSE. It operates in the US, mainland China, Hong Kong, and the EU "
+        "through local subsidiaries (Northline (Shanghai) Ltd., Northline HK Ltd., Northline Europe B.V.). "
+        "The trust holds shares only - it has no role in the operating subsidiaries.",
         Paragraph("Holdings", H2),
-        "The trust still owns 8 percent of the listed shares of Northline Inc., a US public company. "
-        "The stake has been held about 20 years. Dividends are paid to the trust each year.",
+        "The trust still owns 8 percent of the listed shares of Northline Inc., held about 20 years. "
+        "Dividends are paid to the trust each year. The trust also keeps Hong Kong accounts for the "
+        "family's HK presence.",
     ],
 )
 
@@ -331,14 +337,23 @@ build(
         Paragraph("Principal holdings", H2),
         tbl([
             ["Holding", "Type", "Ownership"],
-            ["Northline Inc. (NASDAQ-listed, founded by settlor)", "public company shares", "8 percent of listed shares"],
-            ["Money-market sweep (US)", "cash", "—"],
+            ["Northline Inc. (NYSE-listed, founded by settlor)", "public company shares", "8 percent of listed shares"],
+            ["Money-market sweep (US)", "cash", "-"],
         ], widths=[250, 120, 120]),
+        Paragraph("Foreign (non-US) financial accounts — maximum balance during the year", H2),
+        tbl([
+            ["Institution / account", "Type", "Country", "Max balance (USD)"],
+            ["HSBC Hong Kong bank account", "bank", "Hong Kong", "250,000 USD"],
+            ["HK brokerage custody account", "brokerage", "Hong Kong", "1,750,000 USD"],
+            ["Aggregate maximum", "", "", "2,000,000 USD"],
+        ], widths=[190, 75, 90, 135]),
         Paragraph("Income", H2),
-        "Quarterly dividends on Northline Inc. shares, paid to the trust and partly distributed to beneficiaries.",
+        "Quarterly dividends on Northline Inc. shares totaling 8,640,000 USD for the year, paid to the "
+        "trust and partly distributed to beneficiaries.",
         Paragraph("Notes", H2),
-        "US person; Massachusetts situs; calendar tax year. The concentrated founder position has been held "
-        "approximately 20 years. No foreign accounts and no foreign beneficiaries.",
+        "US person; Massachusetts situs; calendar tax year. The settlor and family are Hong Kong residents "
+        "(moved 2016) and US persons. Northline Inc. operates in the US, mainland China, Hong Kong, and "
+        "the EU. The concentrated founder position has been held approximately 20 years.",
     ],
 )
 

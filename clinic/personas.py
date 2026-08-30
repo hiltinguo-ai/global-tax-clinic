@@ -112,14 +112,18 @@ PERSONA_TRANSCRIPTS: dict[str, dict] = {
         "tag": "Family trust · founder",
         "name": "Chen Family Trust",
         "locale": "en",
-        "blurb": "Trust holds 8% of a US listed company the settlor founded 20 years ago",
+        "blurb": "US/HK family; 8% of an NYSE-listed company with China, HK and EU operations",
         "entity_type": "family_trust",
         "income_band": "hnw",
-        "jurisdictions": ["us-federal", "massachusetts"],
+        "jurisdictions": ["us-federal", "massachusetts", "hong-kong", "cross-border"],
         "text_en": (
-            "The Chen Family Trust is a US family trust. The settlor founded Northline Inc., "
-            "took it public about 20 years ago, and the trust still owns 8 percent of the listed shares. "
-            "US person. Massachusetts situs. Dividends are paid to the trust each year."
+            "The Chen Family Trust is a US family trust with Massachusetts situs. The settlor founded "
+            "Northline Inc., took it public on the NYSE about 20 years ago, and the trust still owns "
+            "8 percent of the listed shares. Northline operates in the US, mainland China, Hong Kong, "
+            "and the EU. Mr. Chen and his family moved to Hong Kong 10 years ago; he is a US person and "
+            "a Hong Kong resident. The trust keeps HK accounts: an HSBC Hong Kong bank account with a "
+            "max of 250,000 USD and an HK brokerage custody account peaking at 1,750,000 USD. "
+            "Dividends are paid to the trust each year."
         ),
         "text_zh": "",
     },
@@ -257,7 +261,7 @@ def profile_chen() -> TaxProfile:
         display_name="Chen Family Trust",
         income_band=IncomeBand.hnw,
         us_person=True,
-        residencies=["US"],
+        residencies=["US", "HK"],
         states=["MA"],
         public_stakes=[
             PublicCompanyStake(
@@ -269,8 +273,17 @@ def profile_chen() -> TaxProfile:
                 founded_by_client=True,
             )
         ],
-        income_streams=[IncomeStream(kind="dividends", country="US", amount_usd="0", notes="listed founder stock")],
-        notes="Family trust holding 8% of a US listed company the settlor founded 20 years ago.",
+        foreign_accounts=[
+            ForeignAccount(country="HK", label="HSBC HK", kind="bank", max_balance_usd="250000"),
+            ForeignAccount(country="HK", label="HK custody", kind="brokerage", max_balance_usd="1750000"),
+        ],
+        income_streams=[
+            IncomeStream(kind="dividends", country="US", amount_usd="8640000", notes="NYSE-listed founder stock")
+        ],
+        notes=(
+            "Family trust holding 8% of NYSE-listed Northline Inc. (operations in US, mainland China, "
+            "Hong Kong, EU). Settlor and family are Hong Kong residents since 2016 and US persons."
+        ),
     )
 
 

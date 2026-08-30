@@ -1,7 +1,7 @@
 from clinic.engine import evaluate
 from clinic.explain import explain, number_firewall
 from clinic.extract import extract
-from clinic.personas import PERSONA_TRANSCRIPTS, profile_luis, profile_mei, profile_nori, profile_sichuan
+from clinic.personas import PERSONA_TRANSCRIPTS, profile_chen, profile_luis, profile_mei, profile_nori, profile_sichuan
 
 
 def fired(profile):
@@ -50,6 +50,25 @@ def test_nori_core_findings():
     assert "us.fed.5472" in ids
     assert "us.fed.83b" in ids
     assert "xb.us_cn_entity" in ids
+
+
+def test_chen_core_findings():
+    profile = profile_chen()
+    assert profile.residencies == ["US", "HK"]
+    assert float(profile.foreign_account_total()) == 2_000_000
+    assert float(profile.public_stakes[0].ownership_pct) == 8
+    assert profile.public_stakes[0].years_held == 20
+    ids, findings, _ = fired(profile)
+    assert "us.fed.fbar" in ids
+    assert "us.fed.1041" in ids
+    assert "us.fed.founder_public" in ids
+    assert "us.fed.grantor_trust" in ids
+    assert "us.fed.niit" in ids
+    assert "us.fed.1202" in ids
+    assert "hk.ird.property_tax" not in ids
+    fbar = next(f for f in findings if f.rule_id == "us.fed.fbar")
+    assert fbar.status.value == "required"
+    assert "2,000,000" in fbar.reason or "2000000" in fbar.reason.replace(",", "")
 
 
 def test_extractor_matches_persona_transcripts():

@@ -21,7 +21,7 @@ CASES = {
     "nori": (["nori_profile.pdf", "nori_financials.pdf"], ["us-federal", "cross-border"],
              {"us.fed.1120": "required", "us.fed.5471": "likely", "us.fed.5472": "likely"}),
     "chen": (["chen_background.pdf", "chen_financials.pdf"], ["us-federal"],
-             {"us.fed.founder_public": "check"}),
+             {"us.fed.founder_public": "check", "us.fed.fbar": "required", "us.fed.1041": "required"}),
 }
 
 
@@ -45,3 +45,18 @@ def test_mei_pdfs_fbar_aggregate_is_confirmed():
     assert float(out.profile.foreign_account_total()) == 15000
     fbar = next(f for f in out.findings if f.rule_id == "us.fed.fbar")
     assert fbar.confidence == "confirmed"
+
+
+def test_chen_pdfs_fbar_aggregate_and_dual_residency():
+    if not DOCS.is_dir():
+        pytest.skip("demo_docs not generated")
+    files = [(n, (DOCS / n).read_bytes()) for n in ["chen_background.pdf", "chen_financials.pdf"]]
+    out = run_visit(text="", live=True, jurisdictions=["us-federal"], files=files)
+    assert "US" in out.profile.residencies
+    assert "HK" in out.profile.residencies
+    assert float(out.profile.foreign_account_total()) == 2_000_000
+    bals = sorted(float(a.max_balance_usd) for a in out.profile.foreign_accounts)
+    assert bals == [250000.0, 1_750_000.0]
+    stake = out.profile.public_stakes[0]
+    assert float(stake.ownership_pct) == 8
+    assert stake.years_held == 20

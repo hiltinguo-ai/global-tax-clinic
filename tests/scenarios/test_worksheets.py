@@ -19,7 +19,7 @@ GOLD = {
                ["MA single sales factor", "Economic nexus screen"]),
     "nori": (["us-federal", "massachusetts", "cross-border"],
              ["83(b) statutory window", "25% foreign-owner test"]),
-    "chen": (["us-federal"], ["Concentrated founder position"]),
+    "chen": (["us-federal"], ["Concentrated founder position", "Foreign account aggregate"]),
 }
 
 

@@ -249,13 +249,24 @@ sheet(
     wb, "Holdings",
     ["Holding", "Type", "Shares held", "Shares outstanding", "Ownership"],
     [
-        ["Northline Inc. (NASDAQ-listed, founded by settlor ~20 years ago)", "public company shares", 9600000, 120000000, "=C2/D2"],
+        ["Northline Inc. (NYSE-listed, founded by settlor ~20 years ago)", "public company shares", 9600000, 120000000, "=C2/D2"],
         ["Money-market sweep (US)", "cash", "", "", ""],
     ],
     money_cols=(3, 4),
     widths=[52, 20, 14, 18, 12],
 )
 wb["Holdings"].cell(row=2, column=5).number_format = "0.0%"
+sheet(
+    wb, "Foreign accounts",
+    ["Institution / account", "Type", "Country", "Max balance USD (year)"],
+    [
+        ["HSBC Hong Kong bank account", "bank", "Hong Kong", 250000],
+        ["HK brokerage custody account", "brokerage", "Hong Kong", 1750000],
+    ],
+    money_cols=(4,),
+    total_row=["Aggregate maximum", "", "", "=SUM(D2:D3)"],
+    widths=[34, 12, 14, 22],
+)
 sheet(
     wb, "Dividends",
     ["Quarter 2026", "Dividend per share USD", "Shares", "Dividend received USD"],
@@ -271,7 +282,9 @@ sheet(
 )
 notes_sheet(wb, [
     "The Chen Family Trust is a US family trust with Massachusetts situs. The trust is a US person.",
-    "The settlor founded Northline Inc. and took it public about 20 years ago; the trust still owns 8 percent of the listed shares.",
+    "The settlor founded Northline Inc. and took it public on the NYSE about 20 years ago; the trust still owns 8 percent of the listed shares.",
+    "Northline Inc. operates in the US, mainland China, Hong Kong, and the EU through local subsidiaries.",
+    "Mr. Chen and his family moved to Hong Kong 10 years ago (2016); he is a US person and a Hong Kong resident.",
     "Dividends are paid to the trust each year and partly distributed to beneficiaries.",
 ])
 wb.save(OUT / "chen_trust.xlsx")

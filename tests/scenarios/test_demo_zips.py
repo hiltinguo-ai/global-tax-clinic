@@ -22,7 +22,7 @@ CASES = {
     "nori": ("nori_case_file.zip", ["us-federal", "cross-border"],
              {"us.fed.1120": "required", "us.fed.5471": "likely", "us.fed.5472": "likely"}),
     "chen": ("chen_case_file.zip", ["us-federal"],
-             {"us.fed.founder_public": "check"}),
+             {"us.fed.founder_public": "check", "us.fed.fbar": "required", "us.fed.1041": "required"}),
 }
 
 
